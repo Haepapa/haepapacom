@@ -1,0 +1,31 @@
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.25rem;
+  align-self: stretch;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  color: var(--Black-10, #1a1919);
+  font-family: Inter;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.link-line {
+  width: 3.25rem;
+  height: 0.0625rem;
+  background: #006ab1;
+}
+
+.link-icon {
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
