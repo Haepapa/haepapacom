@@ -1,4 +1,4 @@
-.about {
+.about-container {
   display: flex;
   width: 43.75rem;
   min-width: 31.25rem;
@@ -19,7 +19,7 @@
 }
 
 .title-heading {
-  color: var(--Black-10, #1a1919);
+  color: var(--Black-10);
   font-family: Inter;
   font-size: 6.25rem;
   font-style: normal;
@@ -29,7 +29,7 @@
 
 .title-slogan {
   align-self: stretch;
-  color: var(--Key-Color, #006ab1);
+  color: var(--Key-Color);
   font-family: Inter;
   font-size: 1.125rem;
   font-style: normal;
@@ -39,7 +39,7 @@
 
 .description-main {
   align-self: stretch;
-  color: var(--Black-10, #1a1919);
+  color: var(--Black-10);
   font-family: Inter;
   font-size: 1.125rem;
   font-style: normal;
@@ -48,7 +48,7 @@
 }
 
 .description-callout {
-  color: var(--Key-Color, #006ab1);
+  color: var(--Key-Color);
   font-family: Inter;
   font-size: 1.125rem;
   font-style: normal;

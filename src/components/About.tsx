@@ -3,7 +3,7 @@ import "./About.css";
 
 function About(): JSX.Element {
   return (
-    <div className="about">
+    <div className="about-container">
       <div className="title-container">
         <span className="title-heading">Haepapa</span>
         <span className="title-slogan">Turning ideas into real solutions</span>
