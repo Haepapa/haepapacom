@@ -7,12 +7,18 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="body">
-      <Navbar />
-      <About />
-      <Projects />
-      <Contact />
-    </div>
+    <>
+      <link
+        href="https://fonts.googleapis.com/css?family=Inter"
+        rel="stylesheet"
+      ></link>
+      <div className="body">
+        <Navbar />
+        <About />
+        <Projects />
+        <Contact />
+      </div>
+    </>
   );
 }
 

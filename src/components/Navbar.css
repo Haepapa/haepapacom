@@ -17,6 +17,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  fill: currentColor;
 }
 
 .link-line {
@@ -28,4 +30,5 @@
 .link-icon {
   width: 1.5625rem;
   height: 1.5625rem;
+  color: var(--Black-10);
 }
