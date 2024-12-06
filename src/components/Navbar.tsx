@@ -3,6 +3,7 @@ import "./Navbar.css";
 import github from "../images/github.svg";
 import styled from "@emotion/styled";
 import ThemeToggler from "./ThemeToggler";
+import GithubIcon from "./images/GithubIcon";
 
 function Navbar(): JSX.Element {
   const LinkLine = styled.span({
@@ -19,7 +20,7 @@ function Navbar(): JSX.Element {
       <div className="link-container">Projects</div>
       <div className="link-container">Contact</div>
       <div className="link-container">
-        <img src={github} alt="Github Logo" className="link-icon"></img>
+        <GithubIcon />
       </div>
       <div className="link-container">
         <ThemeToggler />

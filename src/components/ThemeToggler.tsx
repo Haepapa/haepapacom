@@ -1,4 +1,6 @@
 import React from "react";
+import SunIcon from "./images/SunIcon";
+import MoonIcon from "./images/MoonIcon";
 
 function ThemeToggler() {
   const [theme, setTheme] = React.useState("light");
@@ -9,9 +11,9 @@ function ThemeToggler() {
   }, [theme]);
 
   return (
-    <button onClick={() => setTheme(nextTheme)}>
-      Change to {nextTheme} mode
-    </button>
+    <span onClick={() => setTheme(nextTheme)}>
+      {theme === "light" ? <SunIcon /> : <MoonIcon />}
+    </span>
   );
 }
 

@@ -31,9 +31,7 @@
   align-items: center;
   border-radius: 0.3125rem;
   background: var(--Black-90);
-}
 
-.button-text {
   color: var(--Black-10);
   font-family: Inter;
   font-size: 1rem;
