@@ -1,5 +1,7 @@
 import React from "react";
 import "./About.css";
+import ScrollDownArrow from "./images/ScrollDownArrow";
+import Spacer from "./Spacer";
 
 function About(): JSX.Element {
   return (
@@ -18,6 +20,7 @@ function About(): JSX.Element {
           your vision to life.
         </div>
       </div>
+      <ScrollDownArrow />
     </div>
   );
 }

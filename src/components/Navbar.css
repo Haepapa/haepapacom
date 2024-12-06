@@ -4,6 +4,14 @@
   align-items: center;
   gap: 1.25rem;
   align-self: stretch;
+  padding: 0.5rem;
+  background-color: var(--Background-Color);
+
+  position: sticky; /* Keep it at the top */
+  top: 0; /* Position it at the very top */
+  left: 0; /* Start it from the left edge */
+  right: 0; /* Extend to the right edge */
+  z-index: 1000; /* Ensure it stays above other content */
 }
 
 .link-container {

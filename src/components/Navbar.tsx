@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-scroll";
 import "./Navbar.css";
 import github from "../images/github.svg";
 import styled from "@emotion/styled";
@@ -15,10 +16,27 @@ function Navbar(): JSX.Element {
   return (
     <div className="navbar">
       <div className="link-container">
-        About <LinkLine />
+        <Link to="about" spy={true} smooth={true} offset={-70} duration={500}>
+          About
+        </Link>
+        <LinkLine />
       </div>
-      <div className="link-container">Projects</div>
-      <div className="link-container">Contact</div>
+      <div className="link-container">
+        <Link
+          to="projects"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          Projects
+        </Link>
+      </div>
+      <div className="link-container">
+        <Link to="contact" spy={true} smooth={true} offset={-70} duration={500}>
+          Contact
+        </Link>
+      </div>
       <div className="link-container">
         <GithubIcon />
       </div>

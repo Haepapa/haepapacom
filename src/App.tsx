@@ -4,6 +4,7 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Spacer from "./components/Spacer";
 
 function App() {
   return (
@@ -12,11 +13,17 @@ function App() {
         href="https://fonts.googleapis.com/css?family=Inter"
         rel="stylesheet"
       ></link>
+      <Navbar />
       <div className="body">
-        <Navbar />
-        <About />
-        <Projects />
-        <Contact />
+        <span id="about">
+          <About />
+        </span>
+        <span id="projects">
+          <Projects />
+        </span>
+        <span id="contact">
+          <Contact />
+        </span>
       </div>
     </>
   );
