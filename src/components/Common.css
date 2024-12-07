@@ -8,7 +8,7 @@
   align-items: flex-start;
   gap: 0.625rem;
 
-  min-height: 100vh;
+  min-height: calc(100vh - 5rem);
   justify-content: flex-start;
 }
 

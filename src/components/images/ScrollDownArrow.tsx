@@ -1,13 +1,21 @@
 import React from "react";
+import { Link } from "react-scroll";
 import "./ScrollDownArrow.css";
 
-function ScrollDownArrow(): JSX.Element {
+function ScrollDownArrow({ targetId }: { targetId: string }): JSX.Element {
   return (
-    <div className="chevron-container">
+    <Link
+      to={targetId}
+      spy={true}
+      smooth={true}
+      offset={-70}
+      duration={500}
+      className="chevron-container"
+    >
       <div className="chevron"></div>
       <div className="chevron"></div>
       <div className="chevron"></div>
-    </div>
+    </Link>
   );
 }
 

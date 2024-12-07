@@ -2,6 +2,7 @@ import React from "react";
 import "./Projects.css";
 import "./Common.css";
 import projectIcon from "../images/project-default.svg";
+import ScrollDownArrow from "./images/ScrollDownArrow";
 
 function Projects(): JSX.Element {
   return (
@@ -31,6 +32,7 @@ function Projects(): JSX.Element {
         <div className="spacer"></div>
         <div className="button">Live Demo</div>
       </div>
+      <ScrollDownArrow targetId="contact" />
     </div>
   );
 }

@@ -1,10 +1,8 @@
-import React from "react";
 import "./App.css";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import Spacer from "./components/Spacer";
 
 function App() {
   return (
