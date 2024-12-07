@@ -38,3 +38,9 @@
   width: 1.5625rem;
   height: 1.5625rem;
 }
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+  }
+}

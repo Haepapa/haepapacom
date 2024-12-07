@@ -28,7 +28,7 @@ function Contact(): JSX.Element {
             maxLength={500}
             onChange={(e) => setCount(e.target.value.length)}
           ></textarea>
-          Characters {count}/500
+          <span className="character-count">{count}/500</span>
         </div>
       </div>
 
