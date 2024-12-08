@@ -1,11 +1,11 @@
 .navbar {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   gap: 1.25rem;
   align-self: stretch;
-  padding: 0.5rem;
   background-color: var(--Background-Color);
+  flex-direction: row;
+  padding: 0.25rem;
 
   position: sticky; /* Keep it at the top */
   top: 0; /* Position it at the very top */
@@ -39,8 +39,34 @@
   height: 1.5625rem;
 }
 
-@media screen and (max-width: 767px) {
-  .navbar {
-    flex-direction: column;
+.navbar-links {
+  gap: 1.25rem;
+  display: flex;
+}
+
+.navbar-links.expanded {
+  flex-direction: row;
+}
+
+.hamburger {
+  border: 0;
+  height: 40px;
+  width: 40px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #283b8b;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.hamburger:hover {
+  background-color: #2642af;
+}
+
+@media screen and (max-width: 700px) {
+  .hamburger {
+    display: block;
   }
 }

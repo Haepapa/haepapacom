@@ -2,10 +2,10 @@ body {
   display: flex;
   /* width: 94.5rem; */
   height: 125rem;
-  /* padding: 0rem 18.1875rem; */
   flex-direction: column;
   align-items: center;
   background-color: var(--Background-Color);
+  margin: 0;
 }
 
 code {
