@@ -1,81 +1,193 @@
-import React from "react";
-import { Link } from "react-scroll";
-import "./Navbar.css";
-import github from "../images/github.svg";
-import styled from "@emotion/styled";
-import ThemeToggler from "./ThemeToggler";
-import GithubIcon from "./images/GithubIcon";
+import {
+  Box,
+  Flex,
+  Heading,
+  HStack,
+  IconButton,
+  Spacer,
+  useBreakpointValue,
+  useDisclosure,
+  VStack,
+  Separator,
+} from "@chakra-ui/react";
 
-function NavbarBackup(): JSX.Element {
-  const [isNavExpanded, setIsNavExpanded] = React.useState(true);
-  const LinkLine = styled.span({
-    width: "3.25rem",
-    height: "0.0625rem",
-    background: "var(--Key-Color)",
-  });
+import { BsGithub } from "react-icons/bs";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
+import DakrModeToggle from "./DakrModeToggle";
 
-  return (
-    <div className="navbar">
-      <button
-        className="hamburger"
-        onClick={() => {
-          setIsNavExpanded(!isNavExpanded);
-        }}
-      >
-        {/* icon from Heroicons.com */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="white"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      <span
-        className={isNavExpanded ? "navbar-links expanded" : "navbar-links"}
-      >
-        <div className="link-container">
-          <Link to="about" spy={true} smooth={true} offset={-70} duration={500}>
-            About
-          </Link>
-          <LinkLine />
-        </div>
-        <div className="link-container">
-          <Link
-            to="projects"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            Projects
-          </Link>
-        </div>
-        <div className="link-container">
-          <Link
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-70}
-            duration={500}
-          >
-            Contact
-          </Link>
-        </div>
-        <div className="link-container">
-          <GithubIcon />
-        </div>
-        <div className="link-container">
-          <ThemeToggler />
-        </div>
-      </span>
-    </div>
+export default function Navbar() {
+  const {
+    open, // boolean state
+    onOpen, // function to set isOpen to true
+    onClose, // function to set isOpen to false
+    onToggle, // function to flip the boolean state
+  } = useDisclosure();
+  const isMobile = useBreakpointValue({ base: true, md: false }) || false;
+  const isTablet =
+    useBreakpointValue({ base: false, md: true, lg: false }) || false;
+  const isDesktop = useBreakpointValue({ base: false, lg: true }) || false;
+
+  const NavItems = () => (
+    <>
+      <Box as="a">About</Box>
+      <Box as="a">Projects</Box>
+      <Box as="a">Contact</Box>
+      <Box as="a">
+        <BsGithub />
+      </Box>
+    </>
   );
-}
 
-export default NavbarBackup;
+  // mobile
+  if (isMobile) {
+    console.log("isMobile");
+    return (
+      <Flex
+        as="nav"
+        paddingTop={1}
+        paddingBottom={1}
+        paddingLeft={3}
+        paddingRight={3}
+        mb="60px"
+        alignItems="center"
+        boxShadow="sm"
+        pos="sticky"
+        top={0}
+        zIndex={10}
+      >
+        <VStack w="100%">
+          <HStack w="100%">
+            <Heading>Haepapa</Heading>
+            <Spacer />
+            <DakrModeToggle />
+
+            {/* Open menu button */}
+            <IconButton
+              display={open ? "none" : "flex"}
+              alignItems="center"
+              justifyContent="center"
+              size="xs"
+              aria-label="Show Menu"
+              variant="ghost"
+              onClick={onOpen}
+            >
+              <GiHamburgerMenu />
+            </IconButton>
+
+            {/* close menu button */}
+            <IconButton
+              display={open ? "flex" : "none"}
+              size="xs"
+              aria-label="Show Menu"
+              variant="ghost"
+              onClick={onClose}
+            >
+              <RxCross2 />
+            </IconButton>
+          </HStack>
+
+          {/* the menu */}
+          <VStack
+            as="span"
+            display={open ? "flex" : "none"}
+            w="100%"
+            gap={4}
+            p={1}
+          >
+            <Separator />
+            <NavItems />
+          </VStack>
+        </VStack>
+      </Flex>
+    );
+  }
+
+  // tablet
+  if (isTablet) {
+    console.log("isTablet");
+    return (
+      <Flex
+        as="nav"
+        paddingTop={1}
+        paddingBottom={1}
+        paddingLeft={3}
+        paddingRight={3}
+        mb="60px"
+        alignItems="center"
+        boxShadow="sm"
+        pos="sticky"
+        top={0}
+        zIndex={10}
+      >
+        <VStack w="100%">
+          <HStack w="100%">
+            <Heading>Haepapa</Heading>
+            <Spacer />
+            <DakrModeToggle />
+
+            {/* Open menu button */}
+            <IconButton
+              display={open ? "none" : "flex"}
+              alignItems="center"
+              justifyContent="center"
+              size="xs"
+              aria-label="Show Menu"
+              variant="ghost"
+              onClick={onOpen}
+            >
+              <GiHamburgerMenu />
+            </IconButton>
+
+            {/* close menu button */}
+            <IconButton
+              display={open ? "flex" : "none"}
+              size="xs"
+              aria-label="Show Menu"
+              variant="ghost"
+              onClick={onClose}
+            >
+              <RxCross2 />
+            </IconButton>
+          </HStack>
+
+          {/* the menu */}
+          <VStack as="span" display={open ? "flex" : "none"} w="100%">
+            <Separator />
+            <HStack gap={5} w="100%" justifyContent="center">
+              <NavItems />
+            </HStack>
+          </VStack>
+        </VStack>
+      </Flex>
+    );
+  }
+
+  // desktop
+  if (isDesktop) {
+    console.log("isDesktop");
+    return (
+      <Flex
+        as="nav"
+        paddingTop={1}
+        paddingBottom={1}
+        paddingLeft={3}
+        paddingRight={3}
+        mb="60px"
+        alignItems="center"
+        boxShadow="sm"
+        pos="sticky"
+        top={0}
+        zIndex={10}
+      >
+        <Heading>Haepapa</Heading>
+        <Spacer />
+        <HStack gap={5}>
+          <NavItems />
+          <DakrModeToggle />
+        </HStack>
+      </Flex>
+    );
+  }
+  return null;
+}
