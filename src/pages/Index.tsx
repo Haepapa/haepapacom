@@ -1,14 +1,11 @@
-import { Box } from "@chakra-ui/react";
+import HeroSection from "@/components/HeroSection";
+import Navbar from "@/components/Navbar";
 
 export default function Index() {
   return (
     <>
-      <Box color="outline.dark" height={1}>
-        box1
-      </Box>
-      <Box color="outline.light" height={1}>
-        box2
-      </Box>
+      <Navbar />
+      <HeroSection />
     </>
   );
 }

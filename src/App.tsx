@@ -1,18 +1,28 @@
-import { Box } from "@chakra-ui/react";
+import { Center, Box } from "@chakra-ui/react";
 import "./App.css";
 import Index from "./pages/Index";
 
 function App() {
   return (
-    <Box
-      minWidth="390px"
-      maxWidth="900px"
+    <Center
       minHeight="100vh"
-      background="red"
+      minWidth="100vw"
+      background="background"
       margin="auto"
+      alignItems="stretch"
     >
-      <Index />
-    </Box>
+      <Box
+        width="100%"
+        maxWidth="900px"
+        minWidth="390px"
+        minHeight="100vh"
+        display="flex"
+        flexDirection="column"
+        gap={5}
+      >
+        <Index />
+      </Box>
+    </Center>
   );
 }
 
