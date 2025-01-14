@@ -1,8 +1,10 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Text, useToken } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
 import lightbulbLogo from "@/assets/lightbulb_logo.svg";
 
 export default function HeroSection() {
+  const [fillColor, strokeColor] = useToken("colors", ["outline", "main"]);
+
   return (
     <SectionContainer>
       <Box display="flex" gap={2} flexDirection="row">
@@ -24,16 +26,25 @@ export default function HeroSection() {
             variant="surface"
             textStyle="xs"
             background="main"
-            _hover={{ bg: "mainHover", shadow: "sm" }}
+            _hover={{ shadow: "button" }}
             width="fit-content"
             height="fit-content"
             padding={1.5}
+            color="buttonText"
           >
             Explore
           </Button>
         </Box>
         <Box flex="1" display="flex" justifyContent="center">
-          <img src={lightbulbLogo} alt="My Icon" height="214px" width="214px" />
+          <img
+            src={lightbulbLogo}
+            style={{
+              fill: fillColor,
+              stroke: strokeColor,
+              height: "214px",
+              width: "214px",
+            }}
+          />
         </Box>
       </Box>
     </SectionContainer>

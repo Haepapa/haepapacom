@@ -14,22 +14,10 @@ const MainTheme = createSystem(defaultConfig, {
     // },
     semanticTokens: {
       colors: {
-        outline: {
-          value: {
-            base: "#2C2C2C",
-            _dark: "#6A6A6A",
-          },
-        },
         background: {
           value: {
             base: "#FFFEF5",
             _dark: "#1D1C14",
-          },
-        },
-        white: {
-          value: {
-            base: "#FFFFFF",
-            _dark: "#262626",
           },
         },
         black: {
@@ -38,16 +26,36 @@ const MainTheme = createSystem(defaultConfig, {
             _dark: "#FFFFFF",
           },
         },
+        buttonText: {
+          value: {
+            base: "#2C2C2C",
+            _dark: "#2C2C2C",
+          },
+        },
         main: {
           value: {
             base: "#FFFBB4",
             _dark: "#FFFBB4",
           },
         },
-        mainHover: {
+        white: {
           value: {
-            base: "#FFFCCC",
-            _dark: "#FFFCCC",
+            base: "#FFFFFF",
+            _dark: "#262626",
+          },
+        },
+        outline: {
+          value: {
+            base: "#2C2C2C",
+            _dark: "#6A6A6A",
+          },
+        },
+      },
+      shadows: {
+        button: {
+          value: {
+            base: "0 1px 2px 2px rgba(218, 218, 218, 0.56)",
+            _dark: "0 1px 2px 2px rgba(218, 218, 218, 0.56)",
           },
         },
       },
