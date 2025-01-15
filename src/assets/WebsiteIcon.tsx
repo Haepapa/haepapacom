@@ -1,28 +1,34 @@
 import React from "react";
 
-// Define props with optional colors
+// Define props
 interface CustomSVGProps {
   strokeColor?: string;
   fillColor?: string;
+  width?: number;
+  height?: number;
 }
 
-// Extend CSSProperties to include custom properties
+// Extend CSSProperties
 declare module "react" {
   interface CSSProperties {
     "--outline-color"?: string;
     "--main-color"?: string;
+    "--width"?: number;
+    "--height"?: number;
   }
 }
 
 const WebsiteIcon: React.FC<CustomSVGProps> = ({
   strokeColor = "#FFFBB4",
   fillColor = "#2C2C2C",
+  width = 61,
+  height = 60,
 }) => {
   return (
     <svg
-      width="61"
-      height="60"
-      viewBox="0 0 61 60"
+      width={width}
+      height={height}
+      viewBox="0 0 ${width} ${height}"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={

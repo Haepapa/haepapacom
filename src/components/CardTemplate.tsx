@@ -1,5 +1,4 @@
-import { Card, useToken } from "@chakra-ui/react";
-import { Avatar } from "@/components/ui/avatar";
+import { Box, Card, useToken } from "@chakra-ui/react";
 
 type CardTemplateProps = {
   title: string;
@@ -21,7 +20,15 @@ export function CardTemplate({
         <Card.Title textStyle="sm" fontWeight="bold" textAlign="center">
           {title}
         </Card.Title>
-        <SvgComponent fillColor={fillColor} strokeColor={strokeColor} />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="end"
+          width="100%"
+          height="100%"
+        >
+          <SvgComponent fillColor={fillColor} strokeColor={strokeColor} />
+        </Box>
         <Card.Description textStyle="xs">{description}</Card.Description>
       </Card.Body>
       <Card.Footer textStyle="xs" fontWeight="bold">

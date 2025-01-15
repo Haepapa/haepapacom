@@ -1,21 +1,19 @@
 import { Box, Spacer, Text, useToken } from "@chakra-ui/react";
 import { ColorModeButton } from "./ui/color-mode";
-import haepapaLogo from "../assets/haepapa_logo.svg";
+import HaepapaLogo from "@/assets/HaepapaLogo";
 
 export default function Navbar() {
-  const [fillColor, strokeColor] = useToken("colors", ["outline", "main"]);
+  const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
   return (
     <Box background="white" shadow="sm" display="flex" gap={2} padding={1}>
-      <img
-        src={haepapaLogo}
-        alt="My Icon"
-        style={{
-          fill: fillColor,
-          stroke: strokeColor,
-          height: "25px",
-          width: "25px",
-        }}
-      />
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+      >
+        <HaepapaLogo fillColor={fillColor} strokeColor={strokeColor} />
+      </Box>
       <Text fontWeight="bold" textStyle="lg" alignContent="center">
         Haepapa
       </Text>
