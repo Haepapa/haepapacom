@@ -1,6 +1,5 @@
 import { Box, Button, Text, useToken } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
-import lightbulbLogo from "@/assets/lightbulb_logo.svg";
 import LightbulbIcon from "@/assets/LightbulbIcon";
 
 export default function HeroSection() {
