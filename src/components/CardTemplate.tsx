@@ -1,33 +1,27 @@
-import { Card } from "@chakra-ui/react";
+import { Card, useToken } from "@chakra-ui/react";
 import { Avatar } from "@/components/ui/avatar";
 
 type CardTemplateProps = {
   title: string;
   description: string;
-  icon: string;
   hashtags: string;
+  SvgComponent: React.FC<{ fillColor?: string; strokeColor?: string }>;
 };
 
 export function CardTemplate({
   title,
   description,
-  icon,
   hashtags,
+  SvgComponent,
 }: CardTemplateProps) {
+  const [strokeColor, fillColor] = useToken("colors", ["outline", "main"]);
   return (
     <Card.Root minWidth="190px" maxWidth="270px" shadow="sm" background="white">
       <Card.Body gap="2">
         <Card.Title textStyle="sm" fontWeight="bold" textAlign="center">
           {title}
         </Card.Title>
-        <Avatar
-          src={icon}
-          name={title}
-          size="2xl"
-          shape="rounded"
-          alignSelf="center"
-          background="none"
-        />
+        <SvgComponent fillColor={fillColor} strokeColor={strokeColor} />
         <Card.Description textStyle="xs">{description}</Card.Description>
       </Card.Body>
       <Card.Footer textStyle="xs" fontWeight="bold">
