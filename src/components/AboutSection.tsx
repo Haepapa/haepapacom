@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
 import { CardTemplate } from "./CardTemplate";
 import WebsiteIcon from "@/assets/WebsiteIcon";
@@ -9,7 +9,7 @@ import BuildIcon from "@/assets/BuildIcon";
 export default function AboutSection() {
   return (
     <SectionContainer>
-      <Box display="flex" flexDirection="row" gap={2}>
+      <SimpleGrid minChildWidth="190px" gap={2}>
         <CardTemplate
           title="We Build Web Apps"
           description="From sleek designs to seamless functionality, we create web applications that are intuitive, efficient, and fun to use."
@@ -36,7 +36,7 @@ export default function AboutSection() {
           hashtags="#fun"
           SvgComponent={BuildIcon}
         />
-      </Box>
+      </SimpleGrid>
     </SectionContainer>
   );
 }

@@ -1,8 +1,12 @@
 import { Client, Account, Databases } from "appwrite";
 
 const client = new Client();
-const projectID = process.env.REACT_APP_AW_PROJECT_ID ?? "";
-const endpointURL = process.env.REACT_APP_AW_URL_ENDPOINT ?? "";
+const projectID = import.meta.env.VITE_AW_PROJECT_ID ?? "";
+const endpointURL = import.meta.env.VITE_AW_URL_ENDPOINT ?? "";
+
+const databaseID = import.meta.env.VITE_AW_DATABASE_ID ?? "";
+const collection01ID = import.meta.env.VITE_AW_COLLECTION01_ID ?? "";
+
 client.setProject(projectID);
 client.setEndpoint(endpointURL);
 
@@ -13,4 +17,8 @@ export const Appwrite = {
   client,
   databases,
   account,
+  projectID,
+  endpointURL,
+  databaseID,
+  collection01ID,
 };

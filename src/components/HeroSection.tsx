@@ -1,4 +1,4 @@
-import { Box, Button, Text, useToken } from "@chakra-ui/react";
+import { Box, Button, Text, useToken, SimpleGrid } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
 import LightbulbIcon from "@/assets/LightbulbIcon";
 
@@ -7,7 +7,7 @@ export default function HeroSection() {
 
   return (
     <SectionContainer>
-      <Box display="flex" gap={2} flexDirection="row">
+      <SimpleGrid minChildWidth="190px" gap={2}>
         <Box display="flex" gap={2} flexDirection="column" flex="1">
           <Text fontWeight="bold" textStyle="lg" alignContent="center">
             We Turn Ideas into Real Solutions
@@ -38,7 +38,7 @@ export default function HeroSection() {
         <Box flex="1" display="flex" justifyContent="center">
           <LightbulbIcon fillColor={fillColor} strokeColor={strokeColor} />
         </Box>
-      </Box>
+      </SimpleGrid>
     </SectionContainer>
   );
 }
