@@ -40,6 +40,7 @@ export default function ProjectsSection() {
 
   return (
     <SectionContainer>
+      {/* Heading and Filter */}
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
         <Text fontSize="md" fontWeight="bold">
           What we are working on
@@ -63,6 +64,8 @@ export default function ProjectsSection() {
           </SelectContent>
         </SelectRoot>
       </SimpleGrid>
+
+      {/* Projects */}
       <SimpleGrid minChildWidth="190px" gap={2}>
         {projects.map((project) => (
           <CardTemplate
