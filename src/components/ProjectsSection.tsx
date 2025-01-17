@@ -1,6 +1,7 @@
-import { Project } from "@/types/appwrite.d";
+import { Project, TagsFilter } from "@/types/appwrite.d";
 import SectionContainer from "./SectionContainer";
 import getProjects from "@/actions/getProjects";
+import getTags from "@/actions/getTags";
 import { useEffect, useState } from "react";
 import { CardTemplate } from "./CardTemplate";
 import {
@@ -17,9 +18,11 @@ import {
   SelectTrigger,
   SelectValueText,
 } from "@/components/ui/select";
+import { useMemo } from "react";
 
 export default function ProjectsSection() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [tags, setTags] = useState<TagsFilter[]>([]);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -29,14 +32,21 @@ export default function ProjectsSection() {
     fetchProjects();
   }, []);
 
-  const frameworks = createListCollection({
-    items: [
-      { label: "React.js", value: "react" },
-      { label: "Vue.js", value: "vue" },
-      { label: "Angular", value: "angular" },
-      { label: "Svelte", value: "svelte" },
-    ],
-  });
+  useEffect(() => {
+    async function fetchTags() {
+      const tagsData = await getTags();
+      setTags(tagsData.map((t) => ({ tag: t.tag, value: t.tag, $id: t.$id })));
+    }
+    fetchTags();
+  }, []);
+
+  const tagsCollection = useMemo(() => {
+    return createListCollection({
+      items: tags.values || [],
+      itemToString: (item) => item.name,
+      itemToValue: (item) => item.name,
+    });
+  }, [state.value]);
 
   return (
     <SectionContainer>

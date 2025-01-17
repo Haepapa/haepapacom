@@ -6,13 +6,11 @@ export default async function getProjects() {
     Appwrite.databaseID,
     Appwrite.collection01ID
   );
-  console.log(response.documents);
   const projects: Project[] = response.documents.map((doc) => ({
     $id: doc.$id,
     title: doc.title,
     description: doc.description,
     tags: doc.tags,
   }));
-  console.log(projects);
   return projects;
 }
