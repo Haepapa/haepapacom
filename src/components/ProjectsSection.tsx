@@ -1,4 +1,4 @@
-import { Project, TagsFilter } from "@/types/appwrite.d";
+import { Project, Tag } from "@/types/appwrite.d";
 import SectionContainer from "./SectionContainer";
 import getProjects from "@/actions/getProjects";
 import getTags from "@/actions/getTags";
@@ -22,31 +22,32 @@ import { useMemo } from "react";
 
 export default function ProjectsSection() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [tags, setTags] = useState<TagsFilter[]>([]);
+  const [tags, setTags] = useState<Tag[]>([]);
+  const [filterVal, setFilterVal] = useState<string[]>([]);
 
   useEffect(() => {
     async function fetchProjects() {
-      const projectsData = await getProjects();
+      const projectsData = await getProjects(filterVal);
       setProjects(projectsData);
     }
     fetchProjects();
-  }, []);
+  }, [filterVal]);
 
   useEffect(() => {
     async function fetchTags() {
       const tagsData = await getTags();
-      setTags(tagsData.map((t) => ({ tag: t.tag, value: t.tag, $id: t.$id })));
+      setTags(tagsData);
     }
     fetchTags();
   }, []);
 
   const tagsCollection = useMemo(() => {
     return createListCollection({
-      items: tags.values || [],
-      itemToString: (item) => item.name,
-      itemToValue: (item) => item.name,
+      items: tags || [],
+      itemToString: (item) => item.tag,
+      itemToValue: (item) => item.tag,
     });
-  }, [state.value]);
+  }, [tags]);
 
   return (
     <SectionContainer>
@@ -58,7 +59,8 @@ export default function ProjectsSection() {
         <Spacer />
         <SelectRoot
           multiple
-          collection={frameworks}
+          onValueChange={({ value }) => setFilterVal(value)}
+          collection={tagsCollection}
           size="sm"
           background={"white"}
         >
@@ -66,9 +68,9 @@ export default function ProjectsSection() {
             <SelectValueText placeholder="Filter Projects" />
           </SelectTrigger>
           <SelectContent>
-            {frameworks.items.map((movie) => (
-              <SelectItem item={movie} key={movie.value}>
-                {movie.label}
+            {tagsCollection.items.map((t) => (
+              <SelectItem item={t} key={t.$id}>
+                #{t.tag}
               </SelectItem>
             ))}
           </SelectContent>
