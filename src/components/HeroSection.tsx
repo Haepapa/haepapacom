@@ -29,7 +29,10 @@ export default function HeroSection() {
             _hover={{ shadow: "button" }}
             width="fit-content"
             height="fit-content"
-            padding={1.5}
+            paddingTop={1.5}
+            paddingBottom={1.5}
+            paddingLeft={3}
+            paddingRight={3}
             color="buttonText"
           >
             Explore

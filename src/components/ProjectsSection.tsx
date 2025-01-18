@@ -1,7 +1,6 @@
-import { Project, Tag } from "@/types/appwrite.d";
+import { Project } from "@/types/appwrite.d";
 import SectionContainer from "./SectionContainer";
 import getProjects from "@/actions/getProjects";
-import getTags from "@/actions/getTags";
 import { useEffect, useState } from "react";
 import { CardTemplate } from "./CardTemplate";
 import {
@@ -13,7 +12,6 @@ import {
 import {
   SelectContent,
   SelectItem,
-  SelectLabel,
   SelectRoot,
   SelectTrigger,
   SelectValueText,
@@ -21,33 +19,45 @@ import {
 import { useMemo } from "react";
 
 export default function ProjectsSection() {
+  const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
-  const [tags, setTags] = useState<Tag[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
   const [filterVal, setFilterVal] = useState<string[]>([]);
 
+  // Fetch projects
   useEffect(() => {
     async function fetchProjects() {
-      const projectsData = await getProjects(filterVal);
-      setProjects(projectsData);
+      const data = await getProjects(filterVal);
+      const allTags = data.map((p) => p.tags.map((t) => t.tag)).flat();
+      const uniqueTagsArray = Array.from(new Set(allTags.map((tag) => tag)))
+        .map((value) => allTags.find((tag) => tag === value)!)
+        .sort();
+      setTags(uniqueTagsArray);
+      setProjectsData(data);
     }
     fetchProjects();
-  }, [filterVal]);
-
-  useEffect(() => {
-    async function fetchTags() {
-      const tagsData = await getTags();
-      setTags(tagsData);
-    }
-    fetchTags();
   }, []);
 
+  // Create tags collection
   const tagsCollection = useMemo(() => {
     return createListCollection({
       items: tags || [],
-      itemToString: (item) => item.tag,
-      itemToValue: (item) => item.tag,
+      itemToString: (item) => item,
+      itemToValue: (item) => item,
     });
   }, [tags]);
+
+  // useEffect for filtering projects
+  useEffect(() => {
+    if (filterVal.length > 0) {
+      const filteredProjects = projectsData.filter((project) =>
+        project.tags.some((tag) => filterVal.includes(tag.tag))
+      );
+      setProjects(filteredProjects);
+    } else {
+      setProjects(projectsData);
+    }
+  }, [filterVal, projectsData]);
 
   return (
     <SectionContainer>
@@ -69,8 +79,8 @@ export default function ProjectsSection() {
           </SelectTrigger>
           <SelectContent>
             {tagsCollection.items.map((t) => (
-              <SelectItem item={t} key={t.$id}>
-                #{t.tag}
+              <SelectItem item={t} key={t}>
+                #{t}
               </SelectItem>
             ))}
           </SelectContent>
