@@ -1,6 +1,7 @@
 import { Box, Button, Text, useToken, SimpleGrid } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
 import LightbulbIcon from "@/assets/LightbulbIcon";
+import CustomButton from "./CustomButton";
 
 export default function HeroSection() {
   const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
@@ -22,21 +23,7 @@ export default function HeroSection() {
             Explore our projects and jump in and contribute—we’d love to have
             you on board!
           </Text>
-          <Button
-            variant="surface"
-            textStyle="xs"
-            background="main"
-            _hover={{ shadow: "button" }}
-            width="fit-content"
-            height="fit-content"
-            paddingTop={1.5}
-            paddingBottom={1.5}
-            paddingLeft={3}
-            paddingRight={3}
-            color="buttonText"
-          >
-            Explore
-          </Button>
+          <CustomButton label="Explore" />
         </Box>
         <Box flex="1" display="flex" justifyContent="center">
           <LightbulbIcon fillColor={fillColor} strokeColor={strokeColor} />
