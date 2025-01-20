@@ -1,4 +1,4 @@
-import { Box, Button, Text, useToken, SimpleGrid } from "@chakra-ui/react";
+import { Box, Text, useToken, SimpleGrid } from "@chakra-ui/react";
 import SectionContainer from "./SectionContainer";
 import LightbulbIcon from "@/assets/LightbulbIcon";
 import CustomButton from "./CustomButton";

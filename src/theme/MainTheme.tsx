@@ -33,6 +33,13 @@ const MainTheme = createSystem(defaultConfig, {
           },
         },
         main: {
+          solid: { value: "#FFFBB4" },
+          contrast: { value: "#FFFBB4" },
+          fg: { value: "#FFFBB4" },
+          muted: { value: "#FFFBB4" },
+          subtle: { value: "#FFFBB4" },
+          emphasized: { value: "#FFFBB4" },
+          focusRing: { value: "#FFFBB4" },
           value: {
             base: "#FFFBB4",
             _dark: "#FFFBB4",

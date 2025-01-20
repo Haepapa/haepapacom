@@ -175,7 +175,7 @@ export default function ContactSection() {
             />
           </Field>
           <Checkbox
-            colorPalette="yellow"
+            colorPalette="main"
             variant={"outline"}
             color={"black"}
             onCheckedChange={(checked) =>
@@ -183,7 +183,7 @@ export default function ContactSection() {
             }
           >
             I agree to the{" "}
-            <Link variant="underline" color={"black"} href="https://google.com">
+            <Link color={"black"} href="">
               Privacy Policy
             </Link>
             .

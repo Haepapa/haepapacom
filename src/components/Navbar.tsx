@@ -5,18 +5,20 @@ import HaepapaLogo from "@/assets/HaepapaLogo";
 export default function Navbar() {
   const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
   return (
-    <Box background="white" shadow="sm" display="flex" gap={2} padding={1}>
+    <Box background="white" shadow="sm" display="flex" gap={4} padding={1}>
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
         height="100%"
+        gap={2}
       >
         <HaepapaLogo fillColor={fillColor} strokeColor={strokeColor} />
+
+        <Text fontWeight="bold" textStyle="lg" alignContent="center">
+          Haepapa
+        </Text>
       </Box>
-      <Text fontWeight="bold" textStyle="lg" alignContent="center">
-        Haepapa
-      </Text>
       <Spacer />
       <Text textStyle="sm" alignContent="center">
         About

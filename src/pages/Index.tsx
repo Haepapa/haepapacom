@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import FooterSection from "@/components/FooterSection";
 
 export default function Index() {
   return (
@@ -12,6 +13,7 @@ export default function Index() {
       <AboutSection />
       <ProjectsSection />
       <ContactSection />
+      <FooterSection />
     </>
   );
 }
