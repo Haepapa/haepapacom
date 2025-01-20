@@ -7,6 +7,7 @@ import {
   Input,
   Textarea,
   Fieldset,
+  Link,
 } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 import CustomButton from "./CustomButton";
@@ -20,7 +21,8 @@ import {
   DialogRoot,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import sendMessage from "@/actions/sendMessage";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -30,6 +32,7 @@ export default function ContactSection() {
   });
   const [inputErrors, setInputErrors] = useState<{ [key: string]: string }>({});
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [tsncsAgree, setTsncsAgree] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -48,15 +51,18 @@ export default function ContactSection() {
       setInputErrors(validationErrors);
       return;
     } else {
-      console.log("Form submitted successfully!");
-      console.log(formData);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
+      const sent = sendMessage(formData);
+      sent.then((result) => {
+        if (result) {
+          setFormData({
+            name: "",
+            email: "",
+            message: "",
+          });
+          setInputErrors({});
+          setIsDialogOpen(true);
+        }
       });
-      setInputErrors({});
-      setIsDialogOpen(true);
     }
   };
 
@@ -66,14 +72,14 @@ export default function ContactSection() {
         open={isDialogOpen}
         onInteractOutside={() => setIsDialogOpen(false)}
       >
-        <DialogContent>
+        <DialogContent background={"white"}>
           <DialogHeader>
             <DialogTitle>Message Sent</DialogTitle>
           </DialogHeader>
           <DialogBody>
             <p>
-              Your message has been sent successfully. We will get back to you
-              soon.
+              Thank you for your message! Your message has been sent
+              successfully and we will get back to you soon.
             </p>
           </DialogBody>
           <DialogFooter>
@@ -157,6 +163,7 @@ export default function ContactSection() {
             invalid={!!inputErrors.message}
             errorText={inputErrors.message}
             color={inputErrors.message ? "red" : undefined}
+            helperText="Max 1000 characters."
           >
             <Textarea
               name="message"
@@ -164,11 +171,29 @@ export default function ContactSection() {
               value={formData.message}
               onChange={handleChange}
               color={"black"}
+              resize="vertical"
             />
           </Field>
+          <Checkbox
+            colorPalette="yellow"
+            variant={"outline"}
+            color={"black"}
+            onCheckedChange={(checked) =>
+              setTsncsAgree(checked.checked === true)
+            }
+          >
+            I agree to the{" "}
+            <Link variant="underline" color={"black"} href="https://google.com">
+              Privacy Policy
+            </Link>
+            .
+          </Checkbox>
         </Fieldset.Content>
-
-        <CustomButton label="Send" onClick={handleSubmit} />
+        <CustomButton
+          label="Send"
+          onClick={handleSubmit}
+          disabled={!tsncsAgree}
+        />
       </Fieldset.Root>
       {isDialogOpen && <MessageSent />}
     </SectionContainer>

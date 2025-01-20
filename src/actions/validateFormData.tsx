@@ -38,5 +38,10 @@ export const validateFormData = (formData: {
     errors.message = "Message is required";
   }
 
+  if (formData.message.trim().length > 1000) {
+    errors.message =
+      "Message is too long, please shorten to 1000 characters or less";
+  }
+
   return errors;
 };

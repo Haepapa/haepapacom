@@ -15,3 +15,10 @@ export interface TagsFilter {
   $id: string;
   value: string;
 }
+
+export interface Message {
+  name: string;
+  email: string;
+  message: string;
+  $id?: string;
+}

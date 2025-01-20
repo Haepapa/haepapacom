@@ -1,8 +1,8 @@
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonProps } from "@chakra-ui/react";
 
-type CustomButtonProps = {
+type CustomButtonProps = ButtonProps & {
   label: string;
-  onClick?: (e: React.FormEvent) => Promise<void> | void;
+  // onClick?: (e: React.FormEvent) => Promise<void> | void;
 };
 
 const CustomButton: React.FC<CustomButtonProps> = ({ label, ...props }) => {
