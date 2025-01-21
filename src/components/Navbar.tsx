@@ -33,46 +33,54 @@ export default function Navbar({
   };
 
   return (
-    <Box
-      background="white"
-      shadow="sm"
-      display="flex"
-      gap={4}
-      padding={1}
-      zIndex={1000}
-      position="fixed"
-      top={0}
-      width={"100%"}
-      maxWidth={"900px"}
-      minWidth={"390px"}
-    >
+    <>
       <Box
+        background="white"
+        shadow="sm"
         display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100%"
-        gap={2}
+        gap={4}
+        padding={1}
+        zIndex={1000}
+        position="fixed"
+        top={0}
+        width={"100%"}
+        maxWidth={"900px"}
+        minWidth={"390px"}
       >
-        <HaepapaLogo fillColor={fillColor} strokeColor={strokeColor} />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+          gap={2}
+        >
+          <HaepapaLogo fillColor={fillColor} strokeColor={strokeColor} />
 
-        <Text fontWeight="bold" textStyle="lg" alignContent="center">
-          Haepapa
-        </Text>
+          <Text fontWeight="bold" textStyle="lg" alignContent="center">
+            Haepapa
+          </Text>
+        </Box>
+        <Spacer />
+
+        <Link
+          textStyle="sm"
+          alignContent="center"
+          onClick={handleProjectsClick}
+        >
+          Projects
+        </Link>
+        <Link textStyle="sm" alignContent="center" onClick={handleContactClick}>
+          Contact
+        </Link>
+        <Link href="https://github.com/Haepapa" height="25px" width="25px">
+          <Icon height="23px" width="23px">
+            <IoLogoGithub />
+          </Icon>
+        </Link>
+        <ColorModeButton height="25px" width="25px" _hover={{ bg: "white" }} />
       </Box>
-      <Spacer />
 
-      <Link textStyle="sm" alignContent="center" onClick={handleProjectsClick}>
-        Projects
-      </Link>
-      <Link textStyle="sm" alignContent="center" onClick={handleContactClick}>
-        Contact
-      </Link>
-      <Link href="https://github.com/Haepapa" height="25px" width="25px">
-        <Icon height="23px" width="23px">
-          <IoLogoGithub />
-        </Icon>
-      </Link>
-      <ColorModeButton height="25px" width="25px" _hover={{ bg: "white" }} />
-    </Box>
+      <Box height="30px" />
+    </>
   );
 }

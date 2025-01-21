@@ -5,7 +5,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
 import { useRef, useEffect } from "react";
-import { Box } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
 
 export default function Index() {
@@ -46,7 +45,6 @@ export default function Index() {
         scrollToContactUs={scrollToContactUs}
         scrollToProjects={scrollToProjects}
       />
-      <Box height="30px" />
       <HeroSection scrollToProjects={scrollToProjects} />
       <AboutSection />
       <div ref={projectsRef}>
