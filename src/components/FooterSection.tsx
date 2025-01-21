@@ -1,5 +1,6 @@
 import SectionContainer from "./SectionContainer";
-import { Flex, Separator, Stack, Text, Link, Spacer } from "@chakra-ui/react";
+import { Flex, Separator, Stack, Text, Spacer } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export default function FooterSection() {
   return (
@@ -7,13 +8,13 @@ export default function FooterSection() {
       <Stack>
         <Separator size={"sm"} variant="solid" borderColor={"black"} />
         <Flex gap={4} justify="center" align="center" textStyle={"sm"}>
-          <Link color={"black"} href="">
+          <Link color={"black"} to="/terms-of-use">
             Terms of Use
           </Link>
-          <Link color={"black"} href="">
+          <Link color={"black"} to="/privacy-policy">
             Privacy Policy
           </Link>
-          <Link color={"black"} href="">
+          <Link color={"black"} to="/cookies">
             Cookies
           </Link>
           <Spacer />

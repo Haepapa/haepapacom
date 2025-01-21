@@ -12,6 +12,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ label, ...props }) => {
       textStyle="xs"
       background="main"
       _hover={{ shadow: "button" }}
+      _active={{ shadow: "inner" }}
       width="fit-content"
       height="fit-content"
       paddingTop={1.5}

@@ -3,9 +3,12 @@ import SectionContainer from "./SectionContainer";
 import LightbulbIcon from "@/assets/LightbulbIcon";
 import CustomButton from "./CustomButton";
 
-export default function HeroSection() {
-  const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
+type HeroSectionProps = {
+  scrollToProjects: () => void;
+};
 
+export default function HeroSection({ scrollToProjects }: HeroSectionProps) {
+  const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2}>
@@ -23,7 +26,7 @@ export default function HeroSection() {
             Explore our projects and jump in and contribute—we’d love to have
             you on board!
           </Text>
-          <CustomButton label="Explore" />
+          <CustomButton label="Explore" onClick={scrollToProjects} />
         </Box>
         <Box flex="1" display="flex" justifyContent="center">
           <LightbulbIcon fillColor={fillColor} strokeColor={strokeColor} />
