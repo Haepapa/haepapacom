@@ -3,8 +3,16 @@ import SectionContainer from "@/components/SectionContainer";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import { Box, Heading, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 const TermsOfUse: React.FC = () => {
+  useEffect(() => {
+    if (location.pathname === "/terms-of-use") {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
   return (
     <>
       <Navbar />

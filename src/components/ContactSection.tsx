@@ -98,7 +98,7 @@ export default function ContactSection() {
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
-        <Text fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize="md" fontWeight="bold">
           We’d love to hear from you!
         </Text>
         <Spacer />

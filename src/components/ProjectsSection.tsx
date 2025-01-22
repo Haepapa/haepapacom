@@ -63,7 +63,7 @@ export default function ProjectsSection() {
     <SectionContainer>
       {/* Heading and Filter */}
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
-        <Text fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize="md" fontWeight="bold">
           What we are working on
         </Text>
         <Spacer />

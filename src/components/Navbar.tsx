@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 type NavBarProps = {
   scrollToContactUs?: () => void;
   scrollToProjects?: () => void;
+  scrollToHero?: () => void;
 };
 
 export default function Navbar({
   scrollToProjects,
   scrollToContactUs,
+  scrollToHero,
 }: NavBarProps) {
   const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
   const navigate = useNavigate();
@@ -29,6 +31,14 @@ export default function Navbar({
       scrollToProjects();
     } else {
       navigate("/#projects");
+    }
+  };
+
+  const handleHeroClick = () => {
+    if (scrollToHero) {
+      scrollToHero();
+    } else {
+      navigate("/");
     }
   };
 
@@ -53,10 +63,17 @@ export default function Navbar({
           alignItems="center"
           height="100%"
           gap={2}
+          cursor={"button"}
+          onClick={handleHeroClick}
         >
           <HaepapaLogo fillColor={fillColor} strokeColor={strokeColor} />
 
-          <Text fontWeight="bold" textStyle="lg" alignContent="center">
+          <Text
+            fontWeight="bold"
+            textStyle="lg"
+            alignContent="center"
+            onClick={handleHeroClick}
+          >
             Haepapa
           </Text>
         </Box>

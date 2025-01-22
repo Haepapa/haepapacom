@@ -3,8 +3,16 @@ import Navbar from "@/components/Navbar";
 import SectionContainer from "@/components/SectionContainer";
 import FooterSection from "@/components/FooterSection";
 import { Box, Heading, Text } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 const Cookies: React.FC = () => {
+  useEffect(() => {
+    if (location.pathname === "/cookies") {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
   return (
     <>
       <Navbar />
