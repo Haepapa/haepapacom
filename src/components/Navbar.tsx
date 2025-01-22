@@ -96,8 +96,6 @@ export default function Navbar({
         </Link>
         <ColorModeButton height="25px" width="25px" _hover={{ bg: "white" }} />
       </Box>
-
-      <Box height="30px" />
     </>
   );
 }

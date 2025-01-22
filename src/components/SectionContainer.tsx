@@ -10,7 +10,14 @@ const SectionContainer: React.FC<ContainerProps> = ({
   ...boxProps
 }) => {
   return (
-    <Box padding={8} width="100%" {...boxProps}>
+    <Box
+      paddingTop={8}
+      paddingLeft={8}
+      paddingRight={8}
+      width="100%"
+      {...boxProps}
+    >
+      <Box height="30px" />
       {children}
     </Box>
   );
