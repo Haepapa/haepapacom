@@ -2,9 +2,9 @@ import { Box, Card, useToken } from "@chakra-ui/react";
 
 type CardTemplateProps = {
   title: string;
-  description: string;
-  hashtags: string;
-  SvgComponent: React.FC<{ fillColor?: string; strokeColor?: string }> | null;
+  description?: string;
+  hashtags?: string;
+  SvgComponent?: React.FC<{ fillColor?: string; strokeColor?: string }> | null;
 };
 
 export function CardTemplate({
