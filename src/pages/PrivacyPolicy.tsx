@@ -23,7 +23,7 @@ const PrivacyPolicy: React.FC = () => {
           Privacy Policy
         </Heading>
         <Text mb={4} textStyle="sm">
-          Last updated: [Date]
+          Last updated: January 24, 2025
         </Text>
         <Text mb={4} textStyle="sm">
           This Privacy Policy explains how [Your Company Name] ("we", "us", or

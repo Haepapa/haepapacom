@@ -41,7 +41,7 @@ const Cookies: React.FC = () => {
           Cookies Policy
         </Heading>
         <Text mb={4} textStyle="sm">
-          Last updated: [Date]
+          Last updated: January 24, 2025
         </Text>
         <Text mb={4} textStyle="sm">
           This Cookies Policy explains what cookies are, how we use them, and

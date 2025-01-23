@@ -25,7 +25,7 @@ const TermsOfUse: React.FC = () => {
           Terms of Use
         </Heading>
         <Text mb={4} textStyle="sm">
-          Last updated: [Date]
+          Last updated: January 24, 2025
         </Text>
         <Text mb={4} textStyle="sm">
           Welcome to {companyName}! These terms and conditions outline the rules
@@ -79,7 +79,7 @@ const TermsOfUse: React.FC = () => {
             }
           >
             Cookie Policy
-          </Link>{" "}
+          </Link>
           .
         </Text>
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
