@@ -2,8 +2,9 @@ import React from "react";
 import SectionContainer from "@/components/SectionContainer";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Heading, List, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const TermsOfUse: React.FC = () => {
   const companyName = "Haepapa";
@@ -40,7 +41,21 @@ const TermsOfUse: React.FC = () => {
         </Heading>
         <Text mb={4} textStyle="sm">
           We employ the use of cookies. By accessing {companyName}, you agreed
-          to use cookies in agreement with the {companyName}'s Privacy Policy.
+          to use cookies in agreement with the {companyName}'s{" "}
+          <Link
+            color={"black"}
+            to="/privacy-policy"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.textDecoration = "underline")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.textDecoration = "none")
+            }
+          >
+            Privacy Policy
+          </Link>
+          .
         </Text>
         <Text mb={4} textStyle="sm">
           Most interactive websites use cookies to let us retrieve the user’s
@@ -50,7 +65,21 @@ const TermsOfUse: React.FC = () => {
           cookies.
         </Text>
         <Text mb={4} textStyle="sm">
-          Please see our Cookie policy for more details.
+          Please read our{" "}
+          <Link
+            color={"black"}
+            to="/cookies"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.textDecoration = "underline")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.textDecoration = "none")
+            }
+          >
+            Cookie Policy
+          </Link>{" "}
+          .
         </Text>
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           License
@@ -63,20 +92,18 @@ const TermsOfUse: React.FC = () => {
           in these terms and conditions.
         </Text>
         <Text mb={4}>You must not:</Text>
-        <Box as="ul" pl={4} mb={4}>
-          <Box as="li" mb={2} textStyle="sm">
-            Republish material from {companyName}
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+        <List.Root textStyle="sm" mb={4}>
+          <List.Item>Republish material from {companyName}</List.Item>
+          <List.Item>
             Sell, rent or sub-license material from {companyName}
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+          </List.Item>
+          <List.Item>
             Reproduce, duplicate or copy material from {companyName}
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
-            Redistribute content from {companyName}
-          </Box>
-        </Box>
+          </List.Item>
+          <List.Item>Redistribute content from {companyName}</List.Item>
+        </List.Root>
+
+        {/* Hyperlinking to our Content */}
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           Hyperlinking to our Content
         </Heading>
@@ -84,26 +111,23 @@ const TermsOfUse: React.FC = () => {
           The following organisations may link to our Website without prior
           written approval:
         </Text>
-        <Box as="ul" pl={4} mb={4}>
-          <Box as="li" mb={2} textStyle="sm">
-            Government agencies
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
-            Search engines
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
-            News organisations
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+        <List.Root textStyle="sm" mb={4}>
+          <List.Item>Republish material from {companyName}</List.Item>
+          <List.Item>Government agencies</List.Item>
+          <List.Item>Search engines</List.Item>
+          <List.Item>News organisations</List.Item>
+          <List.Item>
             Online directory distributors may link to our Website in the same
             manner as they hyperlink to the Websites of other listed businesses
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+          </List.Item>
+          <List.Item>
             System wide Accredited Businesses except soliciting non-profit
             organisations, charity shopping malls, and charity fundraising
             groups which may not hyperlink to our Web site
-          </Box>
-        </Box>
+          </List.Item>
+        </List.Root>
+
+        {/* iFrames */}
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           iFrames
         </Heading>
@@ -112,6 +136,8 @@ const TermsOfUse: React.FC = () => {
           frames around our Webpages that alter in any way the visual
           presentation or appearance of our Website.
         </Text>
+
+        {/* Content Liability */}
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           Content Liability
         </Heading>
@@ -127,7 +153,21 @@ const TermsOfUse: React.FC = () => {
           Your Privacy
         </Heading>
         <Text mb={4} textStyle="sm">
-          Please read Privacy Policy
+          Please read our{" "}
+          <Link
+            color={"black"}
+            to="/privacy-policy"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.textDecoration = "underline")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.textDecoration = "none")
+            }
+          >
+            Privacy Policy
+          </Link>
+          .
         </Text>
         <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           Reservation of Rights
@@ -163,23 +203,23 @@ const TermsOfUse: React.FC = () => {
           representations, warranties and conditions relating to our website and
           the use of this website. Nothing in this disclaimer will:
         </Text>
-        <Box as="ul" pl={4} mb={4}>
-          <Box as="li" mb={2} textStyle="sm">
+        <List.Root textStyle="sm" mb={4}>
+          <List.Item>
             limit or exclude our or your liability for death or personal injury
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+          </List.Item>
+          <List.Item>
             limit or exclude our or your liability for fraud or fraudulent
             misrepresentation
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+          </List.Item>
+          <List.Item>
             limit any of our or your liabilities in any way that is not
             permitted under applicable law
-          </Box>
-          <Box as="li" mb={2} textStyle="sm">
+          </List.Item>
+          <List.Item>
             exclude any of our or your liabilities that may not be excluded
             under applicable law
-          </Box>
-        </Box>
+          </List.Item>
+        </List.Root>
         <Text mb={4} textStyle="sm">
           The limitations and prohibitions of liability set in this Section and
           elsewhere in this disclaimer: (a) are subject to the preceding

@@ -2,8 +2,9 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import SectionContainer from "@/components/SectionContainer";
 import FooterSection from "@/components/FooterSection";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { List, Heading, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Cookies: React.FC = () => {
   useEffect(() => {
@@ -17,77 +18,103 @@ const Cookies: React.FC = () => {
     <>
       <Navbar />
       <SectionContainer>
-        <Heading as="h1" size="xl" mb={4}>
+        <Heading as="h1" fontWeight="bold" textStyle="lg" mb={4}>
           Cookies Policy
         </Heading>
-        <Text mb={4}>Last updated: [Date]</Text>
-        <Text mb={4}>
+        <Text mb={4} textStyle="sm">
+          Last updated: [Date]
+        </Text>
+        <Text mb={4} textStyle="sm">
           This Cookies Policy explains what cookies are, how we use them, and
           your choices regarding cookies.
         </Text>
-        <Heading as="h2" size="lg" mb={4}>
+
+        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           What are cookies?
         </Heading>
-        <Text mb={4}>
+        <Text mb={4} textStyle="sm">
           Cookies are small text files that are stored on your device (computer,
           mobile device, etc.) when you visit a website. They help the website
           remember your preferences and improve your user experience.
         </Text>
-        <Heading as="h2" size="lg" mb={4}>
+
+        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           How we use cookies
         </Heading>
-        <Text mb={4}>We use cookies for various purposes, including:</Text>
-        <Box as="ul" pl={4} mb={4}>
-          <Box as="li" mb={2}>
-            <strong>Essential Cookies:</strong> These cookies are necessary for
-            the website to function properly. They enable basic features such as
-            page navigation and access to secure areas of the website.
-          </Box>
-          <Box as="li" mb={2}>
-            <strong>Performance Cookies:</strong> These cookies help us
-            understand how visitors interact with our website by collecting and
-            reporting information anonymously.
-          </Box>
-          <Box as="li" mb={2}>
-            <strong>Functionality Cookies:</strong> These cookies allow the
-            website to remember choices you make (such as your username,
-            language, or region) and provide enhanced, more personalized
-            features.
-          </Box>
-          <Box as="li" mb={2}>
-            <strong>Advertising Cookies:</strong> These cookies are used to
-            deliver advertisements that are relevant to you and your interests.
-            They also help us measure the effectiveness of our advertising
-            campaigns.
-          </Box>
-        </Box>
-        <Heading as="h2" size="lg" mb={4}>
+        <Text mb={4} textStyle="sm">
+          We use cookies for various purposes, including:
+        </Text>
+        <List.Root textStyle="sm" mb={4}>
+          <List.Item>
+            Essential Cookies: These cookies are necessary for the website to
+            function properly. They enable basic features such as page
+            navigation and access to secure areas of the website.
+          </List.Item>
+          <List.Item>
+            Performance Cookies: These cookies help us understand how visitors
+            interact with our website by collecting and reporting information
+            anonymously.
+          </List.Item>
+          <List.Item>
+            Functionality Cookies: These cookies allow the website to remember
+            choices you make (such as your username, language, or region) and
+            provide enhanced, more personalized features.
+          </List.Item>
+          <List.Item>
+            Advertising Cookies: These cookies are used to deliver
+            advertisements that are relevant to you and your interests. They
+            also help us measure the effectiveness of our advertising campaigns.
+          </List.Item>
+        </List.Root>
+
+        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           Your choices regarding cookies
         </Heading>
-        <Text mb={4}>
+        <Text mb={4} textStyle="sm">
           You can manage your cookie preferences through your browser settings.
           Most browsers allow you to refuse cookies or delete them. However,
           please note that if you disable cookies, some features of our website
           may not function properly.
         </Text>
-        <Text mb={4}>
+        <Text mb={4} textStyle="sm">
           For more information about cookies and how to manage them, you can
           visit{" "}
           <a
             href="https://www.allaboutcookies.org"
             target="_blank"
             rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.textDecoration = "underline")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.textDecoration = "none")
+            }
           >
             www.allaboutcookies.org
           </a>
           .
         </Text>
-        <Heading as="h2" size="lg" mb={4}>
+
+        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
           Contact us
         </Heading>
-        <Text mb={4}>
-          If you have any questions about our Cookies Policy, please contact us
-          at [Your Contact Information].
+        <Text mb={4} textStyle="sm">
+          If you have any questions about our Cookies Policy, please send us a{" "}
+          <Link
+            color={"black"}
+            to="/#contact"
+            style={{ textDecoration: "none" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.textDecoration = "underline")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.textDecoration = "none")
+            }
+          >
+            message
+          </Link>
+          .
         </Text>
       </SectionContainer>
       <FooterSection />
