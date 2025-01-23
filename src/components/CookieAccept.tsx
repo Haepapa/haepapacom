@@ -8,7 +8,6 @@ import {
   DialogHeader,
   DialogRoot,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 
@@ -17,8 +16,11 @@ const CookieAccept = () => {
 
   useEffect(() => {
     const cookieConsent = localStorage.getItem("cookieConsent");
-    if (!cookieConsent) {
-      setIsOpen(true);
+    console.log("cookieConsent:", cookieConsent);
+    if (!cookieConsent || cookieConsent === "rejected") {
+      setTimeout(() => setIsOpen(true), 1000);
+    } else {
+      setTimeout(() => setIsOpen(false), 1000);
     }
   }, []);
 
@@ -39,10 +41,8 @@ const CookieAccept = () => {
       closeOnEscape={false}
       closeOnInteractOutside={false}
       defaultOpen={isOpen}
+      open={isOpen}
     >
-      <DialogTrigger asChild>
-        <Button variant="outline">Slide in Bottom</Button>
-      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
@@ -52,7 +52,7 @@ const CookieAccept = () => {
         <DialogBody>
           <p>
             Please use the buttons below to accept or reject our use of cookies.
-            For more information, please read our{" "}
+            For more information and to update your settings, please read our{" "}
             <Link
               color={"black"}
               to="/cookies"
