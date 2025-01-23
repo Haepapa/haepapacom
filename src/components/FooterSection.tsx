@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function FooterSection() {
   return (
     <SectionContainer>
-      <Stack>
+      <Stack paddingBottom={2}>
         <Separator size={"sm"} variant="solid" borderColor={"black"} />
         <Flex gap={4} justify="center" align="center" textStyle={"sm"}>
           <Link color={"black"} to="/terms-of-use">
