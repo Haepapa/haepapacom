@@ -5,6 +5,7 @@ import FooterSection from "@/components/FooterSection";
 import { Heading, Text, List } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import CookieAccept from "@/components/CookieAccept";
 
 const PrivacyPolicy: React.FC = () => {
   useEffect(() => {
@@ -170,6 +171,7 @@ const PrivacyPolicy: React.FC = () => {
         </Text>
       </SectionContainer>
       <FooterSection />
+      <CookieAccept />
     </>
   );
 };

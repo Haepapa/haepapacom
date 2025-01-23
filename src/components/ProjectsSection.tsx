@@ -8,7 +8,6 @@ import {
   Spacer,
   Text,
   createListCollection,
-  Center,
   Box,
 } from "@chakra-ui/react";
 import {

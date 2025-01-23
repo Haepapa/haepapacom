@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
 import { useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import CookieAccept from "@/components/CookieAccept";
 
 export default function Index() {
   const contactUsRef = useRef<HTMLDivElement>(null);
@@ -95,6 +96,7 @@ export default function Index() {
         <ContactSection />
       </div>
       <FooterSection />
+      <CookieAccept />
     </>
   );
 }

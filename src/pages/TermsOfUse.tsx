@@ -5,6 +5,7 @@ import FooterSection from "@/components/FooterSection";
 import { Heading, List, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import CookieAccept from "@/components/CookieAccept";
 
 const TermsOfUse: React.FC = () => {
   const companyName = "Haepapa";
@@ -234,6 +235,7 @@ const TermsOfUse: React.FC = () => {
         </Text>
       </SectionContainer>
       <FooterSection />
+      <CookieAccept />
     </>
   );
 };

@@ -1,12 +1,31 @@
-import React from "react";
 import Navbar from "@/components/Navbar";
 import SectionContainer from "@/components/SectionContainer";
 import FooterSection from "@/components/FooterSection";
 import { List, Heading, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CustomButton from "@/components/CustomButton";
+import CookieAccept from "@/components/CookieAccept";
 
 const Cookies: React.FC = () => {
+  const [cookieConsent, setCookieConsent] = useState<string | null>(null);
+
+  useEffect(() => {
+    const consent = localStorage.getItem("cookieConsent");
+    setCookieConsent(consent);
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem("cookieConsent", "accepted");
+    setCookieConsent("accepted");
+  };
+
+  const handleReject = () => {
+    localStorage.setItem("cookieConsent", "rejected");
+    setCookieConsent("rejected");
+    window.location.href = "https://www.google.com";
+  };
+
   useEffect(() => {
     if (location.pathname === "/cookies") {
       setTimeout(() => {
@@ -116,8 +135,22 @@ const Cookies: React.FC = () => {
           </Link>
           .
         </Text>
+
+        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+          Your Choices
+        </Heading>
+        <Text mb={4} textStyle="sm">
+          You have currently{" "}
+          <strong>
+            {cookieConsent === "accepted" ? "accepted" : "rejected"}{" "}
+          </strong>
+          cookies.
+        </Text>
+        <CustomButton onClick={handleAccept} mr={4} label="Accept Cookies" />
+        <CustomButton onClick={handleReject} mr={4} label="Reject Cookies" />
       </SectionContainer>
       <FooterSection />
+      <CookieAccept />
     </>
   );
 };
