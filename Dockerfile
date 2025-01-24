@@ -1,23 +1,9 @@
-# Use an official Node runtime as a parent image
-FROM node:20
-
-# Set the working directory to /app
+FROM node:20-alpine AS build-stage
 WORKDIR /app
-
-# Copy the package.json and package-lock.json to the working directory
-COPY ./package*.json ./
-
-# Install the dependencies
+COPY package*.json ./
 RUN npm install
-
-# Copy the remaining application files to the working directory
+RUN npm i -g serve
 COPY . .
-
-# Build the application
 RUN npm run build
-
-# Expose port 3001 for the application
-EXPOSE 4173
-
-# Start the application
-CMD [ "npm", "run", "preview" ]
+EXPOSE 3000
+CMD [ "serve", "-s", "dist" ]
