@@ -9,7 +9,6 @@
     transform: scale(1);
   }
 }
-
 .pulse {
   animation: pulse 0.5s ease-in-out;
 }
