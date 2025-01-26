@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { useMemo } from "react";
 import { ProgressBar, ProgressRoot } from "@/components/ui/progress";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectsSection() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
@@ -27,6 +28,7 @@ export default function ProjectsSection() {
   const [filterVal, setFilterVal] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Fetch projects
   useEffect(() => {
@@ -41,7 +43,6 @@ export default function ProjectsSection() {
       setProjectsData(data);
       setLoading(false);
     };
-    // Show loading for a minimum of 1 second
     const timer = setTimeout(() => {
       fetchProjects();
     }, 1000);
@@ -135,6 +136,7 @@ export default function ProjectsSection() {
                 description={project.description}
                 hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
                 SvgComponent={null}
+                onClick={() => navigate(`/project/${project.$id}`)}
               />
             ))}
           </Box>

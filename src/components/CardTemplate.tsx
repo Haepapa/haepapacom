@@ -5,6 +5,7 @@ type CardTemplateProps = {
   description?: string;
   hashtags?: string;
   SvgComponent?: React.FC<{ fillColor?: string; strokeColor?: string }> | null;
+  onClick?: () => void;
 };
 
 export function CardTemplate({
@@ -12,10 +13,16 @@ export function CardTemplate({
   description,
   hashtags,
   SvgComponent,
+  onClick,
 }: CardTemplateProps) {
   const [strokeColor, fillColor] = useToken("colors", ["outline", "main"]);
   return (
-    <Card.Root shadow="sm" background="white">
+    <Card.Root
+      shadow="sm"
+      background="white"
+      onClick={onClick}
+      cursor={"pointer"}
+    >
       <Card.Body gap="2">
         <Card.Title textStyle="sm" fontWeight="bold" textAlign="center">
           {title}
