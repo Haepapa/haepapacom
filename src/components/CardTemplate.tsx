@@ -18,13 +18,13 @@ export function CardTemplate({
   const [strokeColor, fillColor] = useToken("colors", ["outline", "main"]);
   return (
     <Card.Root
-      shadow="sm"
+      shadow="md"
       background="white"
       onClick={onClick}
       cursor={"pointer"}
     >
       <Card.Body gap="2">
-        <Card.Title textStyle="sm" fontWeight="bold" textAlign="center">
+        <Card.Title textStyle="md" fontWeight="bold" textAlign="center">
           {title}
         </Card.Title>
         {SvgComponent && (
@@ -38,9 +38,9 @@ export function CardTemplate({
             <SvgComponent fillColor={fillColor} strokeColor={strokeColor} />
           </Box>
         )}
-        <Card.Description textStyle="xs">{description}</Card.Description>
+        <Card.Description textStyle="sm">{description}</Card.Description>
       </Card.Body>
-      <Card.Footer textStyle="xs" fontWeight="bold">
+      <Card.Footer textStyle="sm" fontWeight="bold">
         {hashtags}
       </Card.Footer>
     </Card.Root>

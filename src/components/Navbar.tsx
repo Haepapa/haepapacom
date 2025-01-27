@@ -70,7 +70,7 @@ export default function Navbar({
 
           <Text
             fontWeight="bold"
-            textStyle="lg"
+            textStyle="xl"
             alignContent="center"
             onClick={handleHeroClick}
           >

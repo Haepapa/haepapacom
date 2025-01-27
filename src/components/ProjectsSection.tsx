@@ -87,7 +87,7 @@ export default function ProjectsSection() {
     <SectionContainer>
       {/* Heading and Filter */}
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
-        <Text as="h2" fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize="lg" fontWeight="bold">
           What we are working on
         </Text>
         <Spacer />
@@ -95,7 +95,7 @@ export default function ProjectsSection() {
           multiple
           onValueChange={({ value }) => setFilterVal(value)}
           collection={tagsCollection}
-          size="sm"
+          size="md"
           background={"white"}
         >
           <SelectTrigger>

@@ -13,16 +13,16 @@ export default function HeroSection({ scrollToProjects }: HeroSectionProps) {
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2}>
         <Box display="flex" gap={2} flexDirection="column" flex="1">
-          <Text fontWeight="bold" textStyle="lg" alignContent="center">
+          <Text fontWeight="bold" textStyle="xl" alignContent="center">
             We Turn Ideas into Real Solutions
           </Text>
-          <Text textStyle="xs">
+          <Text textStyle="sm">
             At Haepapa, we’re all about building cool stuff and teaming up to
             create solutions that make a difference. Whether it’s automating
             tasks, solving interesting problems, or learning something new, we
             love turning ideas into reality.
           </Text>
-          <Text textStyle="xs">
+          <Text textStyle="sm">
             Explore our projects and jump in and contribute—we’d love to have
             you on board!
           </Text>

@@ -19,22 +19,22 @@ const PrivacyPolicy: React.FC = () => {
     <>
       <Navbar />
       <SectionContainer>
-        <Heading as="h1" fontWeight="bold" textStyle="lg" mb={4}>
+        <Heading as="h1" fontWeight="bold" textStyle="xl" mb={4}>
           Privacy Policy
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           Last updated: January 24, 2025
         </Text>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           This Privacy Policy explains how [Your Company Name] ("we", "us", or
           "our") collects, uses, discloses, and protects your information when
           you visit our website [your-website-url] (the "Site").
         </Text>
 
-        <Heading as="h2" size="lg" mb={4}>
+        <Heading as="h2" size="xl" mb={4}>
           Information We Collect
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           We may collect personal information that you provide to us directly,
           such as your name, email address, and any other information you choose
           to provide. We may also collect information automatically when you
