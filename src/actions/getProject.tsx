@@ -10,11 +10,14 @@ export default async function getProject(
     Appwrite.collection01ID,
     [Query.equal("$id", documentId)]
   );
+  console.log(response);
   const project: Project[] = response.documents.map((doc) => ({
     $id: doc.$id,
     title: doc.title,
     description: doc.description,
     tags: doc.tags,
+    status: doc.status,
+    $updatedAt: doc.$updatedAt,
   }));
   return project;
 }

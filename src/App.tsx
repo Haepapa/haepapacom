@@ -31,7 +31,7 @@ function App() {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookies" element={<Cookies />} />
-            <Route path="/project/:id" element={<Project />} />
+            <Route path="/project" element={<Project />} />
           </Routes>
         </Router>
       </Box>

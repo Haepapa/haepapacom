@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
@@ -10,7 +10,8 @@ import getProject from "@/actions/getProject";
 import type { Project } from "@/types/appwrite.d";
 
 export default function Project() {
-  const { id } = useParams<{ id: string }>();
+  const location = useLocation();
+  const { id } = location.state || {}; // Get ID from state
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function Project() {
       if (id) {
         const projectData = await getProject(id);
         setProject(projectData[0]);
+        console.log(projectData[0]);
       }
     };
     fetchProject();
@@ -26,12 +28,14 @@ export default function Project() {
   return (
     <>
       <Navbar />
-      <HeroSection />
       {project ? (
-        <div>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
-        </div>
+        <HeroSection
+          title={project ? project.title : "Loading..."}
+          description={project ? project.description : ""}
+          status={project ? project.status.status : ""}
+          statusDescription={project ? project.status.description : ""}
+          updatedAt={project ? project.$updatedAt : ""}
+        />
       ) : (
         <p>Loading...</p>
       )}

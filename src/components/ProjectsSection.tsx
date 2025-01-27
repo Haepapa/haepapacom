@@ -129,17 +129,17 @@ export default function ProjectsSection() {
             }
           />
         ) : (
-          <Box>
-            {projects.map((project) => (
-              <CardTemplate
-                title={project.title}
-                description={project.description}
-                hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
-                SvgComponent={null}
-                onClick={() => navigate(`/project/${project.$id}`)}
-              />
-            ))}
-          </Box>
+          projects.map((project) => (
+            <CardTemplate
+              title={project.title}
+              description={project.description}
+              hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
+              SvgComponent={null}
+              onClick={() =>
+                navigate("/project", { state: { id: project.$id } })
+              }
+            />
+          ))
         )}
       </SimpleGrid>
     </SectionContainer>

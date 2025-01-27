@@ -3,10 +3,18 @@ export interface Project {
   description: string;
   tags: Tag[];
   $id: string;
+  status: Status;
+  $updatedAt: string;
 }
 
 export interface Tag {
   tag: string;
+  $id: string;
+}
+
+export interface Status {
+  status: string;
+  description: string;
   $id: string;
 }
 

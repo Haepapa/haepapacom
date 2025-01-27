@@ -1,29 +1,47 @@
-import { Box, Text, useToken, SimpleGrid } from "@chakra-ui/react";
+import { Box, Text, SimpleGrid } from "@chakra-ui/react";
 import SectionContainer from "../SectionContainer";
-import LightbulbIcon from "@/assets/LightbulbIcon";
+import { DataListItem, DataListRoot } from "@/components/ui/data-list";
 
-export default function HeroSection() {
-  const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
+type HeroSectionProps = {
+  title: string | null;
+  description: string | null;
+  status: string | null;
+  statusDescription: string | null;
+  updatedAt: string | null;
+};
+
+export default function HeroSection({
+  title,
+  description,
+  status,
+  statusDescription,
+  updatedAt,
+}: HeroSectionProps) {
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2}>
         <Box display="flex" gap={2} flexDirection="column" flex="1">
           <Text fontWeight="bold" textStyle="lg" alignContent="center">
-            We Turn Ideas into Real Solutions
+            {title}
           </Text>
-          <Text textStyle="xs">
-            At Haepapa, we’re all about building cool stuff and teaming up to
-            create solutions that make a difference. Whether it’s automating
-            tasks, solving interesting problems, or learning something new, we
-            love turning ideas into reality.
-          </Text>
-          <Text textStyle="xs">
-            Explore our projects and jump in and contribute—we’d love to have
-            you on board!
-          </Text>
+          <Text textStyle="xs">{description}</Text>
         </Box>
         <Box flex="1" display="flex" justifyContent="center">
-          <LightbulbIcon fillColor={fillColor} strokeColor={strokeColor} />
+          <DataListRoot orientation="horizontal" gap={2}>
+            <DataListItem
+              textStyle="xs"
+              key={"status"}
+              label={"Status"}
+              info={statusDescription}
+              value={status}
+            />
+            <DataListItem
+              textStyle="xs"
+              key={"updatedAt"}
+              label={"Updated at"}
+              value={updatedAt}
+            />
+          </DataListRoot>
         </Box>
       </SimpleGrid>
     </SectionContainer>
