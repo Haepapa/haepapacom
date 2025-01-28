@@ -5,6 +5,7 @@ export interface Project {
   $id: string;
   status: Status;
   $updatedAt: string;
+  projectStatusHist: ProjectStatusHist[];
 }
 
 export interface Tag {
@@ -29,4 +30,9 @@ export interface Message {
   email: string;
   message: string;
   $id?: string;
+}
+
+export interface ProjectStatusHist {
+  statusStartMonth: string;
+  status: Status;
 }

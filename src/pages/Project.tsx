@@ -35,6 +35,7 @@ export default function Project() {
           status={project ? project.status.status : ""}
           statusDescription={project ? project.status.description : ""}
           updatedAt={project ? project.$updatedAt : ""}
+          projectStatusHist={project ? project.projectStatusHist : []}
         />
       ) : (
         <p>Loading...</p>
