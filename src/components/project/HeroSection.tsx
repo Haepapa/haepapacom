@@ -14,7 +14,9 @@ import SectionContainer from "../SectionContainer";
 import { DataListItem, DataListRoot } from "@/components/ui/data-list";
 import { GoLightBulb } from "react-icons/go";
 import { BsBrush } from "react-icons/bs";
+import { GrValidate } from "react-icons/gr";
 import { ProjectStatusHist } from "@/types/appwrite.d";
+import { format } from "date-fns";
 
 type HeroSectionProps = {
   title: string | null;
@@ -33,6 +35,24 @@ export default function HeroSection({
   updatedAt,
   projectStatusHist,
 }: HeroSectionProps) {
+  const sortedStatusHist = projectStatusHist
+    .sort(
+      (a, b) =>
+        new Date(a.statusStartMonth).getTime() -
+        new Date(b.statusStartMonth).getTime()
+    )
+    .map((hist) => ({
+      status: hist.status[0].status,
+      statusStartMonth: format(new Date(hist.statusStartMonth), "MMMM yyyy"),
+    }));
+  console.log(sortedStatusHist);
+
+  const statusIconMap: { [key: string]: JSX.Element } = {
+    Idea: <GoLightBulb />,
+    Design: <BsBrush />,
+    MVP: <GrValidate />,
+  };
+
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={4}>
@@ -57,34 +77,32 @@ export default function HeroSection({
             />
           </DataListRoot>
         </Box>
-        <Box flex="1" display="flex" justifyContent="center">
-          <TimelineRoot>
-            <TimelineItem>
-              <TimelineConnector>
-                <GoLightBulb />
-                <Box
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  height="80%"
-                >
-                  <Separator orientation="vertical" height="10" />
-                </Box>
-              </TimelineConnector>
-              <TimelineContent>
-                <TimelineTitle>Idea</TimelineTitle>
-                <TimelineDescription>November 2024</TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineConnector>
-                <BsBrush />
-              </TimelineConnector>
-              <TimelineContent>
-                <TimelineTitle>Design</TimelineTitle>
-                <TimelineDescription>Decemberr 2024</TimelineDescription>
-              </TimelineContent>
-            </TimelineItem>
+        <Box flex="1" display="flex" justifyContent="left">
+          <TimelineRoot maxW={140}>
+            {sortedStatusHist.map((hist, index) => (
+              <TimelineItem key={index}>
+                <TimelineConnector>
+                  {statusIconMap[hist.status] || <GoLightBulb />}
+                  {index !== sortedStatusHist.length - 1 && (
+                    <Box
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="top"
+                      height="100%"
+                      marginTop={2}
+                    >
+                      <Separator orientation="vertical" height="9" />
+                    </Box>
+                  )}
+                </TimelineConnector>
+                <TimelineContent>
+                  <TimelineTitle>{hist.status}</TimelineTitle>
+                  <TimelineDescription>
+                    {hist.statusStartMonth}
+                  </TimelineDescription>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
           </TimelineRoot>
         </Box>
       </SimpleGrid>

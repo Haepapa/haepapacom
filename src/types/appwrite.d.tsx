@@ -34,5 +34,5 @@ export interface Message {
 
 export interface ProjectStatusHist {
   statusStartMonth: string;
-  status: Status;
+  status: Status[];
 }
