@@ -9,7 +9,20 @@ import {
   TimelineTitle,
   TimelineDescription,
   Separator,
+  Link,
 } from "@chakra-ui/react";
+import {
+  DrawerActionTrigger,
+  DrawerBackdrop,
+  DrawerBody,
+  DrawerCloseTrigger,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerRoot,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import SectionContainer from "../SectionContainer";
 import { DataListItem, DataListRoot } from "@/components/ui/data-list";
 import { GoLightBulb } from "react-icons/go";
@@ -69,6 +82,49 @@ export default function HeroSection({
               info={statusDescription}
               value={status}
             />
+            <DrawerRoot>
+              <DrawerBackdrop />
+              <DrawerTrigger asChild>
+                <Link color={"black"}>History</Link>
+              </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerTitle>Drawer Title</DrawerTitle>
+                </DrawerHeader>
+                <DrawerBody>
+                  <p>
+                    <TimelineRoot maxW={140}>
+                      {sortedStatusHist.map((hist, index) => (
+                        <TimelineItem key={index}>
+                          <TimelineConnector>
+                            {statusIconMap[hist.status] || <GoLightBulb />}
+                            {index !== sortedStatusHist.length - 1 && (
+                              <Box
+                                display="flex"
+                                justifyContent="center"
+                                alignItems="top"
+                                height="100%"
+                                marginTop={2}
+                              >
+                                <Separator orientation="vertical" height="9" />
+                              </Box>
+                            )}
+                          </TimelineConnector>
+                          <TimelineContent>
+                            <TimelineTitle>{hist.status}</TimelineTitle>
+                            <TimelineDescription>
+                              {hist.statusStartMonth}
+                            </TimelineDescription>
+                          </TimelineContent>
+                        </TimelineItem>
+                      ))}
+                    </TimelineRoot>
+                  </p>
+                </DrawerBody>
+                <DrawerFooter></DrawerFooter>
+                <DrawerCloseTrigger />
+              </DrawerContent>
+            </DrawerRoot>
             <DataListItem
               textStyle="sm"
               key={"updatedAt"}
@@ -78,32 +134,7 @@ export default function HeroSection({
           </DataListRoot>
         </Box>
         <Box flex="1" display="flex" justifyContent="left">
-          <TimelineRoot maxW={140}>
-            {sortedStatusHist.map((hist, index) => (
-              <TimelineItem key={index}>
-                <TimelineConnector>
-                  {statusIconMap[hist.status] || <GoLightBulb />}
-                  {index !== sortedStatusHist.length - 1 && (
-                    <Box
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="top"
-                      height="100%"
-                      marginTop={2}
-                    >
-                      <Separator orientation="vertical" height="9" />
-                    </Box>
-                  )}
-                </TimelineConnector>
-                <TimelineContent>
-                  <TimelineTitle>{hist.status}</TimelineTitle>
-                  <TimelineDescription>
-                    {hist.statusStartMonth}
-                  </TimelineDescription>
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </TimelineRoot>
+          Test
         </Box>
       </SimpleGrid>
     </SectionContainer>
