@@ -23,6 +23,7 @@ export const DataListItem = React.forwardRef<HTMLDivElement, ItemProps>(
         <ChakraDataList.ItemValue
           flex={grow ? "1" : undefined}
           fontWeight={"bold"}
+          justifyContent={"space-between"}
         >
           {value}
         </ChakraDataList.ItemValue>

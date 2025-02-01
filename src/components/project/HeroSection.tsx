@@ -12,7 +12,6 @@ import {
   Link,
 } from "@chakra-ui/react";
 import {
-  DrawerActionTrigger,
   DrawerBackdrop,
   DrawerBody,
   DrawerCloseTrigger,
@@ -28,7 +27,8 @@ import { DataListItem, DataListRoot } from "@/components/ui/data-list";
 import { GoLightBulb } from "react-icons/go";
 import { BsBrush } from "react-icons/bs";
 import { GrValidate } from "react-icons/gr";
-import { ProjectStatusHist } from "@/types/appwrite.d";
+import { HiOutlineRocketLaunch } from "react-icons/hi2";
+import { ProjectStatusHist, Tag } from "@/types/appwrite.d";
 import { format } from "date-fns";
 
 type HeroSectionProps = {
@@ -37,6 +37,7 @@ type HeroSectionProps = {
   status: string | null;
   statusDescription: string | null;
   updatedAt: string | null;
+  tags: Tag[] | null;
   projectStatusHist: ProjectStatusHist[];
 };
 
@@ -46,6 +47,7 @@ export default function HeroSection({
   status,
   statusDescription,
   updatedAt,
+  tags,
   projectStatusHist,
 }: HeroSectionProps) {
   const sortedStatusHist = projectStatusHist
@@ -58,38 +60,62 @@ export default function HeroSection({
       status: hist.status[0].status,
       statusStartMonth: format(new Date(hist.statusStartMonth), "MMMM yyyy"),
     }));
-  console.log(sortedStatusHist);
-
   const statusIconMap: { [key: string]: JSX.Element } = {
     Idea: <GoLightBulb />,
     Design: <BsBrush />,
     MVP: <GrValidate />,
+    "In Progress": <HiOutlineRocketLaunch />,
   };
+
+  const formattedUpdatedAt = updatedAt
+    ? format(new Date(updatedAt), "EEEE, do MMMM yyyy")
+    : "";
 
   return (
     <SectionContainer>
-      <SimpleGrid minChildWidth="190px" gap={4}>
-        <Box display="flex" gap={2} flexDirection="column" flex="1">
-          <Text fontWeight="bold" textStyle="xl" alignContent="center">
-            {title}
-          </Text>
-          <Text textStyle="sm">{description}</Text>
-          <DataListRoot orientation="horizontal" gap={2}>
-            <DataListItem
-              textStyle="sm"
-              key={"status"}
-              label={"Status"}
-              info={statusDescription}
-              value={status}
-            />
-            <DrawerRoot>
+      <DrawerRoot>
+        <SimpleGrid minChildWidth="190px" gap={4}>
+          <Box display="flex" gap={2} flexDirection="column" flex="1">
+            <Text fontWeight="bold" textStyle="xl" alignContent="center">
+              {title}
+            </Text>
+            <Text textStyle="sm">{description}</Text>
+            <Text>
+              {tags?.map((t, index) => (
+                <Text key={index} textStyle="sm" fontWeight="bold">
+                  #{t.tag}
+                </Text>
+              ))}
+            </Text>
+          </Box>
+          <Box flex="1" display="flex" justifyContent="left">
+            <DataListRoot orientation="horizontal" gap={2}>
+              <DataListItem
+                textStyle="sm"
+                key={"status"}
+                label={"Status"}
+                info={statusDescription}
+                value={
+                  <>
+                    {status}{" "}
+                    <DrawerTrigger asChild>
+                      <Link
+                        color={"black"}
+                        fontWeight={"normal"}
+                        fontSize={"xs"}
+                      >
+                        {" "}
+                        view history
+                      </Link>
+                    </DrawerTrigger>
+                  </>
+                }
+              />
               <DrawerBackdrop />
-              <DrawerTrigger asChild>
-                <Link color={"black"}>History</Link>
-              </DrawerTrigger>
+
               <DrawerContent>
                 <DrawerHeader>
-                  <DrawerTitle>Drawer Title</DrawerTitle>
+                  <DrawerTitle>Project History</DrawerTitle>
                 </DrawerHeader>
                 <DrawerBody>
                   <p>
@@ -124,19 +150,16 @@ export default function HeroSection({
                 <DrawerFooter></DrawerFooter>
                 <DrawerCloseTrigger />
               </DrawerContent>
-            </DrawerRoot>
-            <DataListItem
-              textStyle="sm"
-              key={"updatedAt"}
-              label={"Updated at"}
-              value={updatedAt}
-            />
-          </DataListRoot>
-        </Box>
-        <Box flex="1" display="flex" justifyContent="left">
-          Test
-        </Box>
-      </SimpleGrid>
+              <DataListItem
+                textStyle="sm"
+                key={"updatedAt"}
+                label={"Updated"}
+                value={formattedUpdatedAt}
+              />
+            </DataListRoot>
+          </Box>
+        </SimpleGrid>
+      </DrawerRoot>
     </SectionContainer>
   );
 }

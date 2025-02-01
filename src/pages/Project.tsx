@@ -8,6 +8,7 @@ import CookieAccept from "@/components/CookieAccept";
 import HeroSection from "@/components/project/HeroSection";
 import getProject from "@/actions/getProject";
 import type { Project } from "@/types/appwrite.d";
+import IdeaSection from "@/components/project/IdeaSection";
 
 export default function Project() {
   const location = useLocation();
@@ -29,14 +30,18 @@ export default function Project() {
     <>
       <Navbar />
       {project ? (
-        <HeroSection
-          title={project ? project.title : "Loading..."}
-          description={project ? project.description : ""}
-          status={project ? project.status.status : ""}
-          statusDescription={project ? project.status.description : ""}
-          updatedAt={project ? project.$updatedAt : ""}
-          projectStatusHist={project ? project.projectStatusHist : []}
-        />
+        <>
+          <HeroSection
+            title={project ? project.title : "Loading..."}
+            description={project ? project.description : ""}
+            status={project ? project.status.status : ""}
+            statusDescription={project ? project.status.description : ""}
+            updatedAt={project ? project.$updatedAt : ""}
+            projectStatusHist={project ? project.projectStatusHist : []}
+            tags={project ? project.tags : []}
+          />
+          <IdeaSection idea={project ? project.idea : ""} />
+        </>
       ) : (
         <p>Loading...</p>
       )}
