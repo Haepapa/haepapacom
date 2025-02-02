@@ -21,7 +21,6 @@ export default function Project() {
       if (id) {
         const projectData = await getProject(id);
         setProject(projectData[0]);
-        // console.log(projectData[0]);
       }
     };
     fetchProject();

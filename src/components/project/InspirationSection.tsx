@@ -1,21 +1,8 @@
-import { Box, Text, SimpleGrid, useToken } from "@chakra-ui/react";
+import { Box, Text, SimpleGrid } from "@chakra-ui/react";
+import { useColorMode } from "@/components/ui/color-mode";
 import SectionContainer from "../SectionContainer";
-import upperFirstChar from "@/actions/upperFirstChar";
-import LightbulbIcon from "@/assets/LightbulbIcon";
-import HaepapacomInspiration from "@/assets/project/HaepapacomInspiration";
-import React, { useEffect, useState } from "react";
-
-const svgMap: {
-  [key: string]: React.FC<{
-    strokeColor?: string;
-    fillColor?: string;
-    greyColor?: string;
-    width?: number;
-    height?: number;
-  }>;
-} = {
-  HaepapacomInspiration,
-};
+import getFileByName from "@/actions/getFileURLByName";
+import { useEffect, useState } from "react";
 
 type IdeaSectionProps = {
   inspiration: string | null;
@@ -26,49 +13,36 @@ export default function InspirationSection({
   inspiration,
   name,
 }: IdeaSectionProps) {
-  const [DynamicComponent, setDynamicComponent] = useState<React.FC | null>(
-    null
-  );
-  const paragraphs = (inspiration ?? "").split("\n");
-  const [fillColor, strokeColor, greyColor] = useToken("colors", [
-    "main",
-    "outline",
-    "grey",
-  ]);
+  const { colorMode } = useColorMode();
+  const [lightIMG, setLightIMG] = useState<string | null>(null);
+  const [darkIMG, setDarkIMG] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchComponent() {
-      try {
-        const response = await fetch(
-          "https://dev.appwrite.haepapa.com/v1/storage/buckets/679f175800189f0a55f4/files/679f1772001a7c9b645a/view?project=67837be7001fd034ae1e&project=67837be7001fd034ae1e&mode=admin"
-        );
-        const componentString = await response.text();
-        const Component = new Function("React", `return ${componentString}`)(
-          React
-        );
-        setDynamicComponent(() => Component);
-      } catch (error) {
-        console.error("Error fetching component:", error);
-      }
+    async function fetchImages() {
+      const light = await getFileByName({
+        name: name + "_inspiration_light.png",
+      });
+      const dark = await getFileByName({
+        name: name + "_inspiration_dark.png",
+      });
+      setLightIMG(light);
+      setDarkIMG(dark);
     }
+    fetchImages();
+  }, []);
 
-    fetchComponent();
-  }, [name]);
+  const imageUrl = (colorMode === "light" ? lightIMG : darkIMG) ?? "";
 
-  const InspirationSVG =
-    svgMap[upperFirstChar(name) + "Inspiration"] || LightbulbIcon;
+  const paragraphs = (inspiration ?? "").split("\n");
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2}>
         <Box flex="1" display="flex" justifyContent="center">
-          {/* <InspirationSVG
-            fillColor={fillColor}
-            strokeColor={strokeColor}
-            greyColor={greyColor}
-            width={200}
-            height={200}
-          /> */}
-          {DynamicComponent && <DynamicComponent />}
+          <img
+            style={{ maxHeight: "200px" }}
+            src={imageUrl}
+            alt="Inspiration Image"
+          />
         </Box>
         <Box display="flex" gap={2} flexDirection="column" flex="1">
           <Text fontWeight="bold" textStyle="xl" alignContent="center">
