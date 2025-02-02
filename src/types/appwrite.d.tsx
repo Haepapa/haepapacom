@@ -8,6 +8,7 @@ export interface Project {
   projectStatusHist: ProjectStatusHist[];
   idea: string;
   inspiration: string;
+  name: string;
 }
 
 export interface Tag {

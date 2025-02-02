@@ -44,6 +44,7 @@ export default function Project() {
           <IdeaSection idea={project ? project.idea : ""} />
           <InspirationSection
             inspiration={project ? project.inspiration : ""}
+            name={project ? project.name : ""}
           />
         </>
       ) : (

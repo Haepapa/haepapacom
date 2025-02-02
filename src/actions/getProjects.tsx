@@ -27,6 +27,7 @@ export default async function getProjects(tags: string[]): Promise<Project[]> {
     projectStatusHist: doc.projectStatusHist,
     idea: doc.idea,
     inspiration: doc.inspiration,
+    name: doc.name,
   }));
   return projects;
 }
