@@ -7,6 +7,7 @@ export interface Project {
   $updatedAt: string;
   projectStatusHist: ProjectStatusHist[];
   idea: string;
+  inspiration: string;
 }
 
 export interface Tag {

@@ -9,6 +9,7 @@ import HeroSection from "@/components/project/HeroSection";
 import getProject from "@/actions/getProject";
 import type { Project } from "@/types/appwrite.d";
 import IdeaSection from "@/components/project/IdeaSection";
+import InspirationSection from "@/components/project/InspirationSection";
 
 export default function Project() {
   const location = useLocation();
@@ -41,6 +42,9 @@ export default function Project() {
             tags={project ? project.tags : []}
           />
           <IdeaSection idea={project ? project.idea : ""} />
+          <InspirationSection
+            inspiration={project ? project.inspiration : ""}
+          />
         </>
       ) : (
         <p>Loading...</p>

@@ -20,6 +20,7 @@ export default async function getProject(
     $updatedAt: doc.$updatedAt,
     projectStatusHist: doc.projectStatusHist,
     idea: doc.idea,
+    inspiration: doc.inspiration,
   }));
   return project;
 }
