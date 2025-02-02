@@ -5,9 +5,11 @@ import { Query } from "appwrite";
 export default async function getProjects(tags: string[]): Promise<Project[]> {
   let query: string[];
   if (tags.length > 0) {
-    query = [Query.contains("tags", tags)];
+    query = [
+      Query.and([Query.contains("tags", tags), Query.equal("draft", false)]),
+    ];
   } else {
-    query = [];
+    query = [Query.equal("draft", false)];
   }
 
   const response = await Appwrite.databases.listDocuments(
@@ -20,6 +22,11 @@ export default async function getProjects(tags: string[]): Promise<Project[]> {
     title: doc.title,
     description: doc.description,
     tags: doc.tags,
+    status: doc.status,
+    $updatedAt: doc.$updatedAt,
+    projectStatusHist: doc.projectStatusHist,
+    idea: doc.idea,
+    inspiration: doc.inspiration,
   }));
   return projects;
 }
