@@ -9,6 +9,7 @@ export interface Project {
   idea: string;
   inspiration: string;
   name: string;
+  features: Feature[];
 }
 
 export interface Tag {
@@ -37,5 +38,10 @@ export interface Message {
 
 export interface ProjectStatusHist {
   statusStartMonth: string;
+  status: Status[];
+}
+
+export interface Feature {
+  description: string;
   status: Status[];
 }

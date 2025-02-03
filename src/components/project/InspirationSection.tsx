@@ -36,7 +36,7 @@ export default function InspirationSection({
   const paragraphs = (inspiration ?? "").split("\n");
   return (
     <SectionContainer>
-      <SimpleGrid minChildWidth="190px" gap={2}>
+      <SimpleGrid minChildWidth="190px" gap={4}>
         <Box flex="1" display="flex" justifyContent="center">
           <img
             style={{ maxHeight: "200px" }}

@@ -11,7 +11,7 @@ export default function IdeaSection({ idea }: IdeaSectionProps) {
   const [fillColor, strokeColor] = useToken("colors", ["main", "outline"]);
   return (
     <SectionContainer>
-      <SimpleGrid minChildWidth="190px" gap={2}>
+      <SimpleGrid minChildWidth="190px" gap={4}>
         {" "}
         <Box display="flex" gap={2} flexDirection="column" flex="1">
           <Text fontWeight="bold" textStyle="xl" alignContent="center">

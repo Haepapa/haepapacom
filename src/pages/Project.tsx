@@ -10,6 +10,8 @@ import getProject from "@/actions/getProject";
 import type { Project } from "@/types/appwrite.d";
 import IdeaSection from "@/components/project/IdeaSection";
 import InspirationSection from "@/components/project/InspirationSection";
+import FeaturesSection from "@/components/project/FeaturesSection";
+import DevelopmentContentSection from "@/components/project/DevelopmentContentSection";
 
 export default function Project() {
   const location = useLocation();
@@ -45,6 +47,8 @@ export default function Project() {
             inspiration={project ? project.inspiration : ""}
             name={project ? project.name : ""}
           />
+          <FeaturesSection features={project ? project.features : []} />
+          <DevelopmentContentSection />
         </>
       ) : (
         <p>Loading...</p>
