@@ -48,7 +48,7 @@ export default function Project() {
             name={project ? project.name : ""}
           />
           <FeaturesSection features={project ? project.features : []} />
-          <DevelopmentContentSection />
+          <DevelopmentContentSection name={project ? project.name : ""} />
         </>
       ) : (
         <p>Loading...</p>

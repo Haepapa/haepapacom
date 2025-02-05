@@ -1,7 +1,30 @@
 import SectionContainer from "../SectionContainer";
 import { SimpleGrid, Tabs, Text, Spacer } from "@chakra-ui/react";
+import getDiagramURLsByName from "@/actions/getDiagramURLsByName";
+import { useEffect, useState } from "react";
+import { useColorMode } from "@/components/ui/color-mode";
 
-export default function DevelopmentContentSection() {
+type DevelopmentContentSectionProps = {
+  name: string | null;
+};
+
+export default function DevelopmentContentSection({
+  name,
+}: DevelopmentContentSectionProps) {
+  const [diagramURLs, setDiagramURLs] = useState<string[]>([]);
+  const { colorMode } = useColorMode();
+
+  useEffect(() => {
+    async function fetchDiagramURLs() {
+      const urls = await getDiagramURLsByName({
+        name: name + "_diagram",
+        colorMode: colorMode || null,
+      });
+      setDiagramURLs(urls);
+    }
+    fetchDiagramURLs();
+  }, [colorMode]);
+
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
@@ -13,10 +36,21 @@ export default function DevelopmentContentSection() {
       <SimpleGrid minChildWidth="190px" gap={4} textStyle="sm">
         <Tabs.Root defaultValue="members">
           <Tabs.List>
+            {diagramURLs.length > 0 ? (
+              <Tabs.Trigger value="diagrams">Diagrams</Tabs.Trigger>
+            ) : null}
             <Tabs.Trigger value="members">Members</Tabs.Trigger>
             <Tabs.Trigger value="projects">Projects</Tabs.Trigger>
             <Tabs.Trigger value="tasks">Settings</Tabs.Trigger>
           </Tabs.List>
+
+          {diagramURLs.length > 0 ? (
+            <Tabs.Content value="diagrams">
+              {diagramURLs.map(() => {
+                return <img src={diagramURLs[0]} />;
+              })}
+            </Tabs.Content>
+          ) : null}
           <Tabs.Content value="members">Manage your team members</Tabs.Content>
           <Tabs.Content value="projects">Manage your projects</Tabs.Content>
           <Tabs.Content value="tasks">
