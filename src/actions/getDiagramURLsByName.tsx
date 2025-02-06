@@ -16,11 +16,10 @@ export default async function getDiagramURLsByName({
   if (colorMode === null) {
     throw new Error("colorMode cannot be null");
   }
-  console.log("name", name, "colorMode", colorMode);
   const fileIDs = await Appwrite.storage.listFiles(Appwrite.bucket01ID, [
     Query.and([
       Query.startsWith("name", name),
-      Query.endsWith("name", colorMode),
+      Query.endsWith("name", colorMode + ".png"),
     ]),
   ]);
   const fileURLs = fileIDs.files.map((file) => {
