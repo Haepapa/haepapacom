@@ -3,15 +3,20 @@ import { SimpleGrid, Tabs, Text, Spacer } from "@chakra-ui/react";
 import getDiagramURLsByName from "@/actions/getDiagramURLsByName";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@/components/ui/color-mode";
+import { Appwrite } from "@/lib/Appwrite";
+import { Technology } from "@/types/appwrite.d";
 
 type DevelopmentContentSectionProps = {
   name: string | null;
+  technologies: Technology[] | null;
 };
 
 export default function DevelopmentContentSection({
   name,
+  technologies,
 }: DevelopmentContentSectionProps) {
   const [diagramURLs, setDiagramURLs] = useState<string[]>([]);
+  const [technologyURLs, setTechnologyURLs] = useState<string[]>([]);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
@@ -23,6 +28,24 @@ export default function DevelopmentContentSection({
       setDiagramURLs(urls);
     }
     fetchDiagramURLs();
+  }, [colorMode]);
+
+  useEffect(() => {
+    async function fetchTechnologyURLs() {
+      if (!technologies) return;
+      const urls = await Promise.all(
+        technologies.map(async (t) => {
+          return await getDiagramURLsByName({
+            name: t.documentName,
+            colorMode: colorMode || null,
+            bucketID: Appwrite.bucket02ID,
+          });
+        })
+      );
+      setTechnologyURLs(urls.flat());
+      console.log("technologyURLs", technologyURLs);
+    }
+    fetchTechnologyURLs();
   }, [colorMode]);
 
   return (

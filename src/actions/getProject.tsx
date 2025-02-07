@@ -10,7 +10,7 @@ export default async function getProject(
     Appwrite.collection01ID,
     [Query.equal("$id", documentId)]
   );
-  console.log(response);
+  console.log("Raw data:", response);
   const project: Project[] = response.documents.map((doc) => ({
     $id: doc.$id,
     title: doc.title,
@@ -23,6 +23,7 @@ export default async function getProject(
     inspiration: doc.inspiration,
     name: doc.name,
     features: doc.features,
+    technologies: doc.technologies,
   }));
   return project;
 }

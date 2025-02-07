@@ -15,7 +15,7 @@ import DevelopmentContentSection from "@/components/project/DevelopmentContentSe
 
 export default function Project() {
   const location = useLocation();
-  const { id } = location.state || {}; // Get ID from state
+  const { id } = location.state || {};
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -48,7 +48,10 @@ export default function Project() {
             name={project ? project.name : ""}
           />
           <FeaturesSection features={project ? project.features : []} />
-          <DevelopmentContentSection name={project ? project.name : ""} />
+          <DevelopmentContentSection
+            name={project ? project.name : ""}
+            technologies={project ? project.technologies : []}
+          />
         </>
       ) : (
         <p>Loading...</p>

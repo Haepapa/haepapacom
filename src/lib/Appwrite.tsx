@@ -9,6 +9,7 @@ const collection01ID = import.meta.env.VITE_AW_COLLECTION01_ID ?? "";
 const collection02ID = import.meta.env.VITE_AW_COLLECTION02_ID ?? "";
 const collection03ID = import.meta.env.VITE_AW_COLLECTION03_ID ?? "";
 const bucket01ID = import.meta.env.VITE_AW_BUCKET01_ID ?? "";
+const bucket02ID = import.meta.env.VITE_AW_BUCKET02_ID ?? "";
 
 client.setProject(projectID);
 client.setEndpoint(endpointURL);
@@ -29,4 +30,5 @@ export const Appwrite = {
   collection02ID,
   collection03ID,
   bucket01ID,
+  bucket02ID,
 };

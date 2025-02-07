@@ -10,6 +10,7 @@ export interface Project {
   inspiration: string;
   name: string;
   features: Feature[];
+  technologies: Technology[];
 }
 
 export interface Tag {
@@ -44,4 +45,10 @@ export interface ProjectStatusHist {
 export interface Feature {
   description: string;
   status: Status[];
+}
+
+export interface Technology {
+  name: string;
+  documentName: string;
+  link: string;
 }
