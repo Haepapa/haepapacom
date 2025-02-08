@@ -29,6 +29,7 @@ export default async function getProjects(tags: string[]): Promise<Project[]> {
     inspiration: doc.inspiration,
     name: doc.name,
     features: doc.features,
+    technologies: doc.technologies,
   }));
   return projects;
 }
