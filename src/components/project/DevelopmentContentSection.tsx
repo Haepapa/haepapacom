@@ -15,8 +15,8 @@ export default function DevelopmentContentSection({
   name,
   technologies,
 }: DevelopmentContentSectionProps) {
-  const [diagramURLs, setDiagramURLs] = useState<string[]>([]);
-  const [technologyURLs, setTechnologyURLs] = useState<string[]>([]);
+  const [diagramURLs, setDiagramURLs] = useState<string[][]>([]);
+  const [technologyURLs, setTechnologyURLs] = useState<string[][]>([]);
   const { colorMode } = useColorMode();
 
   useEffect(() => {
@@ -69,8 +69,14 @@ export default function DevelopmentContentSection({
 
           {diagramURLs.length > 0 ? (
             <Tabs.Content value="diagrams">
-              {diagramURLs.map(() => {
-                return <img src={diagramURLs[0]} />;
+              {diagramURLs.map((d) => {
+                console.log("d", d);
+                return (
+                  <>
+                    <Text fontWeight="semibold">{d[1]}</Text>
+                    <img src={d[0]} />
+                  </>
+                );
               })}
             </Tabs.Content>
           ) : null}

@@ -20,7 +20,7 @@ export default async function getDiagramURLsByName({
   }
   let bucket = bucketID === null ? Appwrite.bucket01ID : bucketID;
   bucket = bucketID === undefined ? Appwrite.bucket01ID : bucketID; //assume project bucket if not specified
-  console.log("bucket", bucket);
+
   const fileIDs = await Appwrite.storage.listFiles(bucket, [
     Query.and([
       Query.startsWith("name", name),
@@ -28,7 +28,25 @@ export default async function getDiagramURLsByName({
     ]),
   ]);
   const fileURLs = fileIDs.files.map((file) => {
-    return Appwrite.storage.getFileView(bucket, file.$id);
+    return [
+      Appwrite.storage.getFileView(bucket, file.$id),
+      prettyImageName(file.name),
+    ];
   });
+  console.log("fileURLs", fileURLs);
   return fileURLs;
+}
+
+function prettyImageName(fileName: string): string {
+  // Split the file name by underscores
+  const parts = fileName.split("_");
+
+  // Extract the image name part (3rd part) and remove the light/dark suffix
+  const imageNamePart = parts[2].replace(/(light|dark)\.png$/, "");
+
+  // Convert camelCase to words with spaces
+  const prettyName = imageNamePart.replace(/([a-z])([A-Z])/g, "$1 $2");
+
+  // Capitalize the first letter of each word
+  return prettyName.replace(/\b\w/g, (char) => char.toUpperCase());
 }
