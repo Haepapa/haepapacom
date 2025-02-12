@@ -1,4 +1,5 @@
 import { Appwrite } from "@/lib/Appwrite";
+import { GetDiagramURLsByNameType } from "@/types/actions";
 import { Query } from "appwrite";
 
 type getDiagramURLsByNameProps = {
@@ -11,7 +12,7 @@ export default async function getDiagramURLsByName({
   name,
   colorMode,
   bucketID,
-}: getDiagramURLsByNameProps) {
+}: getDiagramURLsByNameProps): Promise<GetDiagramURLsByNameType[]> {
   if (name === null) {
     throw new Error("Name cannot be null");
   }
@@ -31,10 +32,10 @@ export default async function getDiagramURLsByName({
     ]),
   ]);
   const fileURLs = fileIDs.files.map((file) => {
-    return [
-      Appwrite.storage.getFileView(bucket, file.$id),
-      prettyImageName(file.name),
-    ];
+    return {
+      url: Appwrite.storage.getFileView(bucket, file.$id),
+      name: prettyImageName(file.name),
+    };
   });
   return fileURLs;
 }
