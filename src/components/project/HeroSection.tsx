@@ -88,7 +88,7 @@ export default function HeroSection({
               ))}
             </Text>
           </Box>
-          <Box flex="1" display="flex" justifyContent="left">
+          <Box flex="1" display="flex" justifyContent="left" paddingTop={9}>
             <DataListRoot orientation="horizontal" gap={2}>
               <DataListItem
                 textStyle="sm"
@@ -113,7 +113,7 @@ export default function HeroSection({
               />
               <DrawerBackdrop />
 
-              <DrawerContent>
+              <DrawerContent background={"background"}>
                 <DrawerHeader>
                   <DrawerTitle>Project History</DrawerTitle>
                 </DrawerHeader>
