@@ -24,7 +24,10 @@ export default async function getDiagramURLsByName({
   const fileIDs = await Appwrite.storage.listFiles(bucket, [
     Query.and([
       Query.startsWith("name", name),
-      Query.endsWith("name", colorMode + ".png"),
+      Query.or([
+        Query.endsWith("name", colorMode + ".png"),
+        Query.endsWith("name", "any.png"),
+      ]),
     ]),
   ]);
   const fileURLs = fileIDs.files.map((file) => {
@@ -33,7 +36,6 @@ export default async function getDiagramURLsByName({
       prettyImageName(file.name),
     ];
   });
-  console.log("fileURLs", fileURLs);
   return fileURLs;
 }
 

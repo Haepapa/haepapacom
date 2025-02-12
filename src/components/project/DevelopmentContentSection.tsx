@@ -42,11 +42,12 @@ export default function DevelopmentContentSection({
           });
         })
       );
+      console.log("technologyURLs", urls);
       setTechnologyURLs(urls.flat());
       console.log("technologyURLs", technologyURLs);
     }
     fetchTechnologyURLs();
-  }, [colorMode]);
+  }, [colorMode, technologies]);
 
   return (
     <SectionContainer>
@@ -70,7 +71,6 @@ export default function DevelopmentContentSection({
           {diagramURLs.length > 0 ? (
             <Tabs.Content value="diagrams">
               {diagramURLs.map((d) => {
-                console.log("d", d);
                 return (
                   <>
                     <Text fontWeight="semibold">{d[1]}</Text>
