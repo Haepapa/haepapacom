@@ -122,10 +122,10 @@ export default function DevelopmentContentSection({
 
             {diagramURLs.length > 0 ? (
               <Tabs.Content value="diagrams">
-                <SimpleGrid gap={2} minChildWidth="60px">
+                <Flex gap="8" justify="flex-start" wrap="wrap">
                   {diagramURLs.map((d) => {
                     return (
-                      <DialogTrigger>
+                      <DialogTrigger minWidth={"70px"}>
                         <Image
                           src={d.url}
                           height="60px"
@@ -144,7 +144,7 @@ export default function DevelopmentContentSection({
                       </DialogTrigger>
                     );
                   })}
-                </SimpleGrid>
+                </Flex>
               </Tabs.Content>
             ) : null}
 
@@ -153,7 +153,7 @@ export default function DevelopmentContentSection({
                 <Text paddingBottom={6}>
                   Below are a few of the technologies used on this project.
                 </Text>
-                <SimpleGrid gap={2} minChildWidth="60px" justifyContent={"end"}>
+                <Flex gap="8" justify="flex-start" wrap="wrap">
                   {technologyURLs.map((t) => {
                     return (
                       <Flex
@@ -171,7 +171,7 @@ export default function DevelopmentContentSection({
                       </Flex>
                     );
                   })}
-                </SimpleGrid>
+                </Flex>
               </Tabs.Content>
             ) : null}
           </Tabs.Root>
