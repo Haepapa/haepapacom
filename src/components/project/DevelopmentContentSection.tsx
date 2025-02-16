@@ -7,15 +7,11 @@ import {
   SimpleGrid,
   Flex,
   Link,
-  Button,
-  Stack,
 } from "@chakra-ui/react";
 import {
-  DialogActionTrigger,
   DialogBody,
   DialogCloseTrigger,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogRoot,
   DialogTitle,
@@ -25,19 +21,22 @@ import getDiagramURLsByName from "@/actions/getDiagramURLsByName";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { Appwrite } from "@/lib/Appwrite";
-import { Technology } from "@/types/appwrite.d";
+import { Technology, Note } from "@/types/appwrite.d";
 import { GetDiagramURLsByNameType } from "@/types/actions";
 import { LuExternalLink } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { NotesDateFormater } from "@/util/NotesDateFormater";
 
 type DevelopmentContentSectionProps = {
   name: string | null;
   technologies: Technology[] | null;
+  notes: Note[];
 };
 
 export default function DevelopmentContentSection({
   name,
   technologies,
+  notes,
 }: DevelopmentContentSectionProps) {
   const [diagramURLs, setDiagramURLs] = useState<GetDiagramURLsByNameType[]>(
     []
@@ -111,6 +110,9 @@ export default function DevelopmentContentSection({
         </SimpleGrid>
         <SimpleGrid minChildWidth="190px" gap={4} textStyle="sm">
           <Tabs.Root defaultValue="diagrams">
+            {/* ---------------------------------------------------------------------------------------- */}
+            {/* Tabs */}
+            {/* ---------------------------------------------------------------------------------------- */}
             <Tabs.List>
               {diagramURLs.length > 0 ? (
                 <Tabs.Trigger value="diagrams">Diagrams</Tabs.Trigger>
@@ -118,8 +120,14 @@ export default function DevelopmentContentSection({
               {technologyURLs.length > 0 ? (
                 <Tabs.Trigger value="technologies">Technologies</Tabs.Trigger>
               ) : null}
+              {notes.length > 0 ? (
+                <Tabs.Trigger value="notes">Notes</Tabs.Trigger>
+              ) : null}
             </Tabs.List>
 
+            {/* ---------------------------------------------------------------------------------------- */}
+            {/* Diagrams */}
+            {/* ---------------------------------------------------------------------------------------- */}
             {diagramURLs.length > 0 ? (
               <Tabs.Content value="diagrams">
                 <Flex gap="8" justify="flex-start" wrap="wrap">
@@ -148,6 +156,9 @@ export default function DevelopmentContentSection({
               </Tabs.Content>
             ) : null}
 
+            {/* ---------------------------------------------------------------------------------------- */}
+            {/* Technologies */}
+            {/* ---------------------------------------------------------------------------------------- */}
             {technologyURLs.length > 0 ? (
               <Tabs.Content value="technologies">
                 <Text paddingBottom={6}>
@@ -168,6 +179,36 @@ export default function DevelopmentContentSection({
                           <Text fontWeight="semibold">{t.name}</Text>
                           <LuExternalLink />
                         </Link>
+                      </Flex>
+                    );
+                  })}
+                </Flex>
+              </Tabs.Content>
+            ) : null}
+
+            {/* ---------------------------------------------------------------------------------------- */}
+            {/* Notes */}
+            {/* ---------------------------------------------------------------------------------------- */}
+            {notes.length > 0 ? (
+              <Tabs.Content value="notes">
+                <Flex gap="8" justify="flex-start" wrap="wrap">
+                  {notes.map((n, i) => {
+                    return (
+                      <Flex
+                        display={"flex"}
+                        direction={"column"}
+                        key={i}
+                        gap={4}
+                        justifySelf={"baseline"}
+                        maxWidth={257}
+                      >
+                        <Text textStyle="sm" fontWeight="bold" textAlign="left">
+                          {n.title}
+                        </Text>
+                        <Text textStyle="xs">{n.note}</Text>
+                        <Text textStyle="xs" color={"grey"}>
+                          {NotesDateFormater(n.$createdAt)}
+                        </Text>
                       </Flex>
                     );
                   })}

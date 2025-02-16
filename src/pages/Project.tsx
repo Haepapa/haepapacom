@@ -51,6 +51,7 @@ export default function Project() {
           <DevelopmentContentSection
             name={project ? project.name : ""}
             technologies={project ? project.technologies : []}
+            notes={project ? project.notes : []}
           />
         </>
       ) : (

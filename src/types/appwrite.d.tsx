@@ -11,6 +11,7 @@ export interface Project {
   name: string;
   features: Feature[];
   technologies: Technology[];
+  notes: Note[];
 }
 
 export interface Tag {
@@ -51,4 +52,10 @@ export interface Technology {
   name: string;
   documentName: string;
   link: string;
+}
+
+export interface Note {
+  title: string;
+  note: string;
+  $createdAt: string;
 }
