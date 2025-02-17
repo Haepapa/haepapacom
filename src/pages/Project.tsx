@@ -36,8 +36,8 @@ export default function Project() {
           <HeroSection
             title={project ? project.title : "Loading..."}
             description={project ? project.description : ""}
-            status={project ? project.status.status : ""}
-            statusDescription={project ? project.status.description : ""}
+            status={project ? project.statuses.status : ""}
+            statusDescription={project ? project.statuses.description : ""}
             updatedAt={project ? project.$updatedAt : ""}
             projectStatusHist={project ? project.projectStatusHist : []}
             tags={project ? project.tags : []}

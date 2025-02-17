@@ -22,7 +22,7 @@ export default async function getProjects(tags: string[]): Promise<Project[]> {
     title: doc.title,
     description: doc.description,
     tags: doc.tags,
-    status: doc.status,
+    statuses: doc.statuses,
     $updatedAt: doc.$updatedAt,
     projectStatusHist: doc.projectStatusHist,
     idea: doc.idea,

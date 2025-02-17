@@ -3,7 +3,7 @@ export interface Project {
   description: string;
   tags: Tag[];
   $id: string;
-  status: Status;
+  statuses: Status;
   $updatedAt: string;
   projectStatusHist: ProjectStatusHist[];
   idea: string;
