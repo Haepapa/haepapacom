@@ -7,6 +7,8 @@ import {
   SimpleGrid,
   Flex,
   Link,
+  Box,
+  Grid,
 } from "@chakra-ui/react";
 import {
   DialogBody,
@@ -21,7 +23,7 @@ import getDiagramURLsByName from "@/actions/getDiagramURLsByName";
 import { useEffect, useState } from "react";
 import { useColorMode } from "@/components/ui/color-mode";
 import { Appwrite } from "@/lib/Appwrite";
-import { Technology, Note } from "@/types/appwrite.d";
+import { Technology, Note, Task } from "@/types/appwrite.d";
 import { GetDiagramURLsByNameType } from "@/types/actions";
 import { LuExternalLink } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -31,12 +33,14 @@ type DevelopmentContentSectionProps = {
   name: string | null;
   technologies: Technology[] | null;
   notes: Note[];
+  tasks: Task[];
 };
 
 export default function DevelopmentContentSection({
   name,
   technologies,
   notes,
+  tasks,
 }: DevelopmentContentSectionProps) {
   const [diagramURLs, setDiagramURLs] = useState<GetDiagramURLsByNameType[]>(
     []
@@ -122,6 +126,9 @@ export default function DevelopmentContentSection({
               ) : null}
               {notes.length > 0 ? (
                 <Tabs.Trigger value="notes">Notes</Tabs.Trigger>
+              ) : null}
+              {tasks.length > 0 ? (
+                <Tabs.Trigger value="tasks">Tasks</Tabs.Trigger>
               ) : null}
             </Tabs.List>
 
@@ -213,6 +220,100 @@ export default function DevelopmentContentSection({
                     );
                   })}
                 </Flex>
+              </Tabs.Content>
+            ) : null}
+
+            {/* ---------------------------------------------------------------------------------------- */}
+            {/* Tasks */}
+            {/* ---------------------------------------------------------------------------------------- */}
+            {tasks.length > 0 ? (
+              <Tabs.Content value="tasks">
+                <SimpleGrid columns={3} minChildWidth={250} gap={4}>
+                  <Box order="1">
+                    <Text paddingBottom={4}>To do</Text>
+                    {tasks.map((t, i) => {
+                      if (t.statuses.taskStatus === "to-do") {
+                        return (
+                          <Flex
+                            display={"flex"}
+                            direction={"column"}
+                            key={i}
+                            gap={4}
+                            justifySelf={"baseline"}
+                            maxWidth={257}
+                          >
+                            <Text
+                              textStyle="sm"
+                              fontWeight="bold"
+                              textAlign="left"
+                            >
+                              {t.description}
+                            </Text>
+                            <Text textStyle="xs" color={"grey"}>
+                              Priority: {t.priorities.priority}
+                            </Text>
+                          </Flex>
+                        );
+                      }
+                    })}
+                  </Box>
+                  <Box order="2">
+                    <Text paddingBottom={4}>In Progress</Text>
+                    {tasks.map((t, i) => {
+                      if (t.statuses.taskStatus === "in-progress") {
+                        return (
+                          <Flex
+                            display={"flex"}
+                            direction={"column"}
+                            key={i}
+                            gap={4}
+                            justifySelf={"baseline"}
+                            maxWidth={257}
+                          >
+                            <Text
+                              textStyle="sm"
+                              fontWeight="bold"
+                              textAlign="left"
+                            >
+                              {t.description}
+                            </Text>
+                            <Text textStyle="xs" color={"grey"}>
+                              Priority: {t.priorities.priority}
+                            </Text>
+                          </Flex>
+                        );
+                      }
+                    })}
+                  </Box>
+                  <Box order="3">
+                    <Text paddingBottom={4}>Complete</Text>
+                    {tasks.map((t, i) => {
+                      if (t.statuses.taskStatus === "complete") {
+                        return (
+                          <Flex
+                            display={"flex"}
+                            direction={"column"}
+                            key={i}
+                            gap={4}
+                            justifySelf={"baseline"}
+                            maxWidth={257}
+                          >
+                            <Text
+                              textStyle="sm"
+                              fontWeight="bold"
+                              textAlign="left"
+                            >
+                              {t.description}
+                            </Text>
+                            <Text textStyle="xs" color={"grey"}>
+                              Priority: {t.priorities.priority}
+                            </Text>
+                          </Flex>
+                        );
+                      }
+                    })}
+                  </Box>
+                </SimpleGrid>
               </Tabs.Content>
             ) : null}
           </Tabs.Root>

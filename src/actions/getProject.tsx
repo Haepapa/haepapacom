@@ -25,6 +25,7 @@ export default async function getProject(
     features: doc.features,
     technologies: doc.technologies,
     notes: doc.notes,
+    tasks: doc.tasks,
   }));
   console.log(project);
   return project;

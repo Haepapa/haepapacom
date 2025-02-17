@@ -52,6 +52,7 @@ export default function Project() {
             name={project ? project.name : ""}
             technologies={project ? project.technologies : []}
             notes={project ? project.notes : []}
+            tasks={project ? project.tasks : []}
           />
         </>
       ) : (

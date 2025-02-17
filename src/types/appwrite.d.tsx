@@ -12,6 +12,7 @@ export interface Project {
   features: Feature[];
   technologies: Technology[];
   notes: Note[];
+  tasks: Task[];
 }
 
 export interface Tag {
@@ -23,6 +24,7 @@ export interface Status {
   status: string;
   description: string;
   $id: string;
+  taskStatus: string;
 }
 
 export interface TagsFilter {
@@ -58,4 +60,14 @@ export interface Note {
   title: string;
   note: string;
   $createdAt: string;
+}
+
+export interface Task {
+  description: string;
+  statuses: Status;
+  priorities: Priority;
+}
+
+export interface Priority {
+  priority: string;
 }
