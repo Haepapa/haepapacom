@@ -8,7 +8,6 @@ import {
   Flex,
   Link,
   Box,
-  Grid,
 } from "@chakra-ui/react";
 import {
   DialogBody,
