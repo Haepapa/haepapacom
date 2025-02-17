@@ -37,33 +37,33 @@ const Cookies: React.FC = () => {
     <>
       <Navbar />
       <SectionContainer>
-        <Heading as="h1" fontWeight="bold" textStyle="lg" mb={4}>
+        <Heading as="h1" fontWeight="bold" textStyle="xl" mb={4}>
           Cookies Policy
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           Last updated: January 24, 2025
         </Text>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           This Cookies Policy explains what cookies are, how we use them, and
           your choices regarding cookies.
         </Text>
 
-        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+        <Heading as="h2" textStyle="lg" fontWeight="bold" mb={4}>
           What are cookies?
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           Cookies are small text files that are stored on your device (computer,
           mobile device, etc.) when you visit a website. They help the website
           remember your preferences and improve your user experience.
         </Text>
 
-        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+        <Heading as="h2" textStyle="lg" fontWeight="bold" mb={4}>
           How we use cookies
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           We use cookies for various purposes, including:
         </Text>
-        <List.Root textStyle="sm" mb={4}>
+        <List.Root textStyle="md" mb={4}>
           <List.Item>
             Essential Cookies: These cookies are necessary for the website to
             function properly. They enable basic features such as page
@@ -86,16 +86,16 @@ const Cookies: React.FC = () => {
           </List.Item>
         </List.Root>
 
-        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+        <Heading as="h2" textStyle="lg" fontWeight="bold" mb={4}>
           Your choices regarding cookies
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           You can manage your cookie preferences through your browser settings.
           Most browsers allow you to refuse cookies or delete them. However,
           please note that if you disable cookies, some features of our website
           may not function properly.
         </Text>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           For more information about cookies and how to manage them, you can
           visit{" "}
           <a
@@ -115,10 +115,10 @@ const Cookies: React.FC = () => {
           .
         </Text>
 
-        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+        <Heading as="h2" textStyle="lg" fontWeight="bold" mb={4}>
           Contact us
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           If you have any questions about our Cookies Policy, please send us a{" "}
           <Link
             color={"black"}
@@ -136,10 +136,10 @@ const Cookies: React.FC = () => {
           .
         </Text>
 
-        <Heading as="h2" fontSize="md" fontWeight="bold" mb={4}>
+        <Heading as="h2" textStyle="lg" fontWeight="bold" mb={4}>
           Your Choices
         </Heading>
-        <Text mb={4} textStyle="sm">
+        <Text mb={4} textStyle="md">
           You have currently{" "}
           <strong>
             {cookieConsent === "accepted" ? "accepted" : "rejected"}{" "}

@@ -9,7 +9,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ label, ...props }) => {
   return (
     <Button
       variant="surface"
-      textStyle="xs"
+      textStyle="sm"
       background="main"
       _hover={{ shadow: "button" }}
       _active={{ shadow: "inner" }}
