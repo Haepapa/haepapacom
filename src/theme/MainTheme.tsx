@@ -57,6 +57,12 @@ const MainTheme = createSystem(defaultConfig, {
             _dark: "#6A6A6A",
           },
         },
+        grey: {
+          value: {
+            base: "#C1C1C1",
+            _dark: "#C1C1C1",
+          },
+        },
       },
       shadows: {
         button: {

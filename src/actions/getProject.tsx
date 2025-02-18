@@ -2,22 +2,16 @@ import { Appwrite } from "@/lib/Appwrite";
 import { Project } from "@/types/appwrite.d";
 import { Query } from "appwrite";
 
-export default async function getProjects(tags: string[]): Promise<Project[]> {
-  let query: string[];
-  if (tags.length > 0) {
-    query = [
-      Query.and([Query.contains("tags", tags), Query.equal("draft", false)]),
-    ];
-  } else {
-    query = [Query.equal("draft", false)];
-  }
-
+export default async function getProject(
+  documentId: string
+): Promise<Project[]> {
   const response = await Appwrite.databases.listDocuments(
     Appwrite.databaseID,
     Appwrite.collection01ID,
-    query
+    [Query.equal("$id", documentId)]
   );
-  const projects: Project[] = response.documents.map((doc) => ({
+  console.log(response);
+  const project: Project[] = response.documents.map((doc) => ({
     $id: doc.$id,
     title: doc.title,
     description: doc.description,
@@ -33,5 +27,6 @@ export default async function getProjects(tags: string[]): Promise<Project[]> {
     notes: doc.notes,
     tasks: doc.tasks,
   }));
-  return projects;
+  console.log(project);
+  return project;
 }

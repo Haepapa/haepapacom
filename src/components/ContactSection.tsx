@@ -98,7 +98,7 @@ export default function ContactSection() {
   return (
     <SectionContainer>
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
-        <Text as="h2" fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize="lg" fontWeight="bold">
           We’d love to hear from you!
         </Text>
         <Spacer />
@@ -107,7 +107,7 @@ export default function ContactSection() {
       {/* Contact Form */}
       <Fieldset.Root
         size="lg"
-        maxW="md"
+        maxW="lg"
         margin="auto"
         minWidth="190px"
         maxWidth="500px"
@@ -118,7 +118,7 @@ export default function ContactSection() {
           <Field
             label="Name"
             unstyled={true}
-            textStyle="sm"
+            textStyle="md"
             lineHeight={2}
             required={true}
             invalid={!!inputErrors.name}
@@ -137,7 +137,7 @@ export default function ContactSection() {
           <Field
             label="Email address"
             unstyled={true}
-            textStyle="sm"
+            textStyle="md"
             lineHeight={2}
             required={true}
             invalid={!!inputErrors.email}
@@ -157,7 +157,7 @@ export default function ContactSection() {
           <Field
             label="Message"
             unstyled={true}
-            textStyle="sm"
+            textStyle="md"
             lineHeight={2}
             required={true}
             invalid={!!inputErrors.message}

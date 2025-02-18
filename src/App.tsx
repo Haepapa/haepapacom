@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Cookies from "./pages/Cookies";
 import TermsOfUse from "./pages/TermsOfUse";
+import Project from "./pages/Project";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/terms-of-use" element={<TermsOfUse />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/project" element={<Project />} />
           </Routes>
         </Router>
       </Box>

@@ -17,7 +17,7 @@ export default function AboutSection() {
           SvgComponent={WebsiteIcon}
         />
         <CardTemplate
-          title="We Automate and Innovate on Desktop"
+          title="We Build Desktop Apps"
           description="Our desktop apps simplify tasks and solve problems, with a focus on making life easier—whatever the challenge."
           hashtags="#desktop"
           SvgComponent={DesktopIcon}

@@ -8,7 +8,6 @@ import {
   Spacer,
   Text,
   createListCollection,
-  Box,
 } from "@chakra-ui/react";
 import {
   SelectContent,
@@ -19,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { useMemo } from "react";
 import { ProgressBar, ProgressRoot } from "@/components/ui/progress";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectsSection() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
@@ -27,6 +27,7 @@ export default function ProjectsSection() {
   const [filterVal, setFilterVal] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Fetch projects
   useEffect(() => {
@@ -41,7 +42,6 @@ export default function ProjectsSection() {
       setProjectsData(data);
       setLoading(false);
     };
-    // Show loading for a minimum of 1 second
     const timer = setTimeout(() => {
       fetchProjects();
     }, 1000);
@@ -86,7 +86,7 @@ export default function ProjectsSection() {
     <SectionContainer>
       {/* Heading and Filter */}
       <SimpleGrid minChildWidth="190px" gap={2} paddingBottom={4}>
-        <Text as="h2" fontSize="md" fontWeight="bold">
+        <Text as="h2" fontSize="lg" fontWeight="bold">
           What we are working on
         </Text>
         <Spacer />
@@ -94,7 +94,7 @@ export default function ProjectsSection() {
           multiple
           onValueChange={({ value }) => setFilterVal(value)}
           collection={tagsCollection}
-          size="sm"
+          size="md"
           background={"white"}
         >
           <SelectTrigger>
@@ -128,16 +128,17 @@ export default function ProjectsSection() {
             }
           />
         ) : (
-          <Box>
-            {projects.map((project) => (
-              <CardTemplate
-                title={project.title}
-                description={project.description}
-                hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
-                SvgComponent={null}
-              />
-            ))}
-          </Box>
+          projects.map((project) => (
+            <CardTemplate
+              title={project.title}
+              description={project.description}
+              hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
+              SvgComponent={null}
+              onClick={() =>
+                navigate("/project", { state: { id: project.$id } })
+              }
+            />
+          ))
         )}
       </SimpleGrid>
     </SectionContainer>
