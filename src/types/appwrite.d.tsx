@@ -42,12 +42,12 @@ export interface Message {
 
 export interface ProjectStatusHist {
   statusStartMonth: string;
-  status: Status[];
+  statuses: Status;
 }
 
 export interface Feature {
   description: string;
-  status: Status[];
+  statuses: Status;
 }
 
 export interface Technology {

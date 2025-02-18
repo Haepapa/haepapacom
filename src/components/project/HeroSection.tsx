@@ -57,7 +57,7 @@ export default function HeroSection({
         new Date(b.statusStartMonth).getTime()
     )
     .map((hist) => ({
-      status: hist.status[0].status,
+      status: hist.statuses.status,
       statusStartMonth: format(new Date(hist.statusStartMonth), "MMMM yyyy"),
     }));
   const statusIconMap: { [key: string]: JSX.Element } = {
