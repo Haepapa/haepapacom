@@ -9,11 +9,11 @@ on:
   schedule:
     - cron: "15 7 * * *"
   push:
-    branches: ["dev", "prod"]
+    branches: ["test", "prod"]
     # Publish semver tags as releases.
     tags: ["v*.*.*"]
   pull_request:
-    branches: ["dev", "prod"]
+    branches: ["test", "prod"]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -37,15 +37,15 @@ jobs:
 
       - name: Add .env File
         run: |
-          if [[ "${{ github.ref_name }}" == "dev" ]]; then
-            echo 'export VITE_AW_URL_ENDPOINT=${{ secrets.DEV_VITE_AW_URL_ENDPOINT }}' | tee -a .env
-            echo 'export VITE_AW_PROJECT_ID=${{ secrets.DEV_VITE_AW_PROJECT_ID }}' | tee -a .env
-            echo 'export VITE_AW_DATABASE_ID=${{ secrets.DEV_VITE_AW_DATABASE_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION01_ID=${{ secrets.DEV_VITE_AW_COLLECTION01_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION02_ID=${{ secrets.DEV_VITE_AW_COLLECTION02_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION03_ID=${{ secrets.DEV_VITE_AW_COLLECTION03_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET01_ID=${{ secrets.DEV_VITE_AW_BUCKET01_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET02_ID=${{ secrets.DEV_VITE_AW_BUCKET02_ID }}' | tee -a .env
+          if [[ "${{ github.ref_name }}" == "test" ]]; then
+            echo 'export VITE_AW_URL_ENDPOINT=${{ secrets.TEST_VITE_AW_URL_ENDPOINT }}' | tee -a .env
+            echo 'export VITE_AW_PROJECT_ID=${{ secrets.TEST_VITE_AW_PROJECT_ID }}' | tee -a .env
+            echo 'export VITE_AW_DATABASE_ID=${{ secrets.TEST_VITE_AW_DATABASE_ID }}' | tee -a .env
+            echo 'export VITE_AW_COLLECTION01_ID=${{ secrets.TEST_VITE_AW_COLLECTION01_ID }}' | tee -a .env
+            echo 'export VITE_AW_COLLECTION02_ID=${{ secrets.TEST_VITE_AW_COLLECTION02_ID }}' | tee -a .env
+            echo 'export VITE_AW_COLLECTION03_ID=${{ secrets.TEST_VITE_AW_COLLECTION03_ID }}' | tee -a .env
+            echo 'export VITE_AW_BUCKET01_ID=${{ secrets.TEST_VITE_AW_BUCKET01_ID }}' | tee -a .env
+            echo 'export VITE_AW_BUCKET02_ID=${{ secrets.TEST_VITE_AW_BUCKET02_ID }}' | tee -a .env
           elif [[ "${{ github.ref_name }}" == "prod" ]]; then
             echo 'export VITE_AW_URL_ENDPOINT=${{ secrets.VITE_AW_URL_ENDPOINT }}' | tee -a .env
             echo 'export VITE_AW_PROJECT_ID=${{ secrets.VITE_AW_PROJECT_ID }}' | tee -a .env
