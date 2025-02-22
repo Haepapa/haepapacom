@@ -42,7 +42,10 @@ export default function Project() {
             projectStatusHist={project ? project.projectStatusHist : []}
             tags={project ? project.tags : []}
           />
-          <IdeaSection idea={project ? project.idea : ""} />
+          <IdeaSection
+            idea={project ? project.idea : ""}
+            name={project ? project.name : ""}
+          />
           <InspirationSection
             inspiration={project ? project.inspiration : ""}
             name={project ? project.name : ""}
