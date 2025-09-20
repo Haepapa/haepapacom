@@ -35,7 +35,7 @@ func Projects(db *models.Database) (string, error) {
         {
             Type:        "string",
             Name:        "inspiration",
-            Size:        500,
+            Size:        1000,
             Required:    true,
             Array:       false,
             Encrypt:     false,
@@ -47,6 +47,22 @@ func Projects(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         },
+        {
+            Type:        "string",
+            Name:        "name",
+            Size:        50,
+            Required:    true,
+            Array:       false,
+            Encrypt:     false,
+        }, 
+        {
+            Type:        "string",
+            Name:        "idea",
+            Size:        1000,
+            Required:    true,
+            Array:       false,
+            Encrypt:     false,
+        }, 
     }
 
     for _, att := range attVals {
