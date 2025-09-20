@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
@@ -12,10 +12,10 @@ import IdeaSection from "@/components/project/IdeaSection";
 import InspirationSection from "@/components/project/InspirationSection";
 import FeaturesSection from "@/components/project/FeaturesSection";
 import DevelopmentContentSection from "@/components/project/DevelopmentContentSection";
+import ProjectSEO from "@/components/SEO/ProjectSEO";
 
 export default function Project() {
-  const location = useLocation();
-  const { id } = location.state || {};
+  const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<Project | null>(null);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export default function Project() {
 
   return (
     <>
+      {project && <ProjectSEO project={project} />}
       <Navbar />
       {project ? (
         <>

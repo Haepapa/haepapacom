@@ -135,7 +135,7 @@ export default function ProjectsSection() {
               hashtags={project.tags.map((tag) => `#${tag.tag}`).join(" ")}
               SvgComponent={null}
               onClick={() =>
-                navigate("/project", { state: { id: project.$id } })
+                navigate(`/project/${project.$id}`)
               }
             />
           ))

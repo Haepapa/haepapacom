@@ -6,10 +6,10 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Features(db *models.Database) (string, error) {
+func Tasks(db *models.Database) (string, error) {
 
     // Create collection(s)
-    colFeatures, err := app.CreateCollection(db.Id, "features")
+    colTasks, err := app.CreateCollection(db.Id, "tasks")
     if err != nil {
         return "", err
     }
@@ -19,20 +19,21 @@ func Features(db *models.Database) (string, error) {
         {
             Type:        "string",
             Name:        "description",
-            Size:        500,
+            Size:        1000,
             Required:    true,
             Array:       false,
             Encrypt:     false,
         }, 
         // statuses
+        // priorities
     }
 
     for _, att := range attVals {
-        err = app.CreateAttribute(db.Id, colFeatures.Id, att)
+        err = app.CreateAttribute(db.Id, colTasks.Id, att)
         if err != nil {
             log.Println("Error creating attribute:", err)
             return "", err
         }
     }
-    return colFeatures.Id, nil
+    return colTasks.Id, nil
 }

@@ -55,6 +55,11 @@ func Projects(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
+        // tags
+        // technologies
+        // tasks
+        // notes
+        // features
         {
             Type:        "string",
             Name:        "idea",
@@ -63,6 +68,8 @@ func Projects(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
+        // projectStatusHist
+        // statuses
     }
 
     for _, att := range attVals {
