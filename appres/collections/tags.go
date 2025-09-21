@@ -6,7 +6,7 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Tags(db *models.Database) (string, error) {
+func Tags(db *models.Database, colProjectID string) (string, error) {
 
     // Create collection(s)
     colTags, err := app.CreateCollection(db.Id, "tags")
@@ -24,6 +24,16 @@ func Tags(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colProjectID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "project",
+            TwoWayKey:   "tag",
+
+        },
     }
 
     for _, att := range attVals {

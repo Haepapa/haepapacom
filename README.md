@@ -26,3 +26,22 @@ If running from `wsl` you may need to add the below to your `hosts` file.
 ```bash
 echo "127.0.0.1 appwrite.localhost" | sudo tee -a /etc/hosts
 ```
+
+### Data Model
+ERD defined in `/appres` directory and built in Appwrite.
+```mermaid
+erDiagram
+    PROJECT ||--o{ TASK : contains
+    PROJECT }|--o{ NOTE : contains
+    PROJECT }|--o{ FEATURE : contains
+    PROJECT }|--|{ TAG : contains
+    PROJECT }|--|{ TECHNOLOGY : contains
+    PRIORITY ||--o{ TASK : contains
+    STATUS ||--o{ PROJECT : contains
+    PROJECTSTATUSHISTORY }|--|| PROJECT : contains
+    STATUS ||--o{ PROJECTSTATUSHISTORY : uses
+    STATUS ||--o{ TASK : contains
+    FEATURE }o--|| STATUS : contains
+    MESSAGES
+
+```

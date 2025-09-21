@@ -6,7 +6,7 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Notes(db *models.Database) (string, error) {
+func Notes(db *models.Database, colProjectID string) (string, error) {
 
     // Create collection(s)
     colNotes, err := app.CreateCollection(db.Id, "notes")
@@ -32,6 +32,16 @@ func Notes(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colProjectID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "project",
+            TwoWayKey:   "notes",
+
+        },
     }
 
     for _, att := range attVals {

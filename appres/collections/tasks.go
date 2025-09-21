@@ -6,7 +6,7 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Tasks(db *models.Database) (string, error) {
+func Tasks(db *models.Database, colProjectID string) (string, error) {
 
     // Create collection(s)
     colTasks, err := app.CreateCollection(db.Id, "tasks")
@@ -24,8 +24,16 @@ func Tasks(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
-        // statuses
-        // priorities
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colProjectID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "project",
+            TwoWayKey:   "task",
+
+        },
     }
 
     for _, att := range attVals {

@@ -6,7 +6,7 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Technologies(db *models.Database) (string, error) {
+func Technologies(db *models.Database,colProjectID string) (string, error) {
 
     // Create collection(s)
     colTechnologies, err := app.CreateCollection(db.Id, "technologies")
@@ -32,7 +32,23 @@ func Technologies(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
-        // link
+        {
+            Type:        "url",
+            Name:        "link",
+            Required:    true,
+            Array:       false,
+            Encrypt:     false,
+        }, 
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colProjectID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "project",
+            TwoWayKey:   "technology",
+
+        },
     }
 
     for _, att := range attVals {

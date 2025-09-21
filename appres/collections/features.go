@@ -6,7 +6,7 @@ import (
 	app "github.com/Haepapa/appres"
 	"github.com/appwrite/sdk-for-go/models"
 )
-func Features(db *models.Database) (string, error) {
+func Features(db *models.Database, colStatusesID string, colProjectID string) (string, error) {
 
     // Create collection(s)
     colFeatures, err := app.CreateCollection(db.Id, "features")
@@ -24,7 +24,26 @@ func Features(db *models.Database) (string, error) {
             Array:       false,
             Encrypt:     false,
         }, 
-        // statuses
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colStatusesID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "status",
+            TwoWayKey:   "features",
+
+        },
+        {
+            Type:        "relationship",
+            TwoWay:      true,
+            RelatedCollectionID: colProjectID,
+            RelationshipType: "oneToMany",
+            OnDelete:   "setNull",
+            Name:        "project",
+            TwoWayKey:   "feature",
+
+        },
     }
 
     for _, att := range attVals {
