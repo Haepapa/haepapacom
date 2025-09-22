@@ -1,6 +1,7 @@
 package main
 
 import (
+	"appres/buckets"
 	"appres/collections"
 	"crypto/tls"
 	"log"
@@ -85,6 +86,12 @@ func main() {
         return
     }
 
-    // Create collection(s)
-    log.Println("Successfully created database, collection, and attributes!")
+    // Create buckets
+    _, err = buckets.SharedAssets()
+    if err != nil {
+        log.Println("Error creating SharedAssets bucket:", err)
+        return
+    }
+
+    log.Println("Setup completed successfully")
 }
