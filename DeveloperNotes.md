@@ -74,12 +74,7 @@ Rebuild the **Haepapa** website to:
 ### Example GitHub Workflow
 
 ```yaml
-name: Docker
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+name: Build and Publish Docker Image
 
 on:
   schedule:
@@ -92,9 +87,7 @@ on:
     branches: ["test", "prod"]
 
 env:
-  # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -103,8 +96,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      # This is used to complete the identity challenge
-      # with sigstore/fulcio when running outside of PRs.
       id-token: write
 
     steps:
@@ -136,22 +127,19 @@ jobs:
             exit 1
           fi
 
-      # Install the cosign tool except on PR
-      # https://github.com/sigstore/cosign-installer
+      # Install the cosign tool - except on PR
       - name: Install cosign
         if: github.event_name != 'pull_request'
         uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 #v3.5.0
         with:
           cosign-release: "v2.2.4"
 
-      # Set up BuildKit Docker container builder to be able to build
-      # multi-platform images and export cache
-      # https://github.com/docker/setup-buildx-action
+      # Set up BuildKit Docker container builder to build multi platform
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
 
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
+      # Login against a Docker registry - except on PR
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
         uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
@@ -161,7 +149,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
@@ -169,7 +156,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
@@ -182,24 +168,16 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Sign the resulting Docker image digest except on PRs.
-      # This will only write to the public Rekor transparency log when the Docker
-      # repository is public to avoid leaking data.  If you would like to publish
-      # transparency data even for private images, pass --force to cosign below.
-      # https://github.com/sigstore/cosign
       - name: Sign the published Docker image
         if: ${{ github.event_name != 'pull_request' }}
         env:
-          # https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-an-intermediate-environment-variable
           TAGS: ${{ steps.meta.outputs.tags }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
-        # This step uses the identity token to provision an ephemeral certificate
-        # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
 ```
 
 ## Folder Structure
-
+```
 /src
   /components
     Header.astro
@@ -227,6 +205,7 @@ jobs:
 /Dockerfile
 /tailwind.config.js
 /astro.config.mjs
+```
 
 ## 🧩 Page Outlines
 
@@ -240,6 +219,7 @@ Features:
 - Light/dark mode toggle.
 - Section: “What we’re working on” — grid of clickable project tiles.
 - Section: “We’d love to hear from you” — contact form (Appwrite submission).
+- Presents standard layout (header: logo, site name, light/dark mode buttons etc. footer: cookies policy, termis of use, privacy policy, copy wright etc)
 
 ### 🧱 Project Page (/projects/[slug])
 
@@ -286,6 +266,26 @@ Sections:
 - Animations: Subtle transitions only (Astro’s motion or CSS-based).
 - Fonts: Sans-serif base (e.g., Inter) for modern feel.
 - Accessibility: Semantic HTML, alt text for all images, ARIA roles.
+
+### Color Pallet
+
+⚫ Dark Mode:
+- background: #1D1C14;
+- black: #FFFFFF;
+- button-text: #2C2C2C;
+- main: #FFFBB4;
+- white: #262626;
+- outline: #6A6A6A;
+- grey: #C1C1C1;
+
+⚪ Light Mode:
+- background: #FFFEF5;
+- white: #FFFFFF;
+- button-text: #2C2C2C;
+- main: #FFFBB4;
+- black: #262626;
+- outline: #2C2C2C;
+- grey: #C1C1C1;
 
 |Component|Description|Implementation|
 |---|---|---|
