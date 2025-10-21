@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectGrid from '../components/ProjectGrid';
+import { getCollection } from 'astro:content';
+
+// Get all projects
+const projects = await getCollection('projects');
+const projectData = projects.map((project) => ({
+  slug: project.slug,
+  title: project.data.title,
+  description: project.data.description || '',
+  status: project.data.status,
+  tags: project.data.tags,
+  image: project.data.image,
+  draft: project.data.draft || false,
+}));
+---
+
+<BaseLayout title="Haepapa - Portfolio & Projects">
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Welcome to <span class="text-light-main dark:text-dark-main">Haepapa</span>
+      </h1>
+      <p class="text-xl text-light-grey dark:text-dark-grey mb-8">
+        A portfolio of projects, ideas, and innovations. Explore what we're building and share your thoughts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-12">
+      <h2 class="text-4xl font-bold mb-4">What We're Working On</h2>
+      <p class="text-lg text-light-grey dark:text-dark-grey">
+        Browse our projects and filter by technology or interest.
+      </p>
+    </div>
+    
+    <ProjectGrid projects={projectData} client:load />
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">We'd Love to Hear From You</h2>
+        <p class="text-lg text-light-grey dark:text-dark-grey">
+          Have a question, suggestion, or just want to connect? Send us a message.
+        </p>
+      </div>
+
+      <form class="space-y-6 bg-light-surface dark:bg-dark-surface border border-light-outline dark:border-dark-outline rounded-lg p-8">
+        <div>
+          <label for="name" class="block text-sm font-medium mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-2 border border-light-outline dark:border-dark-outline rounded bg-light-background dark:bg-dark-background focus:outline-none focus:ring-2 focus:ring-light-main dark:focus:ring-dark-main"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-2 border border-light-outline dark:border-dark-outline rounded bg-light-background dark:bg-dark-background focus:outline-none focus:ring-2 focus:ring-light-main dark:focus:ring-dark-main"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium mb-2">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full px-4 py-2 border border-light-outline dark:border-dark-outline rounded bg-light-background dark:bg-dark-background focus:outline-none focus:ring-2 focus:ring-light-main dark:focus:ring-dark-main"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full px-6 py-3 bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text font-medium rounded hover:opacity-90 transition-opacity"
+        >
+          Send Message
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-light-grey dark:text-dark-grey mt-4">
+        Note: Form integration with Appwrite will be configured in the environment setup.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

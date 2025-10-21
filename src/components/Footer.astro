@@ -1,0 +1,61 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-light-surface dark:bg-dark-surface border-t border-light-outline dark:border-dark-outline mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- About Section -->
+      <div>
+        <h3 class="font-bold mb-3">Haepapa</h3>
+        <p class="text-sm text-light-grey dark:text-dark-grey">
+          Building projects and sharing knowledge.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-bold mb-3">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/" class="text-light-grey dark:text-dark-grey hover:text-light-main dark:hover:text-dark-main transition-colors">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/#projects" class="text-light-grey dark:text-dark-grey hover:text-light-main dark:hover:text-dark-main transition-colors">
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="/#contact" class="text-light-grey dark:text-dark-grey hover:text-light-main dark:hover:text-dark-main transition-colors">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-bold mb-3">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/terms" class="text-light-grey dark:text-dark-grey hover:text-light-main dark:hover:text-dark-main transition-colors">
+              Terms of Use
+            </a>
+          </li>
+          <li>
+            <a href="/privacy" class="text-light-grey dark:text-dark-grey hover:text-light-main dark:hover:text-dark-main transition-colors">
+              Privacy Policy
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-8 border-t border-light-outline dark:border-dark-outline text-center text-sm text-light-grey dark:text-dark-grey">
+      <p>&copy; {currentYear} Haepapa. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

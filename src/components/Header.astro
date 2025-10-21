@@ -1,0 +1,50 @@
+---
+import ThemeToggle from './ThemeToggle';
+---
+
+<header class="sticky top-0 z-50 bg-light-surface dark:bg-dark-surface border-b border-light-outline dark:border-dark-outline">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo and Site Name -->
+      <div class="flex items-center space-x-3">
+        <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <div class="w-10 h-10 bg-light-main dark:bg-dark-main rounded-lg flex items-center justify-center">
+            <span class="text-2xl font-bold text-light-button-text dark:text-dark-button-text">H</span>
+          </div>
+          <span class="text-xl font-bold">Haepapa</span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
+          Home
+        </a>
+        <a href="/#projects" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
+          Projects
+        </a>
+        <a href="/#contact" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
+          Contact
+        </a>
+      </div>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center">
+        <ThemeToggle client:load />
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden pb-4 space-y-2">
+      <a href="/" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+        Home
+      </a>
+      <a href="/#projects" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+        Projects
+      </a>
+      <a href="/#contact" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+        Contact
+      </a>
+    </div>
+  </nav>
+</header>

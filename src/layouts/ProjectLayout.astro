@@ -1,0 +1,64 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Tabs from '../components/Tabs';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    status: string;
+    statusHistory?: Array<{ status: string; date: string }>;
+    lastUpdated: string;
+    tags: string[];
+    image?: string;
+    description?: string;
+    draft?: boolean;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <article class="max-w-5xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">{frontmatter.title}</h1>
+      
+      <!-- Metadata -->
+      <div class="flex flex-wrap gap-4 mb-4 text-sm text-light-grey dark:text-dark-grey">
+        <span class="px-3 py-1 bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text rounded-full">
+          {frontmatter.status}
+        </span>
+        <span>Last Updated: {new Date(frontmatter.lastUpdated).toLocaleDateString()}</span>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        {frontmatter.tags.map((tag) => (
+          <span class="px-2 py-1 text-xs border border-light-outline dark:border-dark-outline rounded">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Featured Image -->
+    {frontmatter.image && (
+      <div class="mb-8">
+        <img 
+          src={frontmatter.image} 
+          alt={frontmatter.title}
+          class="w-full h-auto rounded-lg shadow-lg"
+        />
+      </div>
+    )}
+
+    <!-- Main Content -->
+    <div class="prose prose-lg dark:prose-invert max-w-none mb-12">
+      <slot />
+    </div>
+
+    <!-- Development Content Tabs -->
+    <Tabs client:load />
+  </article>
+</BaseLayout>
