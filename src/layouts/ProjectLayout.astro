@@ -19,7 +19,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-  <article class="max-w-5xl mx-auto px-4 py-12">
+  <article class="max-w-5xl min-w-[350px] mx-auto px-4 py-12">
     <!-- Header -->
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">{frontmatter.title}</h1>

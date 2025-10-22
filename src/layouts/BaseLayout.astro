@@ -21,7 +21,7 @@ const { title, description = 'Haepapa - Portfolio and Projects' } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-light-background dark:bg-dark-background text-light-text dark:text-dark-text transition-colors duration-200">
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-screen flex flex-col min-w-[350px]">
       <Header />
       <main class="flex-grow">
         <slot />

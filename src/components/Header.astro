@@ -15,7 +15,7 @@ import ThemeToggle from './ThemeToggle';
         </a>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
           Home
@@ -28,23 +28,93 @@ import ThemeToggle from './ThemeToggle';
         </a>
       </div>
 
-      <!-- Theme Toggle -->
-      <div class="flex items-center">
+      <!-- Right Side: Theme Toggle & Mobile Menu Button -->
+      <div class="flex items-center gap-2">
         <ThemeToggle client:load />
+        
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden p-2 rounded-lg hover:bg-light-background dark:hover:bg-dark-background transition-colors"
+          aria-label="Toggle mobile menu"
+        >
+          <!-- Hamburger Icon -->
+          <svg
+            id="hamburger-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <!-- Close Icon -->
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div class="md:hidden pb-4 space-y-2">
-      <a href="/" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2 space-y-2">
+      <a href="/" class="block py-2 hover:text-light-main dark:hover:text-dark-main transition-colors">
         Home
       </a>
-      <a href="/#projects" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+      <a href="/#projects" class="block py-2 hover:text-light-main dark:hover:text-dark-main transition-colors">
         Projects
       </a>
-      <a href="/#contact" class="block hover:text-light-main dark:hover:text-dark-main transition-colors">
+      <a href="/#contact" class="block py-2 hover:text-light-main dark:hover:text-dark-main transition-colors">
         Contact
       </a>
     </div>
   </nav>
 </header>
+
+<script>
+  // Mobile menu toggle functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.contains('hidden');
+    
+    if (isHidden) {
+      mobileMenu?.classList.remove('hidden');
+      hamburgerIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  });
+
+  // Close mobile menu when a link is clicked
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+</script>
