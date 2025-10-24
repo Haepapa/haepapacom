@@ -24,27 +24,29 @@ const showcaseTiles = [
     image: '/public/images/general/website_icon.png',
   },
   {
-    title: 'Web Applications',
-    description: 'Modern web apps built with cutting-edge frameworks for seamless user experiences.',
+    title: 'We Build Desktop Apps',
+    description: 'Our desktop apps simplify tasks and solve problems, with a focus on making life easier—whatever the challenge.',
     icon: '',
     image: '/public/images/general/compute_icon.png',
   },
   {
-    title: 'Hardware Projects',
-    description: 'Physical computing, electronics, and custom hardware builds for unique challenges.',
-    icon: '🔧',
+    title: 'We Build Whatever Seems Fun',
+    description: 'If it’s interesting, creative, or just plain cool, we’ll dive in and make it happen. No idea is off-limits!',
+    icon: '',
+    image: '/public/images/general/build_icon.png',
   },
   {
-    title: 'Data & Analytics',
-    description: 'Collecting, processing, and visualizing data to uncover insights and drive decisions.',
-    icon: '📊',
+    title: 'We Bring Data to Life',
+    description: 'Whether it’s platforms, tools, or solutions powered by AI, we build to help uncover insights and solve data challenges.',
+    icon: '',
+    image: '/public/images/general/data_icon.png',
   },
 ];
 ---
 
 <BaseLayout title="Haepapa - Portfolio & Projects">
   <!-- Hero Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
     <div class="text-center max-w-3xl mx-auto">
       <h1 class="text-5xl md:text-6xl font-bold mb-6 pb-8">
         Welcome to <span class="text-light-grey dark:text-dark-main">Haepapa</span>
@@ -52,9 +54,9 @@ const showcaseTiles = [
       <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-8">
         <div class="md:w-1/2 text-left flex flex-col">
           <h4 class="font-bold text-xl mb-2">We Turn Ideas into Real Solutions</h4>
-          <p class="text-m text-light-grey dark:text-dark-grey">
+            <p class="text-m text-light-black dark:text-dark-grey font-light">
             At Haepapa, we’re all about building cool stuff and teaming up to create solutions that make a difference. Whether it’s automating tasks, solving interesting problems, or learning something new, we love turning ideas into reality. Explore our projects and jump in and contribute—we’d love to have you on board!
-          </p>
+            </p>
         </div>
         <img
           src="/images/general/haepapa_lightbulb.png"
@@ -68,37 +70,34 @@ const showcaseTiles = [
   </section>
 
   <!-- What We Do Showcase Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
 
     <!-- Showcase Tiles Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {showcaseTiles.map((tile) => (
-        <div class="bg-light-surface dark:bg-dark-surface border border-light-outline dark:border-dark-outline rounded-lg p-6 hover:border-light-main dark:hover:border-dark-main transition-all hover:shadow-lg">
+        <div class="bg-light-surface dark:bg-dark-surface border border-light-grey dark:border-dark-outline rounded-lg p-6 hover:border-light-grey dark:hover:border-dark-main transition-all hover:shadow-lg">
           <div class="text-4xl mb-4">{tile.icon}</div>
-          <img src={tile.image} alt={tile.title} class="w-12 h-12 mb-4" loading="lazy" />
-          <h3 class="text-xl font-bold mb-3">{tile.title}</h3>
-          <p class="text-sm text-light-grey dark:text-dark-grey">
-            {tile.description}
-          </p>
+            <img src={tile.image} alt={tile.title} class="w-12 h-12 mb-4 mx-auto block" loading="lazy" />
+            <h3 class="text-xl font-bold mb-3 text-center">{tile.title}</h3>
+            <p class="text-sm text-light-black dark:text-dark-grey font-light">
+              {tile.description}
+            </p>
         </div>
       ))}
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+  <section id="projects" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
     <div class="mb-12">
       <h2 class="text-4xl font-bold mb-4">What We're Working On</h2>
-      <p class="text-lg text-light-grey dark:text-dark-grey">
-        Browse our projects and filter by technology or interest.
-      </p>
     </div>
     
     <ProjectGrid projects={projectData} client:load />
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+  <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-4xl font-bold mb-4">We'd Love to Hear From You</h2>
@@ -148,10 +147,6 @@ const showcaseTiles = [
           Send Message
         </button>
       </form>
-
-      <p class="text-center text-sm text-light-grey dark:text-dark-grey mt-4">
-        Note: Form integration with Appwrite will be configured in the environment setup.
-      </p>
     </div>
   </section>
 </BaseLayout>
