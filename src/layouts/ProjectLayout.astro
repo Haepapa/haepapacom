@@ -23,35 +23,51 @@ const { frontmatter } = Astro.props;
     <!-- Header -->
     <header class="mb-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">{frontmatter.title}</h1>
-      
-      <!-- Metadata -->
-      <div class="flex flex-wrap gap-4 mb-4 text-sm text-light-grey dark:text-dark-grey">
-        <span class="px-3 py-1 bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text rounded-full">
-          {frontmatter.status}
-        </span>
-        <span>Last Updated: {new Date(frontmatter.lastUpdated).toLocaleDateString()}</span>
-      </div>
 
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+        <!-- Left column: <p> (right-aligned, takes half width on md+) -->
+        <div class="w-full md:w-1/2">
+          <p class="text-left">A simple portfolio website showcasing the projects we are working - celebrating our curiosity and problem solving.</p>
+        </div>
+
+        <!-- Right column: Metadata + Tags (takes half width on md+) -->
+        <div class="w-full md:w-1/2">
+        <!-- Metadata -->
+        <div class="flex flex-col justify-center items-start gap-2 mb-4 text-sm text-light-grey dark:text-dark-grey">
+          <div class="flex items-center gap-2">
+            <span class="font-medium">Status:</span>
+            <span class="px-3 py-1 bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text rounded-full">
+              {frontmatter.status}
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-medium">Last Updated:</span>
+            <span>{new Date(frontmatter.lastUpdated).toLocaleDateString()}</span>
+          </div>
+        </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2">
         {frontmatter.tags.map((tag) => (
           <span class="px-2 py-1 text-xs border border-light-outline dark:border-dark-outline rounded">
-            {tag}
+          {tag}
           </span>
         ))}
+          </div>
+        </div>
       </div>
     </header>
 
     <!-- Featured Image -->
-    {frontmatter.image && (
+    <!-- {frontmatter.image && (
       <div class="mb-8">
         <img 
           src={frontmatter.image} 
           alt={frontmatter.title}
-          class="w-full h-auto rounded-lg shadow-lg"
+          class="h-[200px] rounded-lg"
         />
       </div>
-    )}
+    )} -->
 
     <!-- Main Content -->
     <div class="prose prose-lg dark:prose-invert max-w-none mb-12">

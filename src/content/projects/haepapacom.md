@@ -1,6 +1,6 @@
 ---
 title: "The Haepapa Website"
-description: "A simple portfolio website showcasing the projects we are working - celebrating our curiosity and problem solving."
+description: "A simple portfolio website showcasing the projects we are working on - celebrating our curiosity and problem solving."
 status: "MMP"
 statusHistory:
   - { status: "MMP", date: "2024-11-14" }
@@ -8,56 +8,67 @@ statusHistory:
   - { status: "Idea", date: "2024-10-03" }
 lastUpdated: "2025-10-27"
 tags: ["web", "react"]
-image: "/images/projects/haepapacom.png"
-image_dark: "/images/projects/haepapacom_dark.png"
 draft: false
 ---
 
-## The Idea
+<!-- The Idea -->
+<div class="md:flex md:items-start md:gap-8">
+  <div class="prose max-w-none w-full md:w-1/2">
+    <h2>The Idea</h2>
+    <p>
+      This project is all about celebrating creativity and collaboration. It’s a space to document and share the projects we’ve worked on - a single hub where anyone can dive in to learn, contribute, or even borrow ideas. Instead of making it about the developer, this site focuses on the work itself, giving it the spotlight it deserves. Think of it as a shared portfolio, designed to inspire and bring people together to create something cool.
+    </p>
+  </div>
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_dark.png" />
+      <img src="/images/projects/haepapacom.png" alt="Haepapa project preview" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
+    </picture>
+  </figure>
+</div>
 
-Create a digital bingo caller application that can be used for family game nights, community events, or online gatherings. The app should be easy to use, visually appealing, and support multiple game formats.
+<!-- The Inspriation -->
+<div class="md:flex md:items-start md:gap-8">
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_Inspiration_dark.png" />
+      <img src="/images/projects/haepapacom_Inspiration.png" alt="Haepapa project preview" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
+    </picture>
+  </figure>
+  <div class="prose max-w-none w-full md:w-1/2">
+    <h2>The Idea</h2>
+    <p>
+      This project is all about celebrating creativity and collaboration. It’s a space to document and share the projects we’ve worked on - a single hub where anyone can dive in to learn, contribute, or even borrow ideas. Instead of making it about the developer, this site focuses on the work itself, giving it the spotlight it deserves. Think of it as a shared portfolio, designed to inspire and bring people together to create something cool.
+    </p>
+  </div>
+</div>
 
-## The Inspiration
 
-During family gatherings, we found that traditional bingo equipment was cumbersome and difficult to manage. The need for a digital solution that could handle multiple cards, automatic number calling, and winner verification became apparent.
 
-## Features
+## 📋 Requirements
 
-- **Automatic Number Calling**: Configurable timing with visual and audio cues
-- **Multiple Game Formats**: Support for 75-ball and 90-ball bingo
-- **Digital Cards**: Generate unlimited unique bingo cards
-- **Pattern Validation**: Automatic winner detection for various patterns
-- **Call History**: Track all called numbers with undo capability
-- **Theme Support**: Light and dark modes with customizable colors
-- **Multiplayer**: Real-time sync across multiple devices
+### Functional
+1. **Content Management**
+   - Content (Markdown + images) is mastered in GitHub repositories.
+   - The site automatically incorporates new/updated content upon push to `test` or `prod` branches.
+   - Each project is represented as a Markdown file with frontmatter metadata.
+   - Images are stored in GitHub and linked or included in content.
 
-## Technical Stack
+2. **Automation**
+- Any push/merge to `test` or `prod` triggers a rebuild and redeployment of the site.
+- The site rebuilds as a Docker image and deploys automatically to the VPS.
+- Trigger Google reindexing when `prod` site content updates.
 
-Built with modern web technologies:
-- **Frontend**: React with TypeScript
-- **Styling**: Tailwind CSS
-- **Real-time**: WebSocket connections via Socket.io
-- **Backend**: Node.js with Express
-- **State Management**: Redux Toolkit
-- **Testing**: Jest and React Testing Library
+3. **Design**
+- Minimalist, documentation-like aesthetic.
+- Fast and responsive, with light/dark mode toggle.
+- Consistent layout across all pages (shared header, footer, logo).
+- Cookie consent banner with accept/decline functionality.
+- Compatible with desktop, tablet and phone screen sizes
 
-## Development Progress
-
-Current milestone: Beta testing with local community groups
-
-Completed:
-- ✅ Core number calling logic
-- ✅ Card generation algorithm
-- ✅ Pattern validation system
-- ✅ Basic UI implementation
-
-In Progress:
-- 🔄 Real-time multiplayer synchronization
-- 🔄 Mobile responsive design improvements
-- 🔄 Audio enhancements
-
-Planned:
-- 📋 Prize tracking and management
-- 📋 Statistics and game history
-- 📋 Custom pattern creator
-- 📋 Tournament mode
+4. **Interactivity**
+- Dynamic project grid where a new tile is created for each project
+- Filterable project grid.
+- Tabs for project details (e.g. technologies, notes, tasks, images).
+- Contact form submission (via Appwrite backend).
+- Projects can be set to draft (toggle) to prevent them from being avaialbe through the site when they are undermaintenance.

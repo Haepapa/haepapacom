@@ -30,6 +30,7 @@ export default function Tabs() {
       </div>
 
       {/* Tab Content */}
+      {/* TODO: this content needs to be dynamic */}
       <div className="p-6">
         {activeTab === 'technologies' && (
           <div>
