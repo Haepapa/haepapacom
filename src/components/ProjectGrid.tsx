@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo } from "react";
 
 interface Project {
   slug: string;
@@ -7,6 +7,7 @@ interface Project {
   status: string;
   tags: string[];
   image?: string;
+  image_dark?: string;
   draft?: boolean;
 }
 
@@ -15,7 +16,7 @@ interface ProjectGridProps {
 }
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
-  const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [selectedTag, setSelectedTag] = useState<string>("all");
 
   // Get all unique tags
   const allTags = useMemo(() => {
@@ -23,12 +24,12 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
     projects.forEach((project) => {
       project.tags.forEach((tag) => tags.add(tag));
     });
-    return ['all', ...Array.from(tags).sort()];
+    return ["all", ...Array.from(tags).sort()];
   }, [projects]);
 
   // Filter projects by tag
   const filteredProjects = useMemo(() => {
-    if (selectedTag === 'all') {
+    if (selectedTag === "all") {
       return projects.filter((p) => !p.draft);
     }
     return projects.filter((p) => !p.draft && p.tags.includes(selectedTag));
@@ -44,8 +45,8 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
             onClick={() => setSelectedTag(tag)}
             className={`px-4 py-2 rounded-full text-sm transition-all ${
               selectedTag === tag
-                ? 'bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text'
-                : 'border border-light-outline dark:border-dark-outline hover:border-light-main dark:hover:border-dark-main'
+                ? "bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text"
+                : "border border-light-grey dark:border-dark-outline hover:border-light-outline dark:hover:border-dark-main"
             }`}
           >
             {tag}
@@ -59,20 +60,27 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
           <a
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className="group block bg-light-surface dark:bg-dark-surface border border-light-outline dark:border-dark-outline rounded-lg overflow-hidden hover:border-light-main dark:hover:border-dark-main transition-all hover:shadow-lg"
+            className="group block bg-light-surface dark:bg-dark-surface border border-light-grey dark:border-dark-outline rounded-lg overflow-hidden hover:border-light-grey dark:hover:border-dark-main transition-all hover:shadow-lg"
           >
             {project.image && (
-              <div className="aspect-video overflow-hidden">
+              <div className="aspect-video overflow-hidden flex items-center justify-center">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300 block dark:hidden"
+                  style={{ maxHeight: "120px" }}
+                />
+                <img
+                  src={project.image_dark}
+                  alt={project.title}
+                  className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300 hidden dark:block"
+                  style={{ maxHeight: "120px" }}
                 />
               </div>
             )}
             <div className="p-6">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-xl font-bold group-hover:text-light-main dark:group-hover:text-dark-main transition-colors">
+                <h3 className="text-xl font-bold dark:group-hover:text-dark-main transition-colors">
                   {project.title}
                 </h3>
                 <span className="px-2 py-1 text-xs bg-light-main dark:bg-dark-main text-light-button-text dark:text-dark-button-text rounded">

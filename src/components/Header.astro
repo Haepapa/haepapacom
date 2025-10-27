@@ -9,17 +9,15 @@ import ThemeToggle from './ThemeToggle';
       <div class="flex items-center space-x-3">
         <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
           <div class="w-10 h-10 rounded-lg flex items-center justify-center">
-            <image src="/images/general/haepapa_logo.png" alt="Haepapa Logo" class="w-6 h-6" />
+            <image src="/images/general/haepapa_logo.png" alt="Haepapa Logo" class="w-6 h-6 dark:hidden" />
+            <image src="/images/general/haepapa_logo_dark.png" alt="Haepapa Logo" class="w-6 h-6 hidden dark:block" />
           </div>
           <span class="text-xl font-bold">Haepapa</span>
         </a>
       </div>
 
       <!-- Desktop Navigation Links -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
-          Home
-        </a>
+      <div class="hidden md:flex items-center space-x-6 justify-end w-full pr-4">
         <a href="/#projects" class="hover:text-light-main dark:hover:text-dark-main transition-colors">
           Projects
         </a>
@@ -74,9 +72,6 @@ import ThemeToggle from './ThemeToggle';
 
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="hidden md:hidden pb-4 pt-2 space-y-2">
-      <a href="/" class="block py-2 hover:text-light-main dark:hover:text-dark-main transition-colors">
-        Home
-      </a>
       <a href="/#projects" class="block py-2 hover:text-light-main dark:hover:text-dark-main transition-colors">
         Projects
       </a>
