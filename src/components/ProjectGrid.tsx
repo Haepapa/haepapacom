@@ -65,13 +65,13 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
             {project.image && (
               <div className="aspect-video overflow-hidden flex items-center justify-center">
                 <img
-                  src={project.image}
+                  src={`/images/projects/${project.image}`}
                   alt={project.title}
                   className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300 block dark:hidden"
                   style={{ maxHeight: "120px" }}
                 />
                 <img
-                  src={project.image_dark}
+                  src={`/images/projects/${project.image_dark}`}
                   alt={project.title}
                   className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300 hidden dark:block"
                   style={{ maxHeight: "120px" }}

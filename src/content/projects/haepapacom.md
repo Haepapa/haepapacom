@@ -9,6 +9,8 @@ statusHistory:
 lastUpdated: "2025-10-27"
 tags: ["web", "react"]
 draft: false
+image: "haepapacom.png"
+image_dark: "haepapacom_dark.png"
 ---
 
 <!-- The Idea -->
