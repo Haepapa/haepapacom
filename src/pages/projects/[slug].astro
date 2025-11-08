@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import CollapsibleSection from '../../components/CollapsibleSection.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -12,8 +13,14 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+// Make components available to MDX
+const components = { CollapsibleSection };
 ---
 
 <ProjectLayout frontmatter={project.data}>
-  <Content />
+  {/* Add a unique identifier to help debug */}
+  <div data-content-instance="primary">
+    <Content components={components} />
+  </div>
 </ProjectLayout>

@@ -32,6 +32,30 @@ export default {
             maxWidth: 'none',
           },
         },
+        lg: {
+          css: {
+            // Customize line height for list items in prose-lg
+            'ul > li': {
+              marginTop: '0.5em',
+              marginBottom: '0.5em',
+              lineHeight: '1.25', // Default is around 1.75
+            },
+            'ol > li': {
+              marginTop: '0.5em',
+              marginBottom: '0.5em',
+              lineHeight: '1.25',
+            },
+            // Adjust nested lists
+            'li > ul': {
+              marginTop: '0.75em',
+              marginBottom: '0.75em',
+            },
+            'li > ol': {
+              marginTop: '0.75em',
+              marginBottom: '0.75em',
+            },
+          },
+        },
       }),
     },
   },

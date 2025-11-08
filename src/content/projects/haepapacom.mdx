@@ -13,7 +13,8 @@ image: "haepapacom.png"
 image_dark: "haepapacom_dark.png"
 ---
 
-<!-- The Idea -->
+
+{ /* The Idea */ }
 <div class="md:flex md:items-start md:gap-8">
   <div class="prose max-w-none w-full md:w-1/2">
     <h2>The Idea</h2>
@@ -29,7 +30,7 @@ image_dark: "haepapacom_dark.png"
   </figure>
 </div>
 
-<!-- The Inspriation -->
+{ /* The Inspiration */ }
 <div class="md:flex md:items-start md:gap-8">
   <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
     <picture>
@@ -46,8 +47,7 @@ image_dark: "haepapacom_dark.png"
 </div>
 
 
-
-## 📋 Requirements
+<CollapsibleSection title="Requirements" emoji="📋">
 
 ### Functional
 1. **Content Management**
@@ -73,4 +73,21 @@ image_dark: "haepapacom_dark.png"
 - Filterable project grid.
 - Tabs for project details (e.g. technologies, notes, tasks, images).
 - Contact form submission (via Appwrite backend).
-- Projects can be set to draft (toggle) to prevent them from being avaialbe through the site when they are undermaintenance.
+- Projects can be set to draft (toggle) to prevent them from being available through the site when they are under maintenance.
+
+</CollapsibleSection>
+
+
+
+<CollapsibleSection title="Diagrams/Images" emoji="🖼️">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_diagram01_architecture_dark.png" />
+  <img src="/images/projects/haepapacom_diagram01_architecture_light.png" alt="Application architecture" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_diagram02_deploymentProcess_dark.png" />
+  <img src="/images/projects/haepapacom_diagram02_deploymentProcess_light.png" alt="Application deployment process" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
+</picture>
+
+</CollapsibleSection>

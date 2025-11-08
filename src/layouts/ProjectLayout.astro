@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Tabs from '../components/Tabs';
+import CollapsibleSection from '../components/CollapsibleSection.astro';
 
 interface Props {
   frontmatter: {
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+// Make components available to MDX content
+export const components = { CollapsibleSection };
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
@@ -27,7 +30,7 @@ const { frontmatter } = Astro.props;
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
         <!-- Left column: <p> (right-aligned, takes half width on md+) -->
         <div class="w-full md:w-1/2">
-          <p class="text-left">A simple portfolio website showcasing the projects we are working - celebrating our curiosity and problem solving.</p>
+          <p class="text-left">{frontmatter.description}</p>
         </div>
 
         <!-- Right column: Metadata + Tags (takes half width on md+) -->
@@ -75,6 +78,6 @@ const { frontmatter } = Astro.props;
     </div>
 
     <!-- Development Content Tabs -->
-    <Tabs client:load />
+    <!-- <Tabs client:load /> -->
   </article>
 </BaseLayout>
