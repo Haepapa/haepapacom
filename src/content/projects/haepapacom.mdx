@@ -13,33 +13,43 @@ image: "haepapacom.png"
 image_dark: "haepapacom_dark.png"
 ---
 
+import ImageZoom from '../../components/ImageZoom';
+
 
 { /* The Idea */ }
 <div class="md:flex md:items-start md:gap-8">
-  <div class="prose max-w-none w-full md:w-1/2">
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
     <h2>The Idea</h2>
     <p>
       This project is all about celebrating creativity and collaboration. It’s a space to document and share the projects we’ve worked on - a single hub where anyone can dive in to learn, contribute, or even borrow ideas. Instead of making it about the developer, this site focuses on the work itself, giving it the spotlight it deserves. Think of it as a shared portfolio, designed to inspire and bring people together to create something cool.
     </p>
   </div>
   <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_dark.png" />
-      <img src="/images/projects/haepapacom.png" alt="Haepapa project preview" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
-    </picture>
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/haepapacom.png" alt="Haepapa website idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/haepapacom_dark.png" alt="Haepapa website idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
   </figure>
 </div>
 
 { /* The Inspiration */ }
 <div class="md:flex md:items-start md:gap-8">
   <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_Inspiration_dark.png" />
-      <img src="/images/projects/haepapacom_Inspiration.png" alt="Haepapa project preview" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
-    </picture>
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/haepapacom_Inspiration.png" alt="Haepapa website inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/haepapacom_Inspiration_dark.png" alt="Haepapa website inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
   </figure>
-  <div class="prose max-w-none w-full md:w-1/2">
-    <h2>The Idea</h2>
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
+    <h2>The Inspiration</h2>
     <p>
       This project is all about celebrating creativity and collaboration. It’s a space to document and share the projects we’ve worked on - a single hub where anyone can dive in to learn, contribute, or even borrow ideas. Instead of making it about the developer, this site focuses on the work itself, giving it the spotlight it deserves. Think of it as a shared portfolio, designed to inspire and bring people together to create something cool.
     </p>
@@ -77,17 +87,21 @@ image_dark: "haepapacom_dark.png"
 
 </CollapsibleSection>
 
-
-
 <CollapsibleSection title="Diagrams/Images" emoji="🖼️">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_diagram01_architecture_dark.png" />
-  <img src="/images/projects/haepapacom_diagram01_architecture_light.png" alt="Application architecture" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
-</picture>
+<ImageZoom
+  client:load
+  lightSrc="/images/projects/haepapacom_diagram01_architecture_light.png"
+  darkSrc="/images/projects/haepapacom_diagram01_architecture_dark.png"
+  alt="Application architecture"
+  className="rounded-lg h-[250px] mx-auto object-contain"
+/>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/images/projects/haepapacom_diagram02_deploymentProcess_dark.png" />
-  <img src="/images/projects/haepapacom_diagram02_deploymentProcess_light.png" alt="Application deployment process" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy" />
-</picture>
+<ImageZoom
+  client:load
+  lightSrc="/images/projects/haepapacom_diagram02_deploymentProcess_light.png"
+  darkSrc="/images/projects/haepapacom_diagram02_deploymentProcess_dark.png"
+  alt="Application deployment process"
+  className="rounded-lg h-[250px] mx-auto object-contain"
+/>
 
 </CollapsibleSection>
