@@ -25,31 +25,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Add .env File
-        run: |
-          if [[ "${{ github.ref_name }}" == "test" ]]; then
-            echo 'export VITE_AW_URL_ENDPOINT=${{ secrets.TEST_VITE_AW_URL_ENDPOINT }}' | tee -a .env
-            echo 'export VITE_AW_PROJECT_ID=${{ secrets.TEST_VITE_AW_PROJECT_ID }}' | tee -a .env
-            echo 'export VITE_AW_DATABASE_ID=${{ secrets.TEST_VITE_AW_DATABASE_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION01_ID=${{ secrets.TEST_VITE_AW_COLLECTION01_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION02_ID=${{ secrets.TEST_VITE_AW_COLLECTION02_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION03_ID=${{ secrets.TEST_VITE_AW_COLLECTION03_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET01_ID=${{ secrets.TEST_VITE_AW_BUCKET01_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET02_ID=${{ secrets.TEST_VITE_AW_BUCKET02_ID }}' | tee -a .env
-          elif [[ "${{ github.ref_name }}" == "prod" ]]; then
-            echo 'export VITE_AW_URL_ENDPOINT=${{ secrets.VITE_AW_URL_ENDPOINT }}' | tee -a .env
-            echo 'export VITE_AW_PROJECT_ID=${{ secrets.VITE_AW_PROJECT_ID }}' | tee -a .env
-            echo 'export VITE_AW_DATABASE_ID=${{ secrets.VITE_AW_DATABASE_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION01_ID=${{ secrets.VITE_AW_COLLECTION01_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION02_ID=${{ secrets.VITE_AW_COLLECTION02_ID }}' | tee -a .env
-            echo 'export VITE_AW_COLLECTION03_ID=${{ secrets.VITE_AW_COLLECTION03_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET01_ID=${{ secrets.VITE_AW_BUCKET01_ID }}' | tee -a .env
-            echo 'export VITE_AW_BUCKET02_ID=${{ secrets.VITE_AW_BUCKET02_ID }}' | tee -a .env
-          else
-            echo "Unknown branch: ${{ github.ref_name }}"
-            exit 1
-          fi
-
       # Install the cosign tool - except on PR
       - name: Install cosign
         if: github.event_name != 'pull_request'
