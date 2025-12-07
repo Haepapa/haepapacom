@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  defaultOpen?: boolean;
+  emoji?: string;
+}
+
+const { title, defaultOpen = false, emoji } = Astro.props;
+---
+
+<details class="group" open={defaultOpen}>
+  <summary class="cursor-pointer list-none">
+    <h2 class="inline-flex items-center gap-2">
+      {emoji && <span>{emoji}</span>}
+      {title}
+      <svg 
+        class="inline-block w-5 h-5 transform transition-transform group-open:rotate-180" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          stroke-width="2" 
+          d="M19 9l-7 7-7-7"
+        />
+      </svg>
+    </h2>
+  </summary>
+  <div class="pl-4 mt-4">
+    <slot />
+  </div>
+</details>
+
+<style>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details {
+    @apply mb-6;
+  }
+  
+  h2 {
+    @apply text-2xl font-bold;
+  }
+</style>

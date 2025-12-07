@@ -1,0 +1,71 @@
+---
+title: "Automated WSL Ubuntu Setup for Development"
+description: "A one-command solution that installs and configures WSL with the required tools, eliminating the need for manual setup or documentation."
+status: "MMP"
+statusHistory:
+  - { status: "MMP", date: "2024-11-14" }
+  - { status: "Development", date: "2024-10-21" }
+  - { status: "Idea", date: "2024-10-03" }
+lastUpdated: "2025-11-15"
+tags: ["go", "appwrite"]
+draft: false
+image: "wslsetup/wslsetup_idea.png"
+image_dark: "wslsetup/wslsetup_idea_dark.png"
+---
+
+import ImageZoom from '../../components/ImageZoom.tsx';
+import TechnologyGrid from '../../components/TechnologyGrid.tsx';
+
+
+{ /* The Idea */ }
+<div class="md:flex md:items-start md:gap-8">
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
+    <h2>The Idea</h2>
+    <p>
+      The project centers on automating the setup of a new WSL Ubuntu environment for software development. Instead of manually following lengthy instructions or rebuilding configurations from scratch, the solution provides a simple, configurable, and extendable way to get a development-ready system running with a single command.
+    </p>
+  </div>
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/wslsetup/wslsetup_idea.png" alt="WSL Setup idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/wslsetup/wslsetup_idea_dark.png" alt="WSL Setup idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
+  </figure>
+</div>
+
+{ /* The Inspiration */ }
+<div class="md:flex md:items-start md:gap-8">
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/wslsetup/wslsetup_inspiration.png" alt="WSL Setup inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/wslsetup/wslsetup_inspiration_dark.png" alt="WSL Setup inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
+  </figure>
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
+    <h2>The Inspiration</h2>
+    <p>
+      The idea came from repeated personal frustration with setting up WSL environments. I often rebuild my Ubuntu environments to keep them clean and avoid staleness, but each time I had to rely on scattered documentation or half-remembered steps. On one occasion, I couldn’t even find my last set of instructions, which made the setup process slower and more frustrating than it needed to be. That moment highlighted the need for an automated, repeatable approach that would eliminate the guesswork.
+    </p>
+  </div>
+</div>
+
+
+<CollapsibleSection title="Links" emoji="📋">
+
+[Github Repo README.md](https://github.com/Haepapa/wslsetup/blob/main/README.md)
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Challenges" emoji="🔧">
+
+<p>The main challenge is balancing simplicity with flexibility: creating a setup process that requires almost no user effort while still allowing configuration and future extensions. Another difficulty lies in the fact that software installation methods evolve over time, meaning the script must remain adaptable and well-maintained to stay relevant. Tackling these challenges is exciting because the payoff is clear—saving significant time and effort every time a new WSL environment is needed.</p>
+
+</CollapsibleSection>
