@@ -35,7 +35,7 @@ Rebuild the **Haepapa** website to:
 - Filterable project grid.
 - Tabs for project details (e.g. technologies, notes, tasks, images).
 - Contact form submission (via Appwrite backend).
-- Projects can be set to draft (toggle) to prevent them from being avaialbe through the site when they are undermaintenance.
+- Projects can be set to draft (toggle) to prevent them from being available through the site when they are under maintenance.
 
 ---
 
