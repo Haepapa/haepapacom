@@ -1,6 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Allow: /
-
-# Sitemap for search engines to discover all pages
-Sitemap: https://your-domain.com/sitemap.xml
