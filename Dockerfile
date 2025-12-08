@@ -12,6 +12,9 @@ RUN npm ci
 # Copy source files
 COPY . .
 
+# clean install to ensure no stale dependencies
+RUN rm -rf node_modules package-lock.json && npm install
+
 # Build the application
 RUN npm run build
 
