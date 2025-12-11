@@ -12,5 +12,10 @@ export default defineConfig({
       theme: 'github-dark',
       wrap: true
     }
+  },
+  vite: {
+    preview: {
+      allowedHosts: ['test.haepapa.com', 'haepapa.com']
+    }
   }
 });
