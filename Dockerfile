@@ -19,16 +19,17 @@ RUN rm -rf node_modules package-lock.json && npm install
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine
+FROM node:20-alpine AS runner
 
-# Copy custom nginx config if needed
-# COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /app
 
-# Copy built files from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy built files and necessary runtime deps from builder
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
 
-# Expose port 80
-EXPOSE 80
+# Expose port 3000 to match Traefik config
+EXPOSE 3000
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Serve the built site with Astro preview on port 3000
+CMD ["npm", "run", "preview", "--", "--port", "3000", "--host"]
