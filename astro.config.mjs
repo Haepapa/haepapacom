@@ -13,9 +13,7 @@ export default defineConfig({
       wrap: true
     }
   },
-  vite: {
-    preview: {
-      allowedHosts: ['test.haepapa.com', 'haepapa.com']
-    }
+  server: {
+    allowedHosts: true
   }
 });
