@@ -1,11 +1,11 @@
 name: Build and Publish Docker Image
 
 on:
-  schedule:
-    - cron: "15 7 * * *"
-  push:
-    branches: ["test", "prod"]
-    tags: ["v*.*.*"]
+  # schedule:
+  #   - cron: "15 7 * * *"
+  # push:
+  #   branches: ["test", "prod"]
+  #   tags: ["v*.*.*"]
   pull_request:
     branches: ["test", "prod"]
 
