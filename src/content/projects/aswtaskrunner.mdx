@@ -1,0 +1,118 @@
+---
+title: "Automated Server Wake & Task Runner"
+description: "A solution that powers up a server, runs a specified process (like data backup) and then shuts it down to save power. Designed to be reliable and flexible running on servers on the same local network."
+status: "MMP"
+statusHistory:
+  - { status: "Idea", date: "2025-02-03" }
+lastUpdated: "2025-11-15"
+tags: ["go", "desktop"]
+draft: false
+image: "aswtaskrunner/aswtaskrunner_idea.png"
+image_dark: "aswtaskrunner/aswtaskrunner_idea_dark.png"
+---
+
+import ImageZoom from '../../components/ImageZoom';
+import TechnologyGrid from '../../components/TechnologyGrid.tsx';
+
+{ /* The Idea */ }
+<div class="md:flex md:items-start md:gap-8">
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
+    <h2>The Idea</h2>
+    <p>
+      Many servers don’t need to be powered on 24/7 to fulfill their purpose. In my home lab, I have a primary server that serves my data and another dedicated to backups. The backup process takes about 20 minutes daily, yet the server remains off most of the time to save power. My challenge was: how can I automatically start the backup server, run the process, and shut it down when finished? Taking this further, I wanted a general solution, something that could trigger any process on any remote server, powering it up only when needed and shutting it down once idle.
+    </p>
+  </div>
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/aswtaskrunner/aswtaskrunner_idea.png" alt="ASW Task Runner idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/aswtaskrunner/aswtaskrunner_idea_dark.png" alt="ASW Task Runner idea" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
+  </figure>
+</div>
+
+{ /* The Inspiration */ }
+<div class="md:flex md:items-start md:gap-8">
+  <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
+
+    <div class="light:block dark:hidden">
+       <img src="/images/projects/aswtaskrunner/aswtaskrunner_inspiration.png" alt="ASW Task Runner inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+     <div class="hidden dark:block">
+       <img src="/images/projects/aswtaskrunner/aswtaskrunner_inspiration_dark.png" alt="ASW Task Runner inspiration" class="rounded-lg h-[250px] mx-auto object-contain" loading="lazy"  />
+     </div>
+
+  </figure>
+  <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
+    <h2>The Inspiration</h2>
+    <p>
+      Right now, I manage the backup of my data manually, powering up the server, running an rsync command, waiting for it to complete, and then shutting it down. It’s simple enough, but manual. The initial idea was to build a script that would run the backup, but after giving it some more though, this idea (a more generalised approach) came to mind.
+    </p>
+  </div>
+</div>
+
+<CollapsibleSection title="Diagrams/Images" emoji="🖼️">
+<ImageZoom
+  client:load
+  lightSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram01_architecture_light.png"
+  darkSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram01_architecture_dark.png"
+  alt="Application architecture"
+  className="rounded-lg h-[250px] mx-auto object-contain"
+/>
+
+<ImageZoom
+  client:load
+  lightSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram02_wake_server_light.png"
+  darkSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram02_wake_server_dark.png"
+  alt="Application wake server process"
+  className="rounded-lg h-[250px] mx-auto object-contain"
+/>
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Features" emoji="📋">
+
+- The calling server can wake another server on the local network and be notified when that server is ready to accept jobs.
+- The solution will be able to run jobs on any server on the local network, or on the calling server.
+- There will be a UI which shows jobs run/running and schedule of jobs to be triggered. This will be hosted on single a dedicated server.
+- When all jobs are completed on a server, it is shutdown to save power.
+- Logs of jobs run/running will be kept. These logs can be used in the UI.
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Links" emoji="📋">
+
+[Github Repo](https://github.com/Haepapa/aswtaskrunner)
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Notes" emoji="📋">
+
+### Shutdown server once all processes are complete
+Question: Is it possible to have a process running on each server that looks for any process based on some rule (user, app location) and if there are none running for 'x' length of time, shutdown the server?
+- 21 Feb 2025
+
+### View PID and User from Docker Container
+Is it possible to see all processes running on the host machine from a docker container? Or at least the processes running for a specific user?
+- 23 Feb 2025
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Tasks" emoji="🔧">
+
+| Todo | In Progress | Done |
+|------|-------------|------|
+|**Design application flow diagram** (Priorty: Low)|||
+|**Design Web UI** (Priority: Low)|||
+|**Design solution architecture** (Priority: Low)|||
+
+</CollapsibleSection>
+
+<CollapsibleSection title="Technologies Used" emoji="🔧">
+
+<TechnologyGrid technologies={["Go", "Github", "Figma"]} client:load />
+
+</CollapsibleSection>
