@@ -34,4 +34,4 @@ ENV ASTRO_TLEMETRY_DISABLED=1
 ENV __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=test.haepapa.com,haepapa.com
 
 # Serve the built site with Astro preview on port 3000
-CMD ["npm", "run", "preview", "--port", "3000", "--host", "0.0.0.0"]
+CMD ["npm", "run", "preview", "--port", "3000"]
