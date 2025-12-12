@@ -30,6 +30,8 @@ COPY --from=builder /app/dist ./dist
 
 # Expose port 3000 to match Traefik config
 EXPOSE 3000
+ENV ASTRO_TLEMETRY_DISABLED=1
+ENV __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=test.haepapa.com,haepapa.com
 
 # Serve the built site with Astro preview on port 3000
 CMD ["npm", "run", "preview", "--", "--port", "3000", "--host"]
