@@ -186,10 +186,10 @@ Build and run the Docker container locally:
 
 ```bash
 # Build the image
-docker build -t haepapacom .
+docker build -t haepapacom_local .
 
 # Run the container
-docker run -p 8080:3000 haepapacom
+docker run -p 8080:3000 haepapacom_local
 ```
 
 Access the site at `http://localhost:8080`
