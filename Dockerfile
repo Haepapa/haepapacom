@@ -1,37 +1,23 @@
-# Build stage
-FROM node:20-alpine AS builder
-
+FROM node:lts AS base
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
-# Install dependencies
-RUN npm ci
+FROM base AS prod-deps
+RUN npm install --omit=dev
 
-# Copy source files
+FROM base AS build-deps
+RUN npm install
+
+FROM build-deps AS build
 COPY . .
-
-# clean install to ensure no stale dependencies
-RUN rm -rf node_modules package-lock.json && npm install
-
-# Build the application
 RUN npm run build
 
-# Production stage
-FROM node:20-alpine AS runner
+FROM base AS runtime
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
 
-WORKDIR /app
-
-# Copy built files and necessary runtime deps from builder
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-
-# Expose port 3000 to match Traefik config
+ENV HOST=0.0.0.0
+ENV PORT=3000
 EXPOSE 3000
-ENV ASTRO_TLEMETRY_DISABLED=1
-ENV __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=test.haepapa.com,haepapa.com
-
-# Serve the built site with Astro preview on port 3000
-CMD ["npm", "run", "preview", "--port", "3000"]
+CMD ["node", "./dist/server/entry.mjs"]
