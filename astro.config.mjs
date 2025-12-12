@@ -13,13 +13,13 @@ export default defineConfig({
       wrap: true
     }
   },
-  server: {
-    allowedHosts: ["test.haepapa.com", "haepapa.com"],
-  },
   vite: {
     preview: {
       allowedHosts: ["test.haepapa.com", "haepapa.com"],
-    }
+    },
+    server: {
+      allowedHosts: ["test.haepapa.com", "haepapa.com"],
+    },
   },  
   security: {
     allowedDomains: ["test.haepapa.com", "haepapa.com"],
