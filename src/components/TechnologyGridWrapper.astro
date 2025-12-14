@@ -1,0 +1,11 @@
+---
+import TechnologyGrid from './TechnologyGrid';
+
+interface Props {
+  technologies: string[];
+}
+
+const { technologies } = Astro.props;
+---
+
+<TechnologyGrid client:load technologies={technologies} />

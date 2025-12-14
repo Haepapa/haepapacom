@@ -2,6 +2,8 @@
 import BaseLayout from './BaseLayout.astro';
 import Tabs from '../components/Tabs';
 import CollapsibleSection from '../components/CollapsibleSection.astro';
+import ImageZoomWrapper from '../components/ImageZoomWrapper.astro';
+import TechnologyGridWrapper from '../components/TechnologyGridWrapper.astro';
 
 interface Props {
   frontmatter: {
@@ -17,8 +19,12 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
-// Make components available to MDX content
-export const components = { CollapsibleSection };
+// Make components available to MDX content (so MDX files using this layout don't need imports)
+export const components = {
+  CollapsibleSection,
+  ImageZoom: ImageZoomWrapper,
+  TechnologyGrid: TechnologyGridWrapper,
+};
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>

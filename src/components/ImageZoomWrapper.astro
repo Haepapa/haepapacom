@@ -1,0 +1,6 @@
+---
+// wrapper to ensure the React component hydrates client-side
+import ImageZoom from './ImageZoom';
+const { lightSrc, darkSrc, alt, className = '' } = Astro.props;
+---
+<ImageZoom client:load lightSrc={lightSrc} darkSrc={darkSrc} alt={alt} className={className} />

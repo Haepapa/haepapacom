@@ -11,8 +11,6 @@ image: "aswtaskrunner/aswtaskrunner_idea.png"
 image_dark: "aswtaskrunner/aswtaskrunner_idea_dark.png"
 ---
 
-import ImageZoom from '../../components/ImageZoom';
-import TechnologyGrid from '../../components/TechnologyGrid.tsx';
 
 { /* The Idea */ }
 <div class="md:flex md:items-start md:gap-8">
@@ -56,7 +54,6 @@ import TechnologyGrid from '../../components/TechnologyGrid.tsx';
 
 <CollapsibleSection title="Diagrams/Images" emoji="🖼️">
 <ImageZoom
-  client:load
   lightSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram01_architecture_light.png"
   darkSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram01_architecture_dark.png"
   alt="Application architecture"
@@ -64,7 +61,6 @@ import TechnologyGrid from '../../components/TechnologyGrid.tsx';
 />
 
 <ImageZoom
-  client:load
   lightSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram02_wake_server_light.png"
   darkSrc="/images/projects/aswtaskrunner/aswtaskrunner_diagram02_wake_server_dark.png"
   alt="Application wake server process"
@@ -113,6 +109,6 @@ Is it possible to see all processes running on the host machine from a docker co
 
 <CollapsibleSection title="Technologies Used" emoji="🔧">
 
-<TechnologyGrid technologies={["Go", "Github", "Figma"]} client:load />
+<TechnologyGrid technologies={["Go", "Github", "Figma"]} />
 
 </CollapsibleSection>

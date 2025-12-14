@@ -1,6 +1,6 @@
 ---
 title: "Appwrite Resource Builder - Go Package"
-description: "A Go package that automates creating Appwrite resources like projects, databases, and storage so you don’t have to set them up manually every time."
+description: "A Go package that codifies and automates the creation of Appwrite resources like projects, databases, and storage so you don’t have to set them up manually every time."
 status: "MMP"
 statusHistory:
   - { status: "MMP", date: "2024-11-14" }
@@ -14,7 +14,6 @@ image_dark: "appres/appres_idea_dark.png"
 ---
 
 import ImageZoom from '../../components/ImageZoom';
-import TechnologyGrid from '../../components/TechnologyGrid.tsx';
 
 
 { /* The Idea */ }
@@ -22,7 +21,7 @@ import TechnologyGrid from '../../components/TechnologyGrid.tsx';
   <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
     <h2>The Idea</h2>
     <p>
-      Setting up an Appwrite backend for a new project usually means a lot of manual steps; creating projects, adding databases, configuring storage, and more. The idea behind this work is to take all of those repetitive tasks and automate them. With this approach, the backend can be ready to go in one shot, freeing developers from the setup and letting them focus on building their app.
+      Setting up an Appwrite backend for a new project usually means a lot of manual steps; creating projects, adding databases, configuring storage, etc and replicating and syncing across different environments. The idea behind this is to take all of those repetitive tasks and codify them. With this approach, the backend can be ready to go in one shot, freeing developers from Appwrite resource setup and letting them focus on building their app.
     </p>
   </div>
   <figure class="hidden md:flex md:items-center md:justify-center w-full md:w-1/2 flex-shrink-0 self-center">
@@ -52,7 +51,7 @@ import TechnologyGrid from '../../components/TechnologyGrid.tsx';
   <div class="prose dark:prose-invert max-w-none w-full md:w-1/2">
     <h2>The Inspiration</h2>
     <p>
-      The push to build this came from realising I was stuck in the same loop each time I worked on a new project: clicking through the Appwrite console, repeating steps I’d already done countless times. I wanted to save time, and make my workflow smoother. It started as a way to help myself, but I figured if I needed it, other developers probably did too.
+      The push to build this came from realising I was stuck in the same loop each time I worked on a new project: clicking through the Appwrite console, repeating steps I’d already done countless times. I wanted to save time, and make my workflow smoother. It started as a way to help myself, but I figured if I needed it, other developers might do too.
     </p>
   </div>
 </div>
@@ -66,6 +65,6 @@ import TechnologyGrid from '../../components/TechnologyGrid.tsx';
 
 <CollapsibleSection title="Technologies Used" emoji="🔧">
 
-<TechnologyGrid technologies={["Go", "Appwrite SDK for Go", "Github"]} client:load />
+<TechnologyGrid technologies={["Go", "Appwrite SDK for Go", "Github"]} />
 
 </CollapsibleSection>

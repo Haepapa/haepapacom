@@ -1,25 +1,31 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import ProjectLayout from '../../layouts/ProjectLayout.astro';
 import CollapsibleSection from '../../components/CollapsibleSection.astro';
+import ImageZoomWrapper from '../../components/ImageZoomWrapper.astro';
+import TechnologyGridWrapper from '../../components/TechnologyGridWrapper.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map((project) => ({
     params: { slug: project.slug },
-    props: { project },
   }));
 }
 
-const { project } = Astro.props;
+// Get the slug from the route params and load the entry explicitly
+const { slug } = Astro.params;
+const project = await getEntry('projects', slug);
+if (!project) {
+  throw new Error(`Project not found: ${slug}`);
+}
+
 const { Content } = await project.render();
 
 // Make components available to MDX
-const components = { CollapsibleSection };
+const components = { CollapsibleSection, ImageZoom: ImageZoomWrapper, TechnologyGrid: TechnologyGridWrapper };
 ---
 
 <ProjectLayout frontmatter={project.data}>
-  {/* Add a unique identifier to help debug */}
   <div data-content-instance="primary">
     <Content components={components} />
   </div>
