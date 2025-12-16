@@ -21,10 +21,10 @@ const techImageMap: Record<
     alt: "Appwrite SDK for Go logo",
     url: "https://appwrite.io/",
   },
-  Github: {
+  GitHub: {
     light: "/images/tech/github_icon.png",
     dark: "/images/tech/github_icon_dark.png",
-    alt: "Github logo",
+    alt: "GitHub logo",
     url: "https://github.com/",
   },
   // Add more technologies here as needed
